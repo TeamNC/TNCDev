@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="240dp"
+    android:background="@drawable/particular_row">
+
+    <TextView
+        android:id="@+id/textDrawerMain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nom d'Utilisateur"
+        android:textSize="40dp"
+        android:gravity="center_horizontal"
+        android:layout_above="@+id/textDrawerDetail"
+        android:textColor="@android:color/white"/>
+
+    <TextView
+        android:id="@+id/textDrawerDetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Détail"
+        android:textSize="20dp"
+        android:gravity="center_horizontal"
+        android:layout_alignParentBottom="true"
+        android:textColor="@android:color/white"/>
+
+
+</RelativeLayout>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_1"
+        android:title="Main Items">
+
+        <menu>
+
+            <item android:title="Actualité"
+                android:checkable="true"
+                android:id="@+id/nav_item_actualite"
+                android:icon="@drawable/ic_menu_camera"/>
+
+            <item android:title="Evénement"
+                android:checkable="true"
+                android:id="@+id/nav_item_evenement"
+                android:icon="@drawable/ic_menu_slideshow"/>
+
+            <item android:title="Boites"
+                android:checkable="true"
+                android:id="@+id/nav_item_boites"
+                android:icon="@drawable/ic_menu_gallery"/>
+
+            <item android:title="Snacks"
+                android:checkable="true"
+                android:id="@+id/nav_item_snacks"
+                android:icon="@drawable/ic_menu_camera"/>
+
+            <item android:title="Classement"
+                android:checkable="true"
+                android:id="@+id/nav_item_classement"
+                android:icon="@drawable/ic_menu_slideshow"/>
+
+            <item android:title="Favoris"
+                android:checkable="true"
+                android:id="@+id/nav_item_favoris"
+                android:icon="@drawable/ic_menu_gallery"/>
+
+        </menu>
+
+    </item>
+
+    <item
+        android:id="@+id/navigation_2"
+        android:title="Sub items">
+        <menu>
+
+            <item android:title="Reglages"
+                android:checkable="true"
+                android:id="@+id/nav_item_reglages"
+                android:icon="@drawable/ic_menu_manage"/>
+            <item android:title="Aide"
+                android:checkable="true"
+                android:id="@+id/nav_item_aide"
+                android:icon="@drawable/ic_menu_share"/>
+
+        </menu>
+
+    </item>
+
+
+</menu>
