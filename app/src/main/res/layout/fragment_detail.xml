@@ -19,16 +19,12 @@
             app:contentScrim="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             android:fitsSystemWindows="true">
-
-            <ImageView
-                android:src="@drawable/particular_row"
-                android:layout_width="match_parent"
+            <include layout="@layout/particular_row_actualite"
+                app:layout_collapseMode="pin"
+                android:scaleType="fitXY"
                 android:contentDescription="@null"
-                android:layout_height="300dp"
-                android:scaleType="centerCrop"
-                app:layout_collapseMode="parallax"
-                android:fitsSystemWindows="true" />
-
+                android:minHeight="100dp"
+                />
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbarD"
                 android:layout_width="match_parent"
@@ -53,9 +49,36 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:text="@string/lorem_ipsum"/>
+                android:text="@string/lorem_ipsum"
+                android:singleLine="false"
+                android:paddingBottom="300dp"
+                android:paddingTop="20dp"
+                android:paddingRight="10dp"
+                android:paddingLeft="10dp"/>
 
     </android.support.v4.widget.NestedScrollView>
+    <FrameLayout
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/containerdetailsView"
+        >
+        <android.support.design.widget.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/AddButton"
+            android:src="@drawable/ic_comment"
+            app:fabSize="normal"
+            app:borderWidth="0dp"
+            app:backgroundTint="#99fe0038"
+            app:rippleColor="@color/blue"
+            android:layout_gravity="end|bottom"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+    </FrameLayout>
+
 
 
 </android.support.design.widget.CoordinatorLayout>

@@ -15,8 +15,10 @@ import android.widget.Toast;
 import com.example.faustin_12.ncdev.R;
 import com.example.faustin_12.ncdev.activity.fragment.AccueilFragment;
 import com.example.faustin_12.ncdev.activity.fragment.AideFragment;
+import com.example.faustin_12.ncdev.activity.fragment.BoiteFragment;
 import com.example.faustin_12.ncdev.activity.fragment.ClassementFragment;
 import com.example.faustin_12.ncdev.activity.fragment.FavorisFragment;
+import com.example.faustin_12.ncdev.activity.fragment.OffreSpecialeFragment;
 import com.example.faustin_12.ncdev.activity.fragment.ReglageFragment;
 import com.example.faustin_12.ncdev.activity.fragment.SnackFragment;
 
@@ -78,15 +80,23 @@ public class MainActivity extends AppCompatActivity {
                     xfragmentTransaction.replace(R.id.containerView, accueilFragment).addToBackStack(null).commit();
                 }
 
-                if (menuItem.getItemId() == R.id.nav_item_boites) {
-                    accueilFragment.setTabId(3);
+                if (menuItem.getItemId() == R.id.nav_item_live) {
+                    accueilFragment.setTabId(2);
                     FragmentTransaction xfragmentTransaction = mFragmentManager.beginTransaction();
                     xfragmentTransaction.replace(R.id.containerView, accueilFragment).addToBackStack(null).commit();
+                }
+                if (menuItem.getItemId() == R.id.nav_item_boites) {
+                    FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.containerView, new BoiteFragment()).addToBackStack(null).commit();
                 }
 
                 if (menuItem.getItemId() == R.id.nav_item_snacks) {
                     FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
                     fragmentTransaction.replace(R.id.containerView, new SnackFragment()).addToBackStack(null).commit();
+                }
+                if (menuItem.getItemId() == R.id.nav_item_offresspeciales) {
+                    FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.containerView, new OffreSpecialeFragment()).addToBackStack(null).commit();
                 }
                 if (menuItem.getItemId() == R.id.nav_item_classement) {
                     FragmentTransaction xfragmentTransaction = mFragmentManager.beginTransaction();
