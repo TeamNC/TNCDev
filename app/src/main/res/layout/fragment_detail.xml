@@ -19,12 +19,17 @@
             app:contentScrim="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             android:fitsSystemWindows="true">
-            <include layout="@layout/particular_row_actualite"
+            <ImageView
+                android:id="@+id/imgRow"
+                android:layout_alignParentTop="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
                 app:layout_collapseMode="pin"
-                android:scaleType="fitXY"
                 android:contentDescription="@null"
                 android:minHeight="100dp"
-                />
+                android:src="@drawable/serena_williams"/>
+
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbarD"
                 android:layout_width="match_parent"
