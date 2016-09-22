@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import com.example.faustin_12.ncdev.activity.fragment.ActualiteFragment;
 import com.example.faustin_12.ncdev.activity.fragment.BoiteFragment;
 import com.example.faustin_12.ncdev.activity.fragment.EvenementFragment;
+import com.example.faustin_12.ncdev.activity.fragment.LiveFragment;
 
 /**
  * Created by FAUSTIN-12 on 17/03/2016.
@@ -27,7 +28,7 @@ public class TabsAdapter extends FragmentStatePagerAdapter {
         switch (position){
             case 0 : return new ActualiteFragment();
             case 1 : return new EvenementFragment();
-            case 2 : return new BoiteFragment();
+            case 2 : return new LiveFragment();
             //case 3 : return new SnackFragment();
         }
         return null;
@@ -51,7 +52,7 @@ public class TabsAdapter extends FragmentStatePagerAdapter {
             case 1 :
                 return "Evénement";
             case 2 :
-                return "Boites";
+                return "Live";
             //case 3 :
             //    return "Snacks";
         }

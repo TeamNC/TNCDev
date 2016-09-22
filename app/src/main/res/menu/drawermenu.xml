@@ -17,6 +17,12 @@
                 android:id="@+id/nav_item_evenement"
                 android:icon="@drawable/ic_menu_slideshow"/>
 
+            <item android:title="Live"
+                android:checkable="true"
+                android:id="@+id/nav_item_live"
+                android:icon="@drawable/ic_menu_slideshow"/>
+
+
             <item android:title="Boites"
                 android:checkable="true"
                 android:id="@+id/nav_item_boites"
@@ -25,6 +31,10 @@
             <item android:title="Snacks"
                 android:checkable="true"
                 android:id="@+id/nav_item_snacks"
+                android:icon="@drawable/ic_menu_camera"/>
+            <item android:title="Snacks"
+                android:checkable="true"
+                android:id="@+id/nav_item_offresspeciales"
                 android:icon="@drawable/ic_menu_camera"/>
 
             <item android:title="Classement"
