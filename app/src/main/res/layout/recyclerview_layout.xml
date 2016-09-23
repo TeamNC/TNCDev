@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#DCDCDCDC"
+    android:paddingBottom="?attr/actionBarSize"
     tools:context="com.example.faustin_12.ncdev.activity.MainActivity">
 
 
@@ -15,7 +16,6 @@
         android:layout_height="wrap_content"
         android:scrollbars="vertical"
         android:fadeScrollbars="true"
-        android:paddingBottom="20dp"
         />
 
 
@@ -27,7 +27,6 @@
         app:rippleColor = "#0000F0"
         android:layout_height="wrap_content"
         android:src="@android:drawable/ic_input_add"
-        android:layout_marginBottom="?attr/actionBarSize"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />

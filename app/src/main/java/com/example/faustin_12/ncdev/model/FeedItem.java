@@ -31,6 +31,15 @@ public class FeedItem implements Serializable {
     @Element(name = "source", required = false)
     private Source source;
 
+    private int id;
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
+
+
     @Override
     public String toString(){
         return "Item{" +

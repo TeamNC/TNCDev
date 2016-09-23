@@ -59,6 +59,39 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
     }
     public String getTime (int position) {return articles.get(position).getPubDate();}
     public String getNbreCom (int position) {return articles.get(position).getComments();}
+    public FeedItem getItem(int position) {
+        return articles.get(position);
+    }
+
+    public void addItem(FeedItem article) {
+        articles.add(article);
+        notifyItemInserted(articles.size());
+    }
+
+    public void addItem(List<FeedItem> article) {
+        for(int i=0; i< article.size(); i++) {
+            articles.add(article.get(i));
+        }
+        notifyItemInserted(articles.size());
+    }
+    public void removeItem (FeedItem article){
+        int position = articles.indexOf(article);
+        if (position != -1){
+            articles.remove(article);
+            notifyItemRemoved(position);
+            notifyItemRangeChanged(position, articles.size());
+        }
+    }
+    public void removeItem (int position){
+        articles.remove(position);
+        notifyItemRemoved(position);
+        notifyItemRangeChanged(position, articles.size());
+    }
+
+    public void setData (List<FeedItem> data){
+        this.articles = data;
+        notifyDataSetChanged();
+    }
 
     @Override
     public int getItemCount() {
