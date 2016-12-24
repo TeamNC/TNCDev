@@ -130,10 +130,6 @@
         android:background="#363632"
         android:gravity="center"
         android:layout_gravity="center_horizontal" />
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/LiveList"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/boutondel"
@@ -144,10 +140,15 @@
         android:layout_height="wrap_content"
         android:src="@android:drawable/ic_input_add"
         app:layout_anchorGravity="right|bottom|end"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
         android:layout_gravity="right" />
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/LiveList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical"
+        android:fadeScrollbars="true"
+        android:clipToPadding="false"
+        android:paddingBottom="20dp"/>
 
 </LinearLayout>

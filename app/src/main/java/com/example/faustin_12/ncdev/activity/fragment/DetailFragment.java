@@ -79,8 +79,6 @@ public  class DetailFragment extends Fragment {
         dynamicToolbarColor();
         toolbarTextAppearance();
         Toolbar toolbarD = (Toolbar) x.findViewById(R.id.toolbarD);
-        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbarD);
-
         toolbarD.setNavigationIcon(R.drawable.ic_action_important);
         toolbarD.setNavigationIcon(R.drawable.ic_action_back);
         toolbarD.setNavigationOnClickListener(new View.OnClickListener() {
@@ -90,6 +88,9 @@ public  class DetailFragment extends Fragment {
                 ((AppCompatActivity) getActivity()).onBackPressed();
             }
         });
+
+        Toolbar toolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
+        toolbar.setVisibility(View.GONE);
 
         dte.setText(date);
         prix.setText(price);
