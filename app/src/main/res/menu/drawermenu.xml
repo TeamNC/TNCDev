@@ -32,7 +32,8 @@
                 android:checkable="true"
                 android:id="@+id/nav_item_snacks"
                 android:icon="@drawable/ic_menu_camera"/>
-            <item android:title="Snacks"
+
+            <item android:title="Offres Spéciales"
                 android:checkable="true"
                 android:id="@+id/nav_item_offresspeciales"
                 android:icon="@drawable/ic_menu_camera"/>

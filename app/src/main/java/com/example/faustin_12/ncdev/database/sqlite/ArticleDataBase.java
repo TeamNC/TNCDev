@@ -16,13 +16,15 @@ public class ArticleDataBase extends SQLiteOpenHelper {
     private static final String COL_TITRE = "Titre";
     private static final String COL_DESCRIPTION = "Description";
     private static final String COL_IMAGE_URL = "Image";
+    private static final String COL_IMAGE_URLI = "ImageI";
     private static final String COL_PUBDATE = "Date";
     private static final String COL_COMMENTSNOMBER = "NBComentaire";
 
     private static final String CREATE_BDD = "CREATE TABLE " + TABLE_ARTICLES + " ("
             + COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COL_TITRE + " TEXT NOT NULL DEFAULT '', "
-            + COL_DESCRIPTION + " TEXT NOT NULL DEFAULT '', " + COL_IMAGE_URL + " TEXT NOT NULL DEFAULT '', "
-            + COL_PUBDATE + " VARCHAR, " + COL_COMMENTSNOMBER + " VARCHAR);";
+            + COL_DESCRIPTION + " VARCHAR, " + COL_IMAGE_URL + " VARCHAR, "
+            + COL_IMAGE_URLI + " VARCHAR, " + COL_PUBDATE + " VARCHAR, "
+            + COL_COMMENTSNOMBER + " VARCHAR);";
 
     public ArticleDataBase(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);

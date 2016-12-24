@@ -1,7 +1,5 @@
 package com.example.faustin_12.ncdev.activity.fragment;
 
-import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -16,38 +14,45 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
 import com.example.faustin_12.ncdev.R;
-import com.example.faustin_12.ncdev.RequestInterface;
-import com.example.faustin_12.ncdev.adapter.DataAdapter;
-import com.example.faustin_12.ncdev.database.sqlite.ArticleBDD;
-import com.example.faustin_12.ncdev.database.sqlite.ArticleDataBase;
-import com.example.faustin_12.ncdev.model.Enclosure;
-import com.example.faustin_12.ncdev.model.Feed;
-import com.example.faustin_12.ncdev.model.FeedItem;
+import com.example.faustin_12.ncdev.adapter.RecyclerAdapter;
+import com.example.faustin_12.ncdev.model.Element;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.simplexml.SimpleXmlConverterFactory;
 
 /**
  * Created by FAUSTIN-12 on 17/03/2016.
  */
 public class BoiteFragment extends Fragment {
-    private static String DB_PATH = "/data/data/com.example.faustin_12.ncdev/databases/";
-    private static final String NOM_BDD = "article.db";
+    // Array of strings storing country names
+    int index=0;
+    String[] countries = new String[] {"India", "Pakistan", "Sri Lanka", "China", "Bangladesh", "Nepal", "Afghanistan", "North Korea", "South Korea", "Japan"
+    };
+    int[] flags = new int[]{R.drawable.images3,
+            R.drawable.images6,
+            R.drawable.images3,
+            R.drawable.images6,
+            R.drawable.images3,
+            R.drawable.images6,
+            R.drawable.images3,
+            R.drawable.images6,
+            R.drawable.images3,
+            R.drawable.images6,
+    };
+    // Array of strings to store currencies
+    String[] currency = new String[]{"Indian Rupee", "Pakistani Rupee", "Sri Lankan Rupee", "Renminbi", "Bangladeshi Taka", "Nepalese Rupee", "Afghani", "North Korean Won", "South Korean Won", "Japanese Yen"
+    };
     RecyclerView recyclerView;
-    DataAdapter adapter;
+    RecyclerAdapter mAdapter;
     FragmentManager mFragmentManager;
-    ArticleBDD articleBDD;
-    int index = 0;
-    public List<FeedItem> data = new ArrayList<>();
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         setHasOptionsMenu(true);
@@ -57,151 +62,41 @@ public class BoiteFragment extends Fragment {
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loadRSS();
-                //updateData();
+                Calendar c = Calendar.getInstance();
+                DateFormat df = new SimpleDateFormat("HH:mm");
+                if (index > 9) index = 0;
+                Element item = new Element(flags[index], countries[index], currency[index], df.format(c.getTime()));
+                item.setNbreCom(index);
+                if(index==0) item.setImageID(R.drawable.particular_row);
+                addInfo(item);
+                index++;
             }
         }
         );
-        addButton.setOnLongClickListener(new View.OnLongClickListener() {
-
-            @Override
-            public boolean onLongClick(View v) {
-                getContext().deleteDatabase("article.db");
-
-                articleBDD = new ArticleBDD(getContext());
-
-                adapter.setData(data);
-
-                return true;
-            }
-        });
-
-        adapter = new DataAdapter(getActivity(),data );
 
         recyclerView = (RecyclerView) v.findViewById(R.id.recyclerList);
-        //recyclerView.setHasFixedSize(true);
-        recyclerView.setAdapter(adapter);
+        mAdapter = new RecyclerAdapter(getContext(), new ArrayList<Element>());
+        recyclerView.setAdapter(mAdapter);
 
         LinearLayoutManager mLinearLayoutManager = new LinearLayoutManager(getContext());
         mLinearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(mLinearLayoutManager);
+
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-
-        articleBDD = new ArticleBDD(getContext());
-
-        articleBDD.open();
-        adapter.addItem(articleBDD.getAllArticle());
-        articleBDD.close();
-
         return v;
     }
 
-    public void addInfo(FeedItem feedItem){
-        //On ouvre la base de données pour écrire dedans
-        articleBDD.open();
-        //On insère le livre que l'on vient de créer
-        articleBDD.insertArticle(feedItem);
-        articleBDD.close();
-    }
-    public void updateData(){
-        List<FeedItem> alreadyItems = new ArrayList<>();
-        articleBDD.open();
-        alreadyItems = articleBDD.getAllArticle();
-        if (alreadyItems.size()>40){
-            for(int i=0; i<alreadyItems.size()-39;i++){
-                articleBDD.removeArticleWithID(alreadyItems.get(i).getId());
-            }
-            alreadyItems = articleBDD.getAllArticle();
-        }
-        articleBDD.close();
-
-        if (index >=0 && index +5  < alreadyItems.size()){
-            for(int i=index; i<index+5; i++){
-                adapter.addItem(alreadyItems.get(i));
-            }
-            index = index+5;
-        }
+    public void addInfo (Element item){
+        mAdapter.addInfo(item);
     }
 
-    public void deleteInfo(int position) {
-        articleBDD.open();
-
-        //on extrait le livre de la BDD grâce au titre du livre
-        FeedItem articleFromBdd = articleBDD.getArticleWithTitre(adapter.getTitle(position));
-        //Si un livre est retourné (donc si le livre à bien été ajouté à la BDD)
-        if(articleFromBdd != null){
-            //On affiche les infos du livre dans un Toast
-            Toast.makeText(getContext(), articleFromBdd.toString(), Toast.LENGTH_LONG).show();
-            articleBDD.removeArticleWithID(articleFromBdd.getId());
-        }
-
-        articleBDD.close();
-    }
-
-    private void loadRSS(){
-        Retrofit  retrofit = new Retrofit .Builder()
-                .baseUrl("http://www.footmercato.net") //http://www.footmercato.net http://www.eurosport.fr http://www.ka-news.de
-                .addConverterFactory(SimpleXmlConverterFactory.create())
-                .build();
-        RequestInterface request = retrofit.create(RequestInterface.class);
-
-        Call<Feed> call = request.getRSS();
-
-        call.enqueue(new Callback<Feed>() {
-            @Override
-            public void onResponse(Call<Feed> call, Response<Feed> response) {
-                Toast.makeText(getActivity(), "Download Succeed", Toast.LENGTH_LONG).show();
-
-                Feed feedItems = response.body();
-                List<FeedItem> mItems = new ArrayList<>();
-                List<FeedItem> alreadyItems = new ArrayList<>();
-                mItems = feedItems.getChannel().getItemList();
-
-                articleBDD.open();
-                alreadyItems = articleBDD.getAllArticle();
-                articleBDD.close();
-
-                for(int i=mItems.size()-1; i>=0; i--){
-                    int counter = 0;
-                    for(int j=0; j < alreadyItems.size(); j++){
-                        if (mItems.get(i) == alreadyItems.get(j)){
-                            counter=1;
-                        }
-                    }
-                    if (counter==0){
-                        addInfo(mItems.get(i));
-                    }
-                }
-                articleBDD.open();
-                alreadyItems = articleBDD.getAllArticle();
-                articleBDD.close();
-
-                adapter.setData(alreadyItems);
-            }
-
-            @Override
-            public void onFailure(Call<Feed> call, Throwable t) {
-                Toast.makeText(getActivity(), "Error Downloading Data",Toast.LENGTH_LONG).show();
-            }
-        });
-    }
     //@Override
     public void itemClicked(View view, int position) {
-        Toast.makeText(getActivity(), "Tu as sélectionné :" + adapter.getTitle(position), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "Tu as sélectionné :" + mAdapter.getTitle(position), Toast.LENGTH_SHORT).show();
         DetailFragment temps = new DetailFragment();
-        temps.setTitle("Détail de :" + adapter.getDescription(position));
+        temps.setTitle("Détail de :" + mAdapter.getTitle(position));
         FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.containerView, temps).addToBackStack(null).commit();
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
     }
 
     @Override

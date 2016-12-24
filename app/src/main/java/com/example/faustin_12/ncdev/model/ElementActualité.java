@@ -7,15 +7,17 @@ public class ElementActualité {
         private int imageID;
         private String price;
         private String date;
+        private String title;
         private String description_actualite;
         private String localisation;
         private String categories;
         private int nbreCom;
         private int nbreLove;
 
-        public ElementActualité (int imageID,  String price,String description_actualite,String date,String localisation ,String categories){
+        public ElementActualité (int imageID,  String price,String title,String description_actualite,String date,String localisation ,String categories){
         this.imageID=imageID;
         this.price=price;
+            this.title=title;
         this.description_actualite=description_actualite;
         this.date=date;
         this.localisation=localisation;
@@ -47,6 +49,14 @@ public class ElementActualité {
 
     public void setPrice(String price) {
         this.price = price;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getDescription_actualite() {

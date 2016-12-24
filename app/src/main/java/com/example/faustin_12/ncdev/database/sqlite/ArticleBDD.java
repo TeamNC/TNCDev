@@ -27,10 +27,12 @@ public class ArticleBDD {
     private static final int NUM_COL_DESCRIPTION = 2;
     private static final String COL_IMAGE_URL = "Image";
     private static final int NUM_COL_IMAGE_URL = 3;
+    private static final String COL_IMAGE_URLI = "ImageI";
+    private static final int NUM_COL_IMAGE_URLI = 4;
     private static final String COL_PUBDATE = "Date";
-    private static final int NUM_COL_PUBDATE = 4;
+    private static final int NUM_COL_PUBDATE = 5;
     private static final String COL_COMMENTSNOMBER = "NBComentaire";
-    private static final int NUM_COL_COMMENTSNOMBER = 5;
+    private static final int NUM_COL_COMMENTSNOMBER = 6;
 
 
     private SQLiteDatabase bdd;
@@ -69,6 +71,7 @@ public class ArticleBDD {
         values.put(COL_TITRE, article.getTitle());
         values.put(COL_DESCRIPTION, article.getDescription());
         values.put(COL_IMAGE_URL, article.getEnclosure().getEnclosureLink());
+        values.put(COL_IMAGE_URLI, article.getInternalImageUrl());
         values.put(COL_PUBDATE, article.getPubDate());
         values.put(COL_COMMENTSNOMBER, article.getComments());
         //on insère l'objet dans la BDD via le ContentValues
@@ -82,6 +85,7 @@ public class ArticleBDD {
         values.put(COL_TITRE, article.getTitle());
         values.put(COL_DESCRIPTION, article.getDescription());
         values.put(COL_IMAGE_URL, article.getEnclosure().getEnclosureLink());
+        values.put(COL_IMAGE_URLI, article.getInternalImageUrl());
         values.put(COL_PUBDATE, article.getPubDate());
         values.put(COL_COMMENTSNOMBER, article.getComments());
         return bdd.update(TABLE_ARTICLES, values, COL_ID + " = " +id, null);
@@ -94,8 +98,15 @@ public class ArticleBDD {
 
     public FeedItem getArticleWithTitre(String titre){
         //Récupère dans un Cursor les valeurs correspondant à un livre contenu dans la BDD (ici on sélectionne le livre grâce à son titre)
-        Cursor c = bdd.query(TABLE_ARTICLES, new String[] {COL_ID, COL_TITRE, COL_DESCRIPTION, COL_IMAGE_URL, COL_PUBDATE, COL_COMMENTSNOMBER}
+        Cursor c = bdd.query(TABLE_ARTICLES, new String[] {COL_ID, COL_TITRE, COL_DESCRIPTION, COL_IMAGE_URL, COL_IMAGE_URLI, COL_PUBDATE, COL_COMMENTSNOMBER}
                 , COL_TITRE + " LIKE \"" + titre +"\"", null, null, null, null);
+        return cursorToArticle(c);
+    }
+
+    public FeedItem getArticleWithID(int id){
+        //Récupère dans un Cursor les valeurs correspondant à un livre contenu dans la BDD (ici on sélectionne le livre grâce à son titre)
+        Cursor c = bdd.query(TABLE_ARTICLES, new String[] {COL_ID, COL_TITRE, COL_DESCRIPTION, COL_IMAGE_URL, COL_IMAGE_URLI, COL_PUBDATE, COL_COMMENTSNOMBER}
+                , COL_ID + " LIKE \"" + id +"\"", null, null, null, null);
         return cursorToArticle(c);
     }
 
@@ -103,7 +114,7 @@ public class ArticleBDD {
         List<FeedItem> articles = new ArrayList<>();
 
         Cursor cursor = bdd.query(TABLE_ARTICLES,
-                new String[] {COL_ID, COL_TITRE, COL_DESCRIPTION, COL_IMAGE_URL, COL_PUBDATE, COL_COMMENTSNOMBER}
+                new String[] {COL_ID, COL_TITRE, COL_DESCRIPTION, COL_IMAGE_URL, COL_IMAGE_URLI, COL_PUBDATE, COL_COMMENTSNOMBER}
                 , null, null, null, null, null);
 
         cursor.moveToFirst();

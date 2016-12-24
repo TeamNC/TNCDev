@@ -29,7 +29,6 @@ public class TabsAdapter extends FragmentStatePagerAdapter {
             case 0 : return new ActualiteFragment();
             case 1 : return new EvenementFragment();
             case 2 : return new LiveFragment();
-            //case 3 : return new SnackFragment();
         }
         return null;
     }
@@ -53,8 +52,6 @@ public class TabsAdapter extends FragmentStatePagerAdapter {
                 return "Evénement";
             case 2 :
                 return "Live";
-            //case 3 :
-            //    return "Snacks";
         }
         return null;
     }
