@@ -68,7 +68,7 @@ public class LiveFragment extends Fragment {
         addbuton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                if (index>4) index=0;
+                if (index>3) index=0;
                 ElementLive item=new ElementLive(
                 icons[index], titles[index]);
                 addItemLive(item);
