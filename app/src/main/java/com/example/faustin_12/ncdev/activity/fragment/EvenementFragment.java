@@ -1,14 +1,19 @@
 package com.example.faustin_12.ncdev.activity.fragment;
 
 
+import android.content.res.Resources;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.MenuItemCompat;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -19,7 +24,11 @@ import android.support.v7.widget.SearchView;
 import android.widget.Toast;
 
 import com.example.faustin_12.ncdev.R;
+import com.example.faustin_12.ncdev.adapter.RecyclerAdapterActualité;
+import com.example.faustin_12.ncdev.adapter.RecyclerAdapterEvenement;
 import com.example.faustin_12.ncdev.adapter.RecyclerViewAdapter;
+import com.example.faustin_12.ncdev.model.ElementActualité;
+import com.example.faustin_12.ncdev.model.ElementEvenement;
 import com.example.faustin_12.ncdev.model.Informations;
 
 import java.text.DateFormat;
@@ -30,27 +39,28 @@ import java.util.Calendar;
 /**
  * Created by FAUSTIN-12 on 17/03/2016.
  */
-public class EvenementFragment extends Fragment implements RecyclerViewAdapter.ClickListener
-        , SearchView.OnQueryTextListener {
-    public FragmentManager mFragmentManager ;
-    private RecyclerView recyclerView;
-    private RecyclerViewAdapter adapter;
-    private int[] icons = new int[]{
-            R.drawable.india,
-            R.drawable.pakistan,
-            R.drawable.srilanka,
-            R.drawable.china,
-            R.drawable.bangladesh,
-            R.drawable.nepal,
-            R.drawable.afghanistan,
-            R.drawable.nkorea,
-            R.drawable.skorea,
-            R.drawable.japan
+public class EvenementFragment extends Fragment implements RecyclerAdapterEvenement.ClickListener{
+    // Array of strings storing country names
+    int index=0;
+    String[] countries = new String[] {"India", "Pakistan", "Sri Lanka", "China", "Bangladesh", "Nepal", "Afghanistan", "North Korea", "South Korea", "Japan"
     };
-    private int iconIndex=0;
-    private FloatingActionButton addButton;
-    public ArrayList<Informations> data = new ArrayList<>();
-    public ArrayList<Informations> mdata = new ArrayList<>();
+    int[] flags = new int[]{R.drawable.images6,
+            R.drawable.images3,
+            R.drawable.images6,
+            R.drawable.images3,
+            R.drawable.images6,
+            R.drawable.images3,
+            R.drawable.images6,
+            R.drawable.images3,
+            R.drawable.images6,
+            R.drawable.images3
+    };
+    // Array of strings to store currencies
+    String[] currency = new String[]{"Indian Rupee", "Pakistani Rupee", "Sri Lankan Rupee", "Renminbi", "Bangladeshi Taka", "Nepalese Rupee", "Afghani", "North Korean Won", "South Korean Won", "Japanese Yen"
+    };
+    RecyclerView recyclerView;
+    RecyclerAdapterEvenement mAdapter;
+    FragmentManager mFragmentManager;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -58,90 +68,119 @@ public class EvenementFragment extends Fragment implements RecyclerViewAdapter.C
         /**
          *Inflate fragment_fixe and setup Views.
          */
-        View x = inflater.inflate(R.layout.recyclerview_layout, null);
-        recyclerView= (RecyclerView) x.findViewById(R.id.recyclerList);
-        addButton = (FloatingActionButton) x.findViewById(R.id.button_add);
+        View v = inflater.inflate(R.layout.recyclerview_layout, container, false);
+        FloatingActionButton addButton = (FloatingActionButton) v.findViewById(R.id.button_add);
         addButton.setOnClickListener(new View.OnClickListener() {
+                                         @Override
+                                         public void onClick(View v) {
+                                             Calendar c = Calendar.getInstance();
+                                             DateFormat df = new SimpleDateFormat("yyyy-MM-dd-hh.mm.ss");
+                                             if (index > 9) index = 0;
+                                             ElementEvenement item = new ElementEvenement(flags[index],countries[index],index);
+                                             addInfo(item);
+                                             index++;
+                                         }
+                                     }
+        );
+
+        recyclerView = (RecyclerView) v.findViewById(R.id.recyclerList);
+        mAdapter = new RecyclerAdapterEvenement(getContext(), new ArrayList<ElementEvenement>());
+
+        GridLayoutManager mLayoutManager = new GridLayoutManager(getContext(), 2);
+        mLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup(){
             @Override
-            public void onClick(View v) {
-                Calendar c = Calendar.getInstance();
-                DateFormat df = new SimpleDateFormat("HH:mm");
-                if (iconIndex > 9) iconIndex = 0;
-                Informations item = new Informations(icons[iconIndex], "Titre #" + iconIndex, "This is my description #" + iconIndex, df.format(c.getTime()));
-                item.setNbreCom(iconIndex);
-                addInfo(item);
-                iconIndex++;
+            public int getSpanSize(int position){
+                switch (mAdapter.getItemViewType(position)){
+                    case 0:
+                        return 1;
+                    case 1:
+                        return 2;
+                   default:return 0;
+
+
+                }
             }
         });
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(10), true));
 
-        adapter = new RecyclerViewAdapter(getActivity(), data);
-        adapter.setClickListener(this);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mFragmentManager = getActivity().getSupportFragmentManager();
-        mdata=adapter.getData();
-        return x;
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+
+        mAdapter.setClickListener(this);
+        recyclerView.setAdapter(mAdapter);
+
+
+        //recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mFragmentManager=getActivity().getSupportFragmentManager();
+
+        /*for (int i=0; i<=9; i++){
+            ElementEvenement item = new ElementEvenement(flags[i],countries[i],i);
+            addInfo(item);
+        }*/
+
+        return v;
+    }
+    /**
+     * RecyclerView item decoration - give equal margin around grid item
+     */
+    public class GridSpacingItemDecoration extends RecyclerView.ItemDecoration {
+
+        private int spanCount;
+        private int spacing;
+        private boolean includeEdge;
+
+        public GridSpacingItemDecoration(int spanCount, int spacing, boolean includeEdge) {
+            this.spanCount = spanCount;
+            this.spacing = spacing;
+            this.includeEdge = includeEdge;
+        }
+
+        @Override
+        public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
+            int position = parent.getChildAdapterPosition(view); // item position
+            int column = position % spanCount; // item column
+
+            if (includeEdge) {
+                outRect.left = spacing - column * spacing / spanCount; // spacing - column * ((1f / spanCount) * spacing)
+                outRect.right = (column + 1) * spacing / spanCount; // (column + 1) * ((1f / spanCount) * spacing)
+
+                if (position < spanCount) { // top edge
+                    outRect.top = spacing;
+                }
+                outRect.bottom = spacing; // item bottom
+            } else {
+                outRect.left = column * spacing / spanCount; // column * ((1f / spanCount) * spacing)
+                outRect.right = spacing - (column + 1) * spacing / spanCount; // spacing - (column + 1) * ((1f /    spanCount) * spacing)
+                if (position >= spanCount) {
+                    outRect.top = spacing; // item top
+                }
+            }
+        }
     }
 
-    public ArrayList<Informations> getData (){
-        return adapter.getData();
+    /**
+     * Converting dp to pixel
+     */
+    private int dpToPx(int dp) {
+        Resources r = getResources();
+        return Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics()));
     }
 
-    public void setData (ArrayList<Informations> data){
-        adapter.setData(data);
+
+
+    public void addInfo (ElementEvenement item){
+        mAdapter.addInfo(item);
     }
-
-
-    public void addInfo (Informations item){
-        adapter.addInfo(item);
-    }
-
     @Override
-     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+
+
+
         // Inflate the menu; this adds items to the action bar if it is present.
         inflater.inflate(R.menu.evenement_menu, menu);
+        super.onCreateOptionsMenu(menu, inflater);
 
-        final MenuItem item = menu.findItem(R.id.eaction_search);
-        final SearchView searchView = (SearchView) MenuItemCompat.getActionView(item);
-        searchView.setOnQueryTextListener(this);
 
-        MenuItemCompat.setOnActionExpandListener(item,
-                new MenuItemCompat.OnActionExpandListener() {
-                    @Override
-                    public boolean onMenuItemActionCollapse(MenuItem item) {
-                        adapter.setFilter(mdata);
-                        return true;
-                    }
-
-                    @Override
-                    public boolean onMenuItemActionExpand(MenuItem item) {
-                        return true;
-                    }
-                });
-    }
-
-    @Override
-    public boolean onQueryTextChange(String newText){
-        final ArrayList<Informations> filteredModelList = filter(mdata, newText);
-        adapter.setFilter(filteredModelList);
-        return true;
-    }
-
-    @Override
-    public boolean onQueryTextSubmit(String query){
-        return false;
-    }
-
-    private ArrayList<Informations> filter (ArrayList<Informations> data, String query){
-        query = query.toLowerCase();
-
-        final ArrayList<Informations> filteredModelList = new ArrayList<>();
-        for (Informations model : data){
-            final String text = model.getTitre().toLowerCase();
-            final String text2 = model.getDescription().toLowerCase();
-            if (text.contains(query)||text2.contains(query))filteredModelList.add(model);
-        }
-        return filteredModelList;
     }
 
     @Override
@@ -159,13 +198,13 @@ public class EvenementFragment extends Fragment implements RecyclerViewAdapter.C
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
+   // @Override
     public void itemClicked(View view, int position) {
-        Toast.makeText(getActivity(), "Tu as sélectionné :" + adapter.getTitle(position), Toast.LENGTH_SHORT).show();
-        DetailFragment temps = new DetailFragment();
-        temps.setTitle("Détail de :" + adapter.getTitle(position));
+        Toast.makeText(getActivity(), "Tu as sélectionné :" + mAdapter.getTitle(position), Toast.LENGTH_SHORT).show();
+        CategoriesFragment temps = new CategoriesFragment();
+        //temps.setTitle("Détail de :" + mAdapter.getTitle(position));
         FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.containerView, temps).addToBackStack(null).commit();
+        fragmentTransaction.replace(R.id.containerView0, temps).addToBackStack(null).commit();
     }
 
 }

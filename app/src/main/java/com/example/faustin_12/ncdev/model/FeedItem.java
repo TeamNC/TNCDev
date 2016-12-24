@@ -31,6 +31,16 @@ public class FeedItem implements Serializable {
     @Element(name = "source", required = false)
     private Source source;
 
+    private String internalImageUrl;
+
+    public String getInternalImageUrl() {
+        return internalImageUrl;
+    }
+
+    public void setInternalImageUrl(String internalImageUrl) {
+        this.internalImageUrl = internalImageUrl;
+    }
+
     private int id;
     public int getId() {
         return id;

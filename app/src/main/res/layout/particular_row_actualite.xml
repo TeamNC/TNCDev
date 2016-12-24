@@ -6,6 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_marginLeft="5dp"
     android:layout_marginRight="5dp"
+
     android:layout_marginTop="5dp"
     card_view:cardCornerRadius="5dp">
 
@@ -14,6 +15,7 @@
         android:id="@+id/principal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/white"
         >
 
 
@@ -58,16 +60,16 @@
         <TextView
             android:id="@+id/price"
             android:textColor="#000"
-            android:background="#FFFFFF"
+            android:background="#80FFFFFF"
             android:layout_width="wrap_content"
-            android:layout_height="20dp"
+            android:layout_height="wrap_content"
             android:gravity="center"
-            android:layout_marginEnd="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginTop="5dp"
+          android:padding="5dp"
+            android:layout_margin="5dp"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
+            android:fontFamily="sans-serif"
             android:text="GRATUIT" />
         <!--</RelativeLayout>-->
 
@@ -76,40 +78,66 @@
             android:layout_below="@+id/imgRow"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:orientation="vertical">
                 <TextView
                     android:id="@+id/date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Date.Heure : min"
-                    android:layout_marginLeft="10dp"
+                    android:layout_margin="5dp"
+                    android:fontFamily="sans-serif"
                     android:textColor="#000"
-                    android:layout_centerVertical="true"/>
+                    />
                 <TextView
-                    android:id="@+id/description_actualite"
+                    android:id="@+id/title_actualite"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
+                    android:layout_marginTop="-2.5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
                     android:textColor="#000"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:text="Description"
+                    android:fontFamily="sans-serif"
+                    android:includeFontPadding="false"
+                    android:maxLines="1"
+                    android:minLines="1"
+                    android:ellipsize="none"
+                    android:text="Titre"
+                    android:layout_below="@+id/date"
+                    />
+                <TextView
+                    android:id="@+id/description_actualite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-2.5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="#000"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:text="@string/lorem_ipsum"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:fontFamily="sans-serif"
+                    android:layout_below="@+id/title_actualite"
                     />
 
                 <TextView
                     android:id="@+id/localisation"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="localisation"
-                    android:layout_marginLeft="10dp"
+                    android:layout_margin="5dp"
+                    android:fontFamily="sans-serif"
                     android:textSize="15sp"
                     android:textStyle="italic"
+                    android:layout_below="@+id/description_actualite"
                     />
-            </LinearLayout>
+            </RelativeLayout>
 
         </RelativeLayout>
 
@@ -194,6 +222,7 @@
                 android:layout_centerVertical="true"
                 android:textSize="15sp"
                 android:textStyle="italic"
+                android:fontFamily="sans-serif"
                 />
           <RelativeLayout
               android:id="@+id/sharelove"

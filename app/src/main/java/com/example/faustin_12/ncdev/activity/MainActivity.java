@@ -16,6 +16,7 @@ import com.example.faustin_12.ncdev.R;
 import com.example.faustin_12.ncdev.activity.fragment.AccueilFragment;
 import com.example.faustin_12.ncdev.activity.fragment.AideFragment;
 import com.example.faustin_12.ncdev.activity.fragment.BoiteFragment;
+import com.example.faustin_12.ncdev.activity.fragment.CategoriesFragment;
 import com.example.faustin_12.ncdev.activity.fragment.ClassementFragment;
 import com.example.faustin_12.ncdev.activity.fragment.FavorisFragment;
 import com.example.faustin_12.ncdev.activity.fragment.OffreSpecialeFragment;
@@ -49,11 +50,11 @@ public class MainActivity extends AppCompatActivity {
          * Lets inflate the very first fragment
          * Here , we are inflating the TabFragment as the first Fragment
          */
-        AccueilFragment accueilFragment = new AccueilFragment();
-        accueilFragment.setTabId(0);
+      //  AccueilFragment accueilFragment = new AccueilFragment();
+        //accueilFragment.setTabId(0);
         mFragmentManager = getSupportFragmentManager();
         mFragmentTransaction = mFragmentManager.beginTransaction();
-        mFragmentTransaction.replace(R.id.containerView, accueilFragment).commit();
+        mFragmentTransaction.replace(R.id.containerView, new AccueilFragment()).commit();
 
         /**
          * Setup click events on the Navigation View Items.
@@ -64,26 +65,25 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(MenuItem menuItem) {
 
                 toolbar.setVisibility(View.VISIBLE);
-
                 mDrawerLayout.closeDrawers();
                 AccueilFragment accueilFragment = new AccueilFragment();
 
                 if (menuItem.getItemId() == R.id.nav_item_actualite) {
                     accueilFragment.setTabId(0);
                     FragmentTransaction xfragmentTransaction = mFragmentManager.beginTransaction();
-                    xfragmentTransaction.replace(R.id.containerView, accueilFragment).addToBackStack(null).commit();
+                    xfragmentTransaction.replace(R.id.containerView, accueilFragment).commit();
                 }
 
                 if (menuItem.getItemId() == R.id.nav_item_evenement) {
                     accueilFragment.setTabId(1);
                     FragmentTransaction xfragmentTransaction = mFragmentManager.beginTransaction();
-                    xfragmentTransaction.replace(R.id.containerView, accueilFragment).addToBackStack(null).commit();
+                    xfragmentTransaction.replace(R.id.containerView, accueilFragment).commit();
                 }
 
                 if (menuItem.getItemId() == R.id.nav_item_live) {
                     accueilFragment.setTabId(2);
                     FragmentTransaction xfragmentTransaction = mFragmentManager.beginTransaction();
-                    xfragmentTransaction.replace(R.id.containerView, accueilFragment).addToBackStack(null).commit();
+                    xfragmentTransaction.replace(R.id.containerView, accueilFragment).commit();
                 }
                 if (menuItem.getItemId() == R.id.nav_item_boites) {
                     FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();

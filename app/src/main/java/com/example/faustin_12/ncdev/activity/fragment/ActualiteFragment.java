@@ -14,14 +14,11 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.SimpleAdapter;
-import android.widget.TextView;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.faustin_12.ncdev.R;
-import com.example.faustin_12.ncdev.adapter.RecyclerAdapter;
 import com.example.faustin_12.ncdev.adapter.RecyclerAdapterActualité;
-import com.example.faustin_12.ncdev.model.Element;
 import com.example.faustin_12.ncdev.model.ElementActualité;
 
 import java.text.DateFormat;
@@ -38,16 +35,16 @@ public class ActualiteFragment extends Fragment implements RecyclerAdapterActual
     int index=0;
     String[] countries = new String[] {"India", "Pakistan", "Sri Lanka", "China", "Bangladesh", "Nepal", "Afghanistan", "North Korea", "South Korea", "Japan"
     };
-    int[] flags = new int[]{R.drawable.india,
-            R.drawable.pakistan,
-            R.drawable.srilanka,
-            R.drawable.china,
-            R.drawable.bangladesh,
-            R.drawable.nepal,
-            R.drawable.afghanistan,
-            R.drawable.nkorea,
-            R.drawable.skorea,
-            R.drawable.japan
+    int[] flags = new int[]{R.drawable.images3,
+            R.drawable.images6,
+            R.drawable.images3,
+            R.drawable.images6,
+            R.drawable.images3,
+            R.drawable.images6,
+            R.drawable.images3,
+            R.drawable.images6,
+            R.drawable.images3,
+            R.drawable.images6
     };
     // Array of strings to store currencies
     String[] currency = new String[]{"Indian Rupee", "Pakistani Rupee", "Sri Lankan Rupee", "Renminbi", "Bangladeshi Taka", "Nepalese Rupee", "Afghani", "North Korean Won", "South Korean Won", "Japanese Yen"
@@ -69,11 +66,11 @@ public class ActualiteFragment extends Fragment implements RecyclerAdapterActual
                                          @Override
                                          public void onClick(View v) {
                                              Calendar c = Calendar.getInstance();
-                                            DateFormat df = new SimpleDateFormat("HH:mm");
+                                            DateFormat df = new SimpleDateFormat("yyyy-MM-dd-hh.mm.ss");
                                              if (index > 9) index = 0;
-                                             ElementActualité item = new ElementActualité(flags[index], currency[index],countries[index],df.format(c.getTime()),"Localisation#" + index,"#Catégories" + index );
+                                             ElementActualité item = new ElementActualité(flags[index], currency[index],countries[index],"les mechants n'ont pas besoin de raison pour hair.leur mechanceté  suffit"+index,df.format(c.getTime()),"Localisation#" + index,"#Catégories" + index );
                                              item.setNbreCom(index);
-                                             if(index==0) item.setImageID(R.drawable.particular_row);
+                                            // if(index==0) item.setImageID(R.drawable.particular_row);
                                              addInfo(item);
                                              index++;
                                          }
@@ -85,7 +82,7 @@ public class ActualiteFragment extends Fragment implements RecyclerAdapterActual
 
 
         LinearLayoutManager mLinearLayoutManager = new LinearLayoutManager(getContext());
-        mLinearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        mLinearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         recyclerView.setLayoutManager(mLinearLayoutManager);
 
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -115,6 +112,8 @@ public class ActualiteFragment extends Fragment implements RecyclerAdapterActual
         // Inflate the menu; this adds items to the action bar if it is present.
         inflater.inflate(R.menu.actualite_menu, menu);
         super.onCreateOptionsMenu(menu, inflater);
+
+
     }
 
     @Override
@@ -136,8 +135,12 @@ public class ActualiteFragment extends Fragment implements RecyclerAdapterActual
     public void itemClicked(View view, int position) {
         Toast.makeText(getActivity(), "Tu as sélectionné :" + mAdapter.getDescription_Actualité(position), Toast.LENGTH_SHORT).show();
         DetailFragment temps = new DetailFragment();
-        temps.setTitle("Détail de :" + mAdapter.getDescription_Actualité(position));
+        temps.setTitle(mAdapter.getTitle(position));
+        temps.setDate(mAdapter.getDate(position));
+        temps.setPrice(mAdapter.getPrice(position));
+        ImageView icon = (ImageView) view.findViewById(R.id.imgRow);
+        temps.setMyImageView(icon);
         FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.containerView, temps).addToBackStack(null).commit();
+        fragmentTransaction.replace(R.id.containerView0, temps).addToBackStack(null).commit();
     }
 }

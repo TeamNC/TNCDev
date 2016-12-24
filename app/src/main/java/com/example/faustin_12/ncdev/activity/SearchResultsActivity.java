@@ -20,7 +20,7 @@ public class SearchResultsActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_fixe);
 
-        // get the action bar
+        // Get the action bar
         ActionBar actionBar = getActionBar();
 
         // Enabling Back navigation on Action Bar icon
