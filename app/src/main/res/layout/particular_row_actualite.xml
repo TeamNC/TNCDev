@@ -55,7 +55,8 @@
             android:layout_height="170sp"
             android:scaleType="fitXY"
             android:adjustViewBounds="true"
-            android:src="@drawable/serena_williams"/>
+            android:src="@drawable/serena_williams"
+            />
 
         <TextView
             android:id="@+id/price"
@@ -219,6 +220,7 @@
                 android:layout_height="wrap_content"
                 android:text="#Categories"
                 android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:layout_centerVertical="true"
                 android:textSize="15sp"
                 android:textStyle="italic"
@@ -234,10 +236,13 @@
                     android:id="@+id/lovePict"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:contentDescription="@null"
                     android:background="@null"
-                    android:src="@drawable/ic_love"
+                    android:src="@drawable/like_outline32"
                     android:layout_centerVertical="true"
                     android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:tint="@color/blue"
                 />
               <TextView
                   android:id="@+id/nbrelove"
@@ -245,8 +250,13 @@
                   android:layout_height="wrap_content"
                   android:text="1500"
                   android:textSize="15sp"
+                  android:fontFamily="sans-serif"
+                  android:layout_marginRight="2dp"
+                  android:layout_marginEnd="2dp"
+
                   android:layout_centerVertical="true"
                   android:layout_toLeftOf="@+id/lovePict"
+                  android:layout_toStartOf="@+id/lovePict"
                   />
               <View
                   android:id="@+id/line3"
@@ -254,25 +264,33 @@
                   android:layout_width="1px"
                   android:layout_height="60dp"
                   android:layout_marginRight="5dp"
+                  android:layout_marginEnd="5dp"
                   android:layout_toLeftOf="@+id/nbrelove"
+                  android:layout_toStartOf="@+id/nbrelove"
                   android:background="#CECECECE" />
               <ImageView
                   android:id="@+id/commentPict"
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:background="@null"
-                  android:src="@drawable/ic_comment"
+                  android:src="@drawable/comments32"
                   android:layout_centerVertical="true"
-                  android:layout_toLeftOf="@+id/line3"/>
+                  android:layout_toLeftOf="@+id/line3"
+                  android:layout_toStartOf="@+id/line3"
+                  android:tint="@color/blue"/>
               <TextView
                   android:id="@+id/nbreCom"
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:text="2000"
+                  android:fontFamily="sans-serif"
+                  android:layout_marginRight="2dp"
+                  android:layout_marginEnd="2dp"
                   android:textSize="14sp"
                   android:textColor="#000"
                   android:layout_centerVertical="true"
                   android:layout_toLeftOf="@+id/commentPict"
+                  android:layout_toStartOf="@+id/commentPict"
                   />
               <View
                   android:id="@+id/line4"
@@ -281,7 +299,9 @@
                   android:layout_height="60dp"
                   android:layout_centerVertical="true"
                   android:layout_marginRight="5dp"
+                  android:layout_marginEnd="5dp"
                   android:layout_toLeftOf="@+id/nbreCom"
+                  android:layout_toStartOf="@+id/nbreCom"
                   android:background="#CECECECE" />
               <ImageView
                   android:id="@+id/share"
@@ -289,14 +309,17 @@
                   android:layout_height="wrap_content"
                   android:background="@null"
                   android:layout_centerVertical="true"
-                  android:src="@drawable/ic_action_share"
-                  android:layout_toLeftOf="@+id/line4"/>
+                  android:src="@drawable/share32"
+                  android:layout_toLeftOf="@+id/line4"
+                  android:layout_toStartOf="@+id/line4"
+                  android:tint="@color/blue"/>
               <View
                   android:id="@+id/line5"
                   android:orientation="vertical"
                   android:layout_width="1px"
                   android:layout_height="60dp"
                   android:layout_toLeftOf="@+id/share"
+                  android:layout_toStartOf="@+id/share"
                   android:background="#CECECECE" />
 
           </RelativeLayout>

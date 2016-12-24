@@ -1,42 +1,24 @@
 package com.example.faustin_12.ncdev.activity.fragment;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.faustin_12.ncdev.R;
-import com.example.faustin_12.ncdev.adapter.RecyclerAdapterActualité;
-import com.example.faustin_12.ncdev.adapter.RecyclerAdapterCategorie;
-import com.example.faustin_12.ncdev.adapter.TabsAdapter;
+
 import com.example.faustin_12.ncdev.adapter.TabsAdapter2;
-import com.example.faustin_12.ncdev.model.ElementActualité;
-import com.example.faustin_12.ncdev.model.ElementCatégorie;
+
 import com.example.faustin_12.ncdev.model.Informations;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 
 /**
  * Created by LIONEL KOUEMENI on 04/10/2016.
@@ -87,8 +69,6 @@ public class CategoriesFragment extends Fragment {    public static TabLayout ta
            tab.setCustomView(TabsAdapter2.getTabView(i));
         }
         Toolbar toolbarC= (Toolbar) x.findViewById(R.id.toolbarC);
-        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbarC);
-
         toolbarC.setNavigationIcon(R.drawable.ic_action_important);
         toolbarC.setNavigationIcon(R.drawable.ic_action_back);
         toolbarC.setNavigationOnClickListener(new View.OnClickListener() {
@@ -99,8 +79,8 @@ public class CategoriesFragment extends Fragment {    public static TabLayout ta
             }
         });
 
-        /*Toolbar toolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
-        toolbar.setVisibility(View.GONE);*/
+        Toolbar toolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
+        toolbar.setVisibility(View.GONE);
 
         return x;
     }

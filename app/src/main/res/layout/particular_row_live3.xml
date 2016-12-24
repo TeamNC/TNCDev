@@ -1,15 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!--<android.support.v7.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginLeft="0dp"
-    android:layout_marginRight="0dp"
-
-    android:layout_marginTop="0dp"
-    card_view:cardCornerRadius="3dp">-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
@@ -27,29 +17,28 @@
             <ImageView
                 android:id="@+id/live_item"
                 android:layout_width="fill_parent"
-                android:layout_height="match_parent"
+                android:layout_height="80dp"
                 android:scaleType="fitXY"
                 android:src="@drawable/images6"
                 android:layout_gravity="top"
-                android:adjustViewBounds="true"
                 android:background="#363632"/>
             <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true">
-            <View
-                android:id="@+id/Couleur_categorie"
-                android:background="#990080ff"
-                android:layout_width="25dp"
-                android:layout_height="match_parent"
-                />
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/present_time"
-                android:layout_gravity="center"
-                /></FrameLayout>
+                <View
+                    android:id="@+id/Couleur_categorie"
+                    android:background="#99FF4081"
+                    android:layout_width="25dp"
+                    android:layout_height="match_parent"
+                    />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/stopwatch"
+                    android:layout_gravity="center"
+                    /></FrameLayout>
         </RelativeLayout>
 
         <LinearLayout
@@ -73,6 +62,15 @@
                     android:layout_weight="5"
                     android:orientation="vertical"
                     >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="fill_parent"
+                        android:text="Nom de l'évenement"
+                        android:background="#ffff00"
+                        android:layout_weight="10"
+                        android:textColor="#ffffff"
+                        />
+
                     <RelativeLayout
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
@@ -80,39 +78,15 @@
                         <TextView
                             android:id="@+id/live_title"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="fill_parent"
                             android:text="TITRE DE L'ARTICLE"
-                            android:layout_marginTop="2.5dp"
-                            android:layout_marginRight="5dp"
-                            android:layout_marginLeft="5dp"
-                            android:textSize="18sp"
-                            android:textStyle="bold"
-                            android:fontFamily="sans-serif"
-                            android:includeFontPadding="false"
-                            android:maxLines="1"
-                            android:minLines="1"
-                            android:ellipsize="none"
+                            android:textSize="20sp"
+                            android:layout_alignParentBottom="true"
                             android:textColor="#ffffff"
-                            android:elegantTextHeight="false" />
-                        <TextView
-                            android:id="@+id/description_live"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="-2.5dp"
-                            android:layout_marginRight="5dp"
-                            android:layout_marginLeft="5dp"
-                            android:textColor="#fff"
-                            android:textSize="14sp"
-                            android:textStyle="bold"
-                            android:text="@string/lorem_ipsum"
-                            android:maxLines="2"
-                            android:ellipsize="end"
-                            android:fontFamily="sans-serif"
-                            android:layout_below="@+id/live_title"
-                            />
 
+                            android:elegantTextHeight="false" />
                     </RelativeLayout>
-                    <RelativeLayout
+                    <LinearLayout
                         android:layout_width="fill_parent"
                         android:layout_weight="10"
                         android:orientation="horizontal"
@@ -122,42 +96,43 @@
                             android:layout_height="wrap_content"
                             android:id="@+id/digitalClock"
                             android:textColor="#ffffff"
-                            android:layout_alignParentStart="true"
-                            android:layout_alignParentLeft="true"
-                            android:layout_alignParentBottom="true"
                             android:textSize="12sp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="     "
+                            android:textColor="#ffffff"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Le 14.10"
-                            android:layout_centerInParent="true"
-                            android:layout_alignParentBottom="true"
                             android:textColor="#ffffff"
                             android:textSize="12sp"/>
                         <TextView
-                            android:id="@+id/nbrvue"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="     "
+                            android:textColor="#ffffff"/>
+
+                        <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="5"
-                           android:layout_toLeftOf="@+id/vues"
-                            android:layout_alignParentBottom="true"
                             android:textColor="#ffffff"
                             android:textSize="12sp"/>
                         <TextView
-                            android:id="@+id/vues"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="end"
                             android:text=" vues"
-                            android:layout_alignParentBottom="true"
-                            android:layout_alignParentRight="true"
-                            android:layout_alignParentEnd="true"
                             android:textColor="#ffffff"
                             android:textSize="12sp"/>
-                    </RelativeLayout>
+                    </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
+
+
         </LinearLayout>
+
     </LinearLayout>
     <View
         android:layout_width="match_parent"
@@ -165,4 +140,3 @@
         android:background="#0000"/>
 
 </LinearLayout>
-

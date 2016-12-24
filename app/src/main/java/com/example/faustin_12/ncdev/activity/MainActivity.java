@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.faustin_12.ncdev.R;
 import com.example.faustin_12.ncdev.activity.fragment.AccueilFragment;
+import com.example.faustin_12.ncdev.activity.fragment.AccueilFragment2;
 import com.example.faustin_12.ncdev.activity.fragment.AideFragment;
 import com.example.faustin_12.ncdev.activity.fragment.BoiteFragment;
 import com.example.faustin_12.ncdev.activity.fragment.CategoriesFragment;
@@ -41,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
         /**
          *Setup the DrawerLayout , TabLayout and NavigationView
+         *
          */
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
@@ -96,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 if (menuItem.getItemId() == R.id.nav_item_offresspeciales) {
                     FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.containerView, new OffreSpecialeFragment()).addToBackStack(null).commit();
+                    fragmentTransaction.replace(R.id.containerView, new AccueilFragment2()).addToBackStack(null).commit();
                 }
                 if (menuItem.getItemId() == R.id.nav_item_classement) {
                     FragmentTransaction xfragmentTransaction = mFragmentManager.beginTransaction();

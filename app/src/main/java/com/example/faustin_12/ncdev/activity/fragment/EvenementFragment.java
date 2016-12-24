@@ -52,7 +52,7 @@ public class EvenementFragment extends Fragment implements RecyclerAdapterEvenem
             R.drawable.images3,
             R.drawable.images6,
             R.drawable.images3,
-            R.drawable.images6,
+            R.drawable.audrey,
             R.drawable.images3
     };
     // Array of strings to store currencies
@@ -77,6 +77,7 @@ public class EvenementFragment extends Fragment implements RecyclerAdapterEvenem
                                              DateFormat df = new SimpleDateFormat("yyyy-MM-dd-hh.mm.ss");
                                              if (index > 9) index = 0;
                                              ElementEvenement item = new ElementEvenement(flags[index],countries[index],index);
+                                              //if(index==0) item.setImageID(R.drawable.particular_row);
                                              addInfo(item);
                                              index++;
                                          }
@@ -85,6 +86,11 @@ public class EvenementFragment extends Fragment implements RecyclerAdapterEvenem
 
         recyclerView = (RecyclerView) v.findViewById(R.id.recyclerList);
         mAdapter = new RecyclerAdapterEvenement(getContext(), new ArrayList<ElementEvenement>());
+
+
+       // LinearLayoutManager mLinearLayoutManager = new LinearLayoutManager(getContext());
+        //mLinearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        //recyclerView.setLayoutManager(mLinearLayoutManager);
 
         GridLayoutManager mLayoutManager = new GridLayoutManager(getContext(), 2);
         mLayoutManager.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup(){
@@ -112,12 +118,6 @@ public class EvenementFragment extends Fragment implements RecyclerAdapterEvenem
 
         //recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mFragmentManager=getActivity().getSupportFragmentManager();
-
-        /*for (int i=0; i<=9; i++){
-            ElementEvenement item = new ElementEvenement(flags[i],countries[i],i);
-            addInfo(item);
-        }*/
-
         return v;
     }
     /**
@@ -204,7 +204,7 @@ public class EvenementFragment extends Fragment implements RecyclerAdapterEvenem
         CategoriesFragment temps = new CategoriesFragment();
         //temps.setTitle("Détail de :" + mAdapter.getTitle(position));
         FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.containerView0, temps).addToBackStack(null).commit();
+        fragmentTransaction.replace(R.id.containerView, temps).addToBackStack(null).commit();
     }
 
 }
