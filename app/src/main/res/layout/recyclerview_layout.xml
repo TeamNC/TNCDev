@@ -5,7 +5,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/viewBg"
     tools:context="com.example.faustin_12.ncdev.activity.MainActivity">
+    <!--- android:background="#D3D3D3" -->
 
 
     <android.support.v7.widget.RecyclerView
@@ -13,7 +15,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scrollbars="vertical"
-        android:fadeScrollbars="true"/>
+        android:fadeScrollbars="true"
+        android:clipToPadding="false"
+        android:paddingBottom="20dp"
+        />
+
 
 
     <android.support.design.widget.FloatingActionButton

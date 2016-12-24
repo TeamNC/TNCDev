@@ -11,6 +11,7 @@ import android.support.v4.app.Fragment;
 
 import com.example.faustin_12.ncdev.R;
 import com.example.faustin_12.ncdev.adapter.TabsAdapter;
+import com.example.faustin_12.ncdev.adapter.TabsAdapter3;
 import com.example.faustin_12.ncdev.model.Informations;
 
 import java.util.ArrayList;
@@ -23,7 +24,7 @@ public class AccueilFragment extends Fragment {
     public static ViewPager viewPager;
     public int tabId=0;
     public int check;
-    public TabsAdapter adapter;
+    public TabsAdapter3 adapter;
     public EvenementFragment evenementFragment = new EvenementFragment();
     public ArrayList<Informations> mdata = new ArrayList<>();
 
@@ -37,7 +38,7 @@ public class AccueilFragment extends Fragment {
         View x = inflater.inflate(R.layout.tab_layout, null);
         tabLayout = (TabLayout) x.findViewById(R.id.tabs);
         viewPager = (ViewPager) x.findViewById(R.id.viewpager);
-        adapter = new TabsAdapter(getChildFragmentManager());
+        adapter = new TabsAdapter3(getChildFragmentManager());
         /**
          *Set an Apater for the View Pager
          */
