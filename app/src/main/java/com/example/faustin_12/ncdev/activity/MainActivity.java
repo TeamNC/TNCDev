@@ -42,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
 
         /**
          *Setup the DrawerLayout , TabLayout and NavigationView
-         *
          */
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
