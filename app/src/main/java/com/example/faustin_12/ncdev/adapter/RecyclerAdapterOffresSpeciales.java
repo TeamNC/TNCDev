@@ -1,6 +1,7 @@
 package com.example.faustin_12.ncdev.adapter;
 
 import android.content.Context;
+import android.os.Handler;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,23 +11,32 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.faustin_12.ncdev.R;
-import com.example.faustin_12.ncdev.model.ElementEvenement;
 import com.example.faustin_12.ncdev.model.ElementOffresSpeciales;
+import com.example.faustin_12.ncdev.notification.DisplayCustomNotification;
+import com.example.faustin_12.ncdev.notification.DisplayNotification;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 
 /**
  * Created by LIONEL KOUEMENI on 14/12/2016.
  */
 public class RecyclerAdapterOffresSpeciales extends RecyclerView.Adapter <RecyclerAdapterOffresSpeciales.mViewHolder> {
-    private static final String TAG = RecyclerAdapter.class.getSimpleName();
+    private static final String TAG = RecyclerAdapterBoiteSnack.class.getSimpleName();
     private List<ElementOffresSpeciales> mData;
     private ClickListener clickListener;
     private LayoutInflater mInflater;
+    Handler mHandler = new Handler();
+    Context mContext;
+    DisplayCustomNotification displayCustomNotification;
+    DisplayNotification displayNotification;
 
     public RecyclerAdapterOffresSpeciales(Context context, List<ElementOffresSpeciales> data) {
         this.mData = data;
         this.mInflater = LayoutInflater.from(context);
+        displayCustomNotification = new DisplayCustomNotification(context, "NCDev", " ", " ", " ", " ");
+        //displayNotification = new DisplayNotification(context, "NCDev", " ", " ", " ", " ");
     }
 
     @Override
@@ -79,6 +89,10 @@ public class RecyclerAdapterOffresSpeciales extends RecyclerView.Adapter <Recycl
     public void addInfo(ElementOffresSpeciales item) {
         mData.add(item);
         notifyItemInserted(mData.size());
+        displayCustomNotification.setnDescription("Offre Spéciale : " + item.getTitleOffresSpeciales());
+        displayCustomNotification.setnTickerM("Offre Spéciale : " + item.getTitleOffresSpeciales());
+        displayCustomNotification.setnTime(""+(new SimpleDateFormat("HH:MM").format(Calendar.getInstance().getTime())));
+        mHandler.post(displayCustomNotification);
     }
 
     public void setClickListener(ClickListener clickListener) {

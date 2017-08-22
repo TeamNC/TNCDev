@@ -11,4 +11,15 @@
             android:layout_centerVertical="true"
             android:text="Hello World!"/>
 
+        <EditText
+            android:id="@+id/edittext1"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/textView1"/>
+        <android.support.design.widget.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/serverSet"
+            android:layout_centerInParent="true"/>
+
     </RelativeLayout>

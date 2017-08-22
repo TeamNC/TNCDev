@@ -1,37 +1,40 @@
 package com.example.faustin_12.ncdev.activity;
 
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import com.example.faustin_12.ncdev.R;
+import com.example.faustin_12.ncdev.activity.fragment.AccueilBoitesetsnacksFragment;
 import com.example.faustin_12.ncdev.activity.fragment.AccueilFragment;
-import com.example.faustin_12.ncdev.activity.fragment.AccueilFragment2;
+import com.example.faustin_12.ncdev.activity.fragment.AccueilOffresSpecialesFragment2;
 import com.example.faustin_12.ncdev.activity.fragment.AideFragment;
-import com.example.faustin_12.ncdev.activity.fragment.BoiteFragment;
-import com.example.faustin_12.ncdev.activity.fragment.CategoriesFragment;
 import com.example.faustin_12.ncdev.activity.fragment.ClassementFragment;
 import com.example.faustin_12.ncdev.activity.fragment.FavorisFragment;
-import com.example.faustin_12.ncdev.activity.fragment.OffreSpecialeFragment;
 import com.example.faustin_12.ncdev.activity.fragment.ReglageFragment;
-import com.example.faustin_12.ncdev.activity.fragment.SnackFragment;
+import com.example.faustin_12.ncdev.notification.DisplayCustomNotification;
+import com.example.faustin_12.ncdev.notification.DisplayNotification;
 
-public class MainActivity extends AppCompatActivity {
+public class
+MainActivity extends AppCompatActivity {
     public DrawerLayout mDrawerLayout;
     NavigationView mNavigationView;
     FragmentManager mFragmentManager;
     FragmentTransaction mFragmentTransaction;
     public ActionBarDrawerToggle mDrawerToggle;
     Toolbar toolbar;
-    private int check=0;
+    DisplayCustomNotification displayCustomNotification;
+    DisplayNotification displayNotification;
+    public String serverT="http://192.168.61.1";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +42,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        displayCustomNotification = new DisplayCustomNotification(getApplicationContext(), "NCDev", " ", " ", " ", " ");
+        //displayNotification = new DisplayNotification(context, "NCDev", " ", " ", " ", " ");
 
         /**
          *Setup the DrawerLayout , TabLayout and NavigationView
@@ -88,16 +94,12 @@ public class MainActivity extends AppCompatActivity {
                 }
                 if (menuItem.getItemId() == R.id.nav_item_boites) {
                     FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.containerView, new BoiteFragment()).addToBackStack(null).commit();
+                    fragmentTransaction.replace(R.id.containerView, new AccueilBoitesetsnacksFragment()).addToBackStack(null).commit();
                 }
 
-                if (menuItem.getItemId() == R.id.nav_item_snacks) {
-                    FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.containerView, new SnackFragment()).addToBackStack(null).commit();
-                }
                 if (menuItem.getItemId() == R.id.nav_item_offresspeciales) {
                     FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.containerView, new AccueilFragment2()).addToBackStack(null).commit();
+                    fragmentTransaction.replace(R.id.containerView, new AccueilOffresSpecialesFragment2()).addToBackStack(null).commit();
                 }
                 if (menuItem.getItemId() == R.id.nav_item_classement) {
                     FragmentTransaction xfragmentTransaction = mFragmentManager.beginTransaction();
@@ -150,6 +152,24 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });*/
+    }
+
+    public void setServerT(String server){
+        this.serverT=server;
+    }
+    public String getServerT(){
+        return this.serverT;
+    }
+
+
+    public DisplayCustomNotification getNotificationBuilder(){
+        return displayCustomNotification;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
     }
 
     @Override

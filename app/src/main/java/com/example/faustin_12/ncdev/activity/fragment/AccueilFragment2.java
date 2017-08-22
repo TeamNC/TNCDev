@@ -10,11 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.faustin_12.ncdev.R;
-import com.example.faustin_12.ncdev.adapter.TabsAdapter;
 import com.example.faustin_12.ncdev.adapter.TabsAdapter3;
-import com.example.faustin_12.ncdev.model.Informations;
-
-import java.util.ArrayList;
 
 /**
  * Created by LIONEL KOUEMENI on 23/12/2016.
@@ -25,8 +21,6 @@ public class AccueilFragment2 extends Fragment {
     public int tabId=0;
     public int check;
     public TabsAdapter3 adapter;
-    public EvenementFragment evenementFragment = new EvenementFragment();
-    public ArrayList<Informations> mdata = new ArrayList<>();
 
     @Nullable
     @Override

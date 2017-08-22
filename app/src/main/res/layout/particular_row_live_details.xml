@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginTop="5dp"
+    card_view:cardCornerRadius="5dp">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginRight="10dp"
+    android:layout_marginLeft="10dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:contentDescription="@null"
+            android:id="@+id/profile2_image"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/audrey"
+            />
+        <TextView
+            android:id="@+id/description_live_details"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="booba en mode duc de boulogne dddddddddddddddd"
+            android:maxLines="02"
+            android:textSize="21sp"
+            android:layout_toRightOf="@+id/profile2_image"
+            android:layout_toEndOf="@+id/profile2_image"
+            android:textColor="@color/black"
+            />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:id="@+id/text_for_since"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" IL Y'A "
+            android:textSize="14sp"
+            android:textStyle="italic"
+            android:layout_toLeftOf="@+id/since"
+            android:fontFamily="sans-serif"
+            android:textColor="@color/black"
+            />
+        <TextView
+            android:id="@+id/since"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" 5 HEURES"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            android:textStyle="italic"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:fontFamily="sans-serif"
+            />
+
+    </RelativeLayout>
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.0001dp"
+        android:background="#000"/>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_gravity="center"
+        android:layout_height="320dp">
+
+        <ImageView
+            android:id="@+id/picture_live"
+            android:layout_gravity="center"
+            android:contentDescription="@null"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/images3" />
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+           <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_empty_love"
+                android:contentDescription="@null"
+
+                />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_black_comment"
+                android:contentDescription="@null"
+                />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_black_send"
+                android:contentDescription="@null"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="15"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/nbrelove"
+            android:layout_toStartOf="@+id/nbrelove"/>
+        <ImageView
+            android:id="@+id/nbrelove"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_full_black_love"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            />
+    </RelativeLayout>
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@color/black"/>
+</LinearLayout>
+    </android.support.v7.widget.CardView>

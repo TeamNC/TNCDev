@@ -17,13 +17,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.faustin_12.ncdev.R;
-import com.example.faustin_12.ncdev.adapter.RecyclerAdapterEvenement;
 import com.example.faustin_12.ncdev.adapter.RecyclerAdapterOffresSpeciales;
-import com.example.faustin_12.ncdev.model.ElementEvenement;
 import com.example.faustin_12.ncdev.model.ElementOffresSpeciales;
 
 import java.text.DateFormat;
@@ -184,7 +181,7 @@ public class OffreSpecialeFragment extends Fragment implements RecyclerAdapterOf
     public void itemClicked(View view, int position) {
         Toast.makeText(getActivity(), "Tu as sélectionné :" + mAdapter.getTitleOffresSpeciales(position), Toast.LENGTH_SHORT).show();
         CategoriesFragment temps = new CategoriesFragment();
-        //temps.setTitle("Détail de :" + mAdapter.getTitle(position));
+        //temps.setName("Détail de :" + mAdapter.getName(position));
         FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.containerView, temps).addToBackStack(null).commit();
     }

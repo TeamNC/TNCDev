@@ -1,5 +1,6 @@
 package com.example.faustin_12.ncdev.activity.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -8,13 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.app.Fragment;
-import android.widget.Toast;
 
 import com.example.faustin_12.ncdev.R;
 import com.example.faustin_12.ncdev.adapter.TabsAdapter;
-import com.example.faustin_12.ncdev.model.Informations;
-
-import java.util.ArrayList;
 
 /**
  * Created by FAUSTIN-12 on 17/03/2016.
@@ -25,8 +22,6 @@ public class AccueilFragment extends Fragment {
     public int tabId=0;
     public int check;
     public TabsAdapter adapter;
-    public EvenementFragment evenementFragment = new EvenementFragment();
-    public ArrayList<Informations> mdata = new ArrayList<>();
 
     @Nullable
     @Override
@@ -60,6 +55,13 @@ public class AccueilFragment extends Fragment {
         });
 
         return x;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        for (Fragment fragment : getChildFragmentManager().getFragments()) {
+            fragment.onActivityResult(requestCode, resultCode, data);
+        }
     }
 
     /*public void onPause(){

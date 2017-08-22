@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rotate xmlns:android="http://schemas.android.com/apk/res/android"
+    android:pivotX="50%"
+    android:pivotY="50%"
+    android:fromDegrees="0"
+    android:toDegrees="360">
+
+    <shape
+        android:shape="ring"
+        android:innerRadiusRatio="3"
+        android:thickness="5dp"
+        android:useLevel="false">
+
+        <size android:width="50dp" android:height="50dp" />
+
+        <gradient
+            android:type="sweep"
+            android:useLevel="false"
+            android:startColor="#007DD6"
+            android:centerColor="#0000F0"
+            android:centerY="0.50"
+            android:endColor="#0000FF" />
+
+    </shape>
+
+</rotate>
+    <!--
+    <rotate xmlns:android="http://schemas.android.com/apk/res/android"
+        android:fromDegrees="0"
+        android:pivotX="50%"
+        android:pivotY="50%"
+        android:duration="1"
+        android:toDegrees="360">
+        <shape
+            android:innerRadiusRatio="2.5"
+            android:shape="ring"
+            android:thickness="5dp"
+            android:useLevel="true"><!a-a- this line fixes the issue for lollipop api 21 -a-a>
+
+            <size android:width="48dip" android:height="48dip" />
+
+            <gradient
+                android:centerY="0.50"
+                android:endColor="#007DD6"
+                android:startColor="#007DD6"
+                android:type="sweep"
+                android:useLevel="false" />
+        </shape>
+    </rotate>-->

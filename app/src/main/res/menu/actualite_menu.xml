@@ -16,4 +16,9 @@
         android:orderInCategory="100"
         android:title="Settings"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/action_clip"
+        android:icon="@drawable/ic_attach"
+        android:title="Media"
+        app:showAsAction="ifRoom" />
 </menu>

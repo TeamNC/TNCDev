@@ -18,7 +18,7 @@ public class FeedItem implements Serializable {
     private String description;
     @Element(name = "author", required = false)
     private String author;
-    //@Element(name = "category", required = false)
+    //@ElementBoiteSnack(name = "category", required = false)
     //private String category;
     @Element(name = "comments", required = false)
     private String comments;
