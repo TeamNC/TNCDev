@@ -1,7 +1,6 @@
 package com.example.faustin_12.ncdev.adapter;
 
 import android.content.Context;
-import android.os.Handler;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,10 +11,7 @@ import android.widget.TextView;
 
 import com.example.faustin_12.ncdev.R;
 import com.example.faustin_12.ncdev.model.ElementCategorie;
-import com.example.faustin_12.ncdev.notification.DisplayCustomNotification;
-import com.example.faustin_12.ncdev.notification.DisplayNotification;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,19 +19,13 @@ import java.util.List;
  */
 public class RecyclerAdapterEvenement extends RecyclerView.Adapter <RecyclerAdapterEvenement.mViewHolder> {
     private static final String TAG = RecyclerAdapterBoiteSnack.class.getSimpleName();
-    private List<ElementCategorie> categories;
+    private List<ElementCategorie> mData;
     private ClickListener clickListener;
     private LayoutInflater mInflater;
-    Handler mHandler = new Handler();
-    Context mContext;
-    DisplayCustomNotification displayCustomNotification;
-    DisplayNotification displayNotification;
 
     public RecyclerAdapterEvenement(Context context, List<ElementCategorie> data) {
-        this.categories = data;
+        this.mData = data;
         this.mInflater = LayoutInflater.from(context);
-        displayCustomNotification = new DisplayCustomNotification(context, "NCDev", " ", " ", " ", " ");
-        //displayNotification = new DisplayNotification(context, "NCDev", " ", " ", " ", " ");
     }
 
     @Override
@@ -62,38 +52,32 @@ public class RecyclerAdapterEvenement extends RecyclerView.Adapter <RecyclerAdap
     @Override
     public void onBindViewHolder(mViewHolder holder, int position) {
         Log.d(TAG, "onBindViewHolder" + position);
-        ElementCategorie currentObj = categories.get(position);
+        ElementCategorie currentObj = mData.get(position);
         holder.setData(currentObj, position);
 
     }
 
     public String getTitle(int position) {
-        return categories.get(position).getName();
+        return mData.get(position).getTitle();
     }
 
     public int getImageID(int position) {
-        return categories.get(position).getImageID();
+        return mData.get(position).getImageID();
     }
 
     public int getNbreEvents(int position) {
-        return categories.get(position).getNombreevts();
+        return mData.get(position).getNbreEvents();
     }
 
 
     @Override
     public int getItemCount() {
-        return categories.size();
+        return mData.size();
     }
 
     public void addInfo(ElementCategorie item) {
-        categories.add(item);
-        notifyItemInserted(categories.size());
-    }
-
-    public void setData (List<ElementCategorie> infos){
-        categories = new ArrayList<>();
-        categories.addAll(infos);
-        notifyDataSetChanged();
+        mData.add(item);
+        notifyItemInserted(mData.size());
     }
 
     public void setClickListener(ClickListener clickListener) {
@@ -122,9 +106,9 @@ public class RecyclerAdapterEvenement extends RecyclerView.Adapter <RecyclerAdap
         }
 
         public void setData(ElementCategorie current, int position) {
-            this.title.setText(current.getName());
-            //this.imgRow.setImageResource(current.getImageID());
-            this.nbreEvents.setText("" + current.getNombreevts());
+            this.title.setText(current.getTitle());
+            this.imgRow.setImageResource(current.getImageID());
+            this.nbreEvents.setText("" + current.getNbreEvents());
             this.current = current;
             this.position = position;
         }

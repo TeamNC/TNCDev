@@ -10,7 +10,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.faustin_12.ncdev.R;
@@ -25,7 +24,6 @@ import com.example.faustin_12.ncdev.adapter.TabsAdapter2;
 public class CategoriesFragment extends Fragment {    public static TabLayout tabLayout2;
     public static ViewPager viewPager;
     public int tabId=0;
-    public String[] date = {"a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a" };
     public String categorie;
     public TabsAdapter2 adapter;
 
@@ -64,13 +62,9 @@ public class CategoriesFragment extends Fragment {    public static TabLayout ta
         {
             TabLayout.Tab tab =tabLayout2.getTabAt(i);
             tab.setCustomView(TabsAdapter2.getTabView(i));
-            View v = TabsAdapter2.getTabView(i);
-            TextView tv1=(TextView)v.findViewById(R.id.mydate);
-            date[i]= tv1.getText().toString();
         }
 
         adapter.setCategorie(categorie);
-        adapter.setDate(date);
         TabLayout.Tab tab = tabLayout2.getTabAt(10);
         tab.select();
 

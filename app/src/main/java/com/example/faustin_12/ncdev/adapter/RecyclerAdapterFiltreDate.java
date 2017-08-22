@@ -1,7 +1,6 @@
 package com.example.faustin_12.ncdev.adapter;
 
 import android.content.Context;
-import android.os.Handler;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,11 +10,7 @@ import android.widget.TextView;
 
 import com.example.faustin_12.ncdev.R;
 import com.example.faustin_12.ncdev.model.ElementFiltreDate;
-import com.example.faustin_12.ncdev.notification.DisplayCustomNotification;
-import com.example.faustin_12.ncdev.notification.DisplayNotification;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -26,16 +21,10 @@ public class RecyclerAdapterFiltreDate extends RecyclerView.Adapter <RecyclerAda
         private List<ElementFiltreDate> mData;
         private LayoutInflater mInflater;
         private ClickListener clickListener;
-        Handler mHandler = new Handler();
-        Context mContext;
-        DisplayCustomNotification displayCustomNotification;
-        DisplayNotification displayNotification;
 
         public RecyclerAdapterFiltreDate(Context context, List<ElementFiltreDate> data){
             this.mData=data;
             this.mInflater=LayoutInflater.from(context);
-            displayCustomNotification = new DisplayCustomNotification(context, "NCDev", " ", " ", " ", " ");
-            //displayNotification = new DisplayNotification(context, "NCDev", " ", " ", " ", " ");
         }
 
         @Override
@@ -85,10 +74,6 @@ public class RecyclerAdapterFiltreDate extends RecyclerView.Adapter <RecyclerAda
     public void addInfo(ElementFiltreDate item) {
         mData.add(item);
         notifyItemInserted(mData.size());
-        displayCustomNotification.setnDescription("Evenemen : " + item.getTitle());
-        displayCustomNotification.setnTickerM("Actualité : " + item.getTitle());
-        displayCustomNotification.setnTime(""+(new SimpleDateFormat("HH:MM").format(Calendar.getInstance().getTime())));
-        mHandler.post(displayCustomNotification);
     }
 
     class mViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{

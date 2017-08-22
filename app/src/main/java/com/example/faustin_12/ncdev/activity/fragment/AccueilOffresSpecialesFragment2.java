@@ -12,8 +12,6 @@ import android.view.ViewGroup;
 import com.example.faustin_12.ncdev.R;
 import com.example.faustin_12.ncdev.adapter.TabsAdapter3;
 
-import java.util.ArrayList;
-
 /**
  * Created by LIONEL KOUEMENI on 23/12/2016.
  */

@@ -104,7 +104,6 @@
                             />
 
                         <TextView
-                            android:id="@+id/live_time_text"
                             android:text="il y'a 30 min"
                             android:textSize="15dp"
                             android:textColor="@color/green"

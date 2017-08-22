@@ -166,11 +166,38 @@
                     android:maxLines="1"
                     android:text="#GUINNES#ORANGE#MTN"
                     />
+
               <LinearLayout
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
                   android:orientation="horizontal"
                   android:layout_below="@id/live_time_parent"></LinearLayout>
+            <TextView
+                android:id="@+id/nbrratings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1.5k"
+                android:layout_below="@+id/sponsorslive"
+                android:layout_toLeftOf="@+id/setrating"
+                android:layout_toStartOf="@+id/setrating"
+                android:layout_alignParentBottom="true"
+                android:textColor="@color/black"
+                android:layout_marginRight="10dp"
+                android:textSize="15sp"/>
+            <RatingBar
+                android:id="@+id/setrating"
+                style="?android:attr/ratingBarStyleSmall"
+                android:theme="@style/RatingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/sponsorslive"
+                android:layout_toLeftOf="@+id/nbrvue"
+                android:layout_toStartOf="@+id/nbrvue"
+                android:isIndicator="true"
+                android:rating="1"
+                android:numStars="5"
+                android:stepSize="0.5"
+                />
                 <TextView
                     android:id="@+id/nbrvue"
                     android:layout_width="wrap_content"
@@ -181,6 +208,10 @@
                     android:layout_toStartOf="@+id/live_pic_vue"
                     android:layout_alignParentBottom="true"
                     android:textColor="@color/black"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginStart="10dp"
                     android:textSize="15sp"/>
                 <ImageView
                     android:id="@+id/live_pic_vue"
@@ -195,6 +226,7 @@
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
                     />
+
 
         </RelativeLayout>
     </LinearLayout>

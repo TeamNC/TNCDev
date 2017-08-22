@@ -135,9 +135,9 @@ public class LiveFragment2 extends Fragment {
                     public void onClick(View v) {
                         Toast.makeText(getContext(), String.format("Clicked on position #%s of Section %s",
                                 sectionAdapter.getPositionInSection(itemHolder.getAdapterPosition()), title), Toast.LENGTH_SHORT).show();
-                        DetailLiveFragment temps = new DetailLiveFragment();
-                        ImageView icon = (ImageView) v.findViewById(R.id.live_item);
-                        temps.setMyImageView(icon);
+                        DetailLiveFragment2 temps = new DetailLiveFragment2();
+                       // ImageView icon = (ImageView) v.findViewById(R.id.live_item);
+                       // temps.setMyImageView(icon);
                         FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
                         fragmentTransaction.replace(R.id.containerView0, temps).addToBackStack(null).commit();
                     }
@@ -182,7 +182,7 @@ public class LiveFragment2 extends Fragment {
             public HeaderViewHolder(View view) {
                 super(view);
 
-                tvTitle = (TextView) view.findViewById(R.id.sectionLiveTitle);
+                tvTitle = (TextView) view.findViewById(R.id.tvTitle);
             }
         }
 

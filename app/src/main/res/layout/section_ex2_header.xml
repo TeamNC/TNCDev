@@ -18,7 +18,7 @@
         android:textStyle="bold"
         android:id="@+id/tvTitle" />-->
     <TextView
-        android:id="@+id/sectionLiveTitle"
+        android:id="@+id/tvTitle"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:textSize="@dimen/abc_text_size_large_material"

@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_margin="8dp"
+    card_view:cardCornerRadius="4dp">
+ <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="8dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/ivUserProfile"
+            android:contentDescription="@null"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/audrey" />
+        <TextView
+            android:id="@+id/title_live_details"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OG NIGHT CLUB"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Body1"
+            android:maxLines="02"
+            android:textSize="21sp"
+            android:layout_centerInParent="true"
+            android:textColor="@color/black" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/text_for_since"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" IL Y'A "
+            android:textSize="14sp"
+            android:textStyle="italic"
+            android:layout_toLeftOf="@+id/since"
+            android:fontFamily="sans-serif"
+            android:textColor="@color/black" />
+        <TextView
+            android:id="@+id/since"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" 5 HEURES"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            android:textStyle="italic"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:fontFamily="sans-serif" />
+    </RelativeLayout>
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.0001dp"
+        android:background="#000"/>
+    <com.example.faustin_12.ncdev.view.SquaredFrameLayout
+        android:id="@+id/vImageRoot"
+        android:layout_width="fill_parent"
+        android:layout_gravity="center"
+        android:layout_height="320dp">
+        <com.example.faustin_12.ncdev.view.SquaredImageView
+            android:id="@+id/picture_live"
+            android:layout_gravity="center"
+            android:contentDescription="@null"
+            android:scaleType="centerCrop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/images3" />
+        <View
+            android:id="@+id/vBgLike"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_like_circle_background"
+            android:visibility="invisible" />
+        <ImageView
+            android:id="@+id/ivLike"
+            android:contentDescription="@null"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="center"
+            android:src="@drawable/ic_heart_outline_white"
+            android:visibility="invisible" />
+        <View
+            android:id="@+id/vProgressBg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#77ffffff" />
+        <com.example.faustin_12.ncdev.view.SendingProgressView
+            android:id="@+id/vSendingProgress"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center" />
+    </com.example.faustin_12.ncdev.view.SquaredFrameLayout>
+       <TextView
+        android:id="@+id/description_live_details"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="booba en mode duc de boulogne dddddddddddddddd"
+        android:maxLines="02"
+        android:textSize="21sp"
+        android:textColor="@color/text_like_counter" />
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <android.support.v7.widget.AppCompatImageButton
+                 android:id="@+id/btnLike"
+                 android:layout_width="48dp"
+                 android:layout_height="48dp"
+                 android:contentDescription="@null"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_empty_love" />
+            <android.support.v7.widget.AppCompatImageButton
+                android:id="@+id/btnComments"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_black_comment"
+                android:background="@drawable/btn_feed_action"
+                android:contentDescription="@null"
+                />
+            <android.support.v7.widget.AppCompatImageButton
+                android:id="@+id/btnMore"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_black_send"
+                android:contentDescription="@null"
+                android:background="@drawable/btn_feed_action"
+                />
+        </LinearLayout>
+        <TextSwitcher
+            android:id="@+id/tsLikesCounter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:inAnimation="@anim/slide_in_likes_counter"
+            android:outAnimation="@anim/slide_out_likes_counter">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="123 likes"
+                android:textColor="@color/text_like_counter" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_like_counter" />
+        </TextSwitcher>
+        <ImageView
+            android:id="@+id/nbrelove"
+            android:theme="@style/likebuttonindicator"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_full_black_love"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_centerVertical="true"
+            android:isIndicator="true"
+            android:layout_toLeftOf="@+id/tsLikesCounter"
+            android:layout_toStartOf="@+id/tsLikesCounter" />
+    </RelativeLayout>
+</LinearLayout>
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.0001dp"
+        android:layout_gravity="bottom"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:background="@color/black"/>
+    </android.support.v7.widget.CardView>

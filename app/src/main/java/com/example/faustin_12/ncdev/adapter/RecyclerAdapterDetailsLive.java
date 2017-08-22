@@ -42,7 +42,7 @@ public class RecyclerAdapterDetailsLive extends RecyclerView.Adapter <RecyclerAd
         switch (viewType)
         {
             case 0:
-                View view = mInflater.inflate(R.layout.particular_row_live_details2, parent, false);
+                View view = mInflater.inflate(R.layout.particular_row_live_details5, parent, false);
                 return new mViewHolder(view);
             case 1:
                 View pview = mInflater.inflate(R.layout.particular_row_live_details2, parent, false);

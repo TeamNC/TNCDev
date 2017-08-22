@@ -1,7 +1,6 @@
 package com.example.faustin_12.ncdev.adapter;
 
 import android.content.Context;
-import android.os.Handler;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,12 +11,8 @@ import android.widget.TextView;
 
 import com.example.faustin_12.ncdev.R;
 import com.example.faustin_12.ncdev.model.ElementBoiteSnack;
-import com.example.faustin_12.ncdev.notification.DisplayCustomNotification;
-import com.example.faustin_12.ncdev.notification.DisplayNotification;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -28,16 +23,10 @@ public class RecyclerAdapterBoiteSnack extends RecyclerView.Adapter <RecyclerAda
     private List<ElementBoiteSnack> mData;
     private LayoutInflater mInflater;
     private ClickListener clickListener;
-    Handler mHandler = new Handler();
-    Context mContext;
-    DisplayCustomNotification displayCustomNotification;
-    DisplayNotification displayNotification;
 
     public RecyclerAdapterBoiteSnack(Context context, List<ElementBoiteSnack> data){
         this.mData=data;
         this.mInflater=LayoutInflater.from(context);
-        displayCustomNotification = new DisplayCustomNotification(context, "NCDev", " ", " ", " ", " ");
-        //displayNotification = new DisplayNotification(context, "NCDev", " ", " ", " ", " ");
     }
 
     @Override
@@ -97,10 +86,6 @@ public class RecyclerAdapterBoiteSnack extends RecyclerView.Adapter <RecyclerAda
     public void addInfo (ElementBoiteSnack item){
         mData.add(item);
         notifyItemInserted(mData.size());
-        displayCustomNotification.setnDescription("Nouvelle Boite ! " + item.getTitle());
-        displayCustomNotification.setnTickerM("Nouvelle Boite ! " + item.getTitle());
-        displayCustomNotification.setnTime(""+(new SimpleDateFormat("HH:MM").format(Calendar.getInstance().getTime())));
-        mHandler.post(displayCustomNotification);
     }
 
     public void removeItem (ElementBoiteSnack item){

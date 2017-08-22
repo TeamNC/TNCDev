@@ -1,38 +1,19 @@
 package com.example.faustin_12.ncdev.model;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
-
 /**
  * Created by LIONEL KOUEMENI on 02/10/2016.
  */
 public class ElementCategorie {
-    @SerializedName("id_cat")
-    @Expose
-    private Integer idCat;
-    @SerializedName("name")
-    @Expose
-    private String name;
-    @SerializedName("nombreevts")
-    @Expose
-    private Integer nombreevts;
-
     private int imageID;
+    private String title;
+    int nbreEvents;
 
-    public ElementCategorie(int idCat, int imageID, String name, int nombreevts){
-        this.idCat = idCat;
+    public ElementCategorie(int imageID, String title, int nbreEvents){
         this.imageID=imageID;
-        this.name = name;
-        this.nombreevts = nombreevts;
+        this.title=title;
+        this.nbreEvents=nbreEvents;
     }
 
-    public Integer getIdCat() {
-        return idCat;
-    }
-
-    public void setIdCat(Integer idCat) {
-        this.idCat = idCat;
-    }
     public int getImageID() {
         return imageID;
     }
@@ -41,19 +22,19 @@ public class ElementCategorie {
         this.imageID = imageID;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public int getNombreevts() {
-        return nombreevts;
+    public int getNbreEvents() {
+        return nbreEvents;
     }
 
-    public void setNombreevts(int nombreevts) {
-        this.nombreevts = nombreevts;
+    public void setNbreEvents(int nbreEvents) {
+        this.nbreEvents = nbreEvents;
     }
 }

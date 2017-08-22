@@ -4,10 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import com.example.faustin_12.ncdev.activity.fragment.ActualiteFragment;
-import com.example.faustin_12.ncdev.activity.fragment.EvenementFragment;
 import com.example.faustin_12.ncdev.activity.fragment.FavorisFragment2;
-import com.example.faustin_12.ncdev.activity.fragment.LiveFragment;
 import com.example.faustin_12.ncdev.activity.fragment.OffreSpecialeFragment;
 
 /**

@@ -49,6 +49,17 @@
                 android:layout_margin="20dp"
                 android:textColor="#FFFFFF"
                 android:textSize="14sp"/>
+
+            <RatingBar
+                style="@style/foodRatingBar"
+                android:theme="@style/RatingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:isIndicator="false"
+                android:numStars="5"
+                android:layout_centerVertical="true"
+                android:rating="2"
+                android:stepSize="0.5" />
         </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
 

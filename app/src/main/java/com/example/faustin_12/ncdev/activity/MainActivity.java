@@ -1,9 +1,7 @@
 package com.example.faustin_12.ncdev.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
@@ -21,8 +19,6 @@ import com.example.faustin_12.ncdev.activity.fragment.AideFragment;
 import com.example.faustin_12.ncdev.activity.fragment.ClassementFragment;
 import com.example.faustin_12.ncdev.activity.fragment.FavorisFragment;
 import com.example.faustin_12.ncdev.activity.fragment.ReglageFragment;
-import com.example.faustin_12.ncdev.notification.DisplayCustomNotification;
-import com.example.faustin_12.ncdev.notification.DisplayNotification;
 
 public class
 MainActivity extends AppCompatActivity {
@@ -32,9 +28,6 @@ MainActivity extends AppCompatActivity {
     FragmentTransaction mFragmentTransaction;
     public ActionBarDrawerToggle mDrawerToggle;
     Toolbar toolbar;
-    DisplayCustomNotification displayCustomNotification;
-    DisplayNotification displayNotification;
-    public String serverT="http://192.168.61.1";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,9 +35,6 @@ MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        displayCustomNotification = new DisplayCustomNotification(getApplicationContext(), "NCDev", " ", " ", " ", " ");
-        //displayNotification = new DisplayNotification(context, "NCDev", " ", " ", " ", " ");
 
         /**
          *Setup the DrawerLayout , TabLayout and NavigationView
@@ -152,24 +142,6 @@ MainActivity extends AppCompatActivity {
                 return true;
             }
         });*/
-    }
-
-    public void setServerT(String server){
-        this.serverT=server;
-    }
-    public String getServerT(){
-        return this.serverT;
-    }
-
-
-    public DisplayCustomNotification getNotificationBuilder(){
-        return displayCustomNotification;
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
     }
 
     @Override

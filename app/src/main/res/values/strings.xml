@@ -29,7 +29,6 @@ Sin autem ad adulescentiam perduxissent, dirimi tamen interdum contentione vel u
     <string name="nav_stateful">Stateful Section</string>
     <string name="nav_example3">Section with Header and Footer</string>
     <string name="nav_example8">Animations</string>
-
     <string name="world_topic">World</string>
     <string name="biz_topic">Business</string>
     <string name="tech_topic">Technology</string>
@@ -47,5 +46,17 @@ Sin autem ad adulescentiam perduxissent, dirimi tamen interdum contentione vel u
     <string name="add">ADD</string>
     <string name="clear">CLEAR</string>
     <string name="add_group">ADD GROUP</string>
+
+    <string name="spinner_title">Select</string>
+    <string-array name="category_arrays">
+        <item>promoteur offre speciales</item>
+        <item>promoteur evenement</item>
+        <item>visiteur</item>
+    </string-array>
+    <plurals name="likes_count">
+        <item quantity="one">%d like</item>
+        <item quantity="other">%d likes</item>
+    </plurals>
+
 
 </resources>

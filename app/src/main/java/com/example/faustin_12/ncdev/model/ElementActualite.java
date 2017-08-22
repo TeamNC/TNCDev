@@ -1,45 +1,21 @@
 package com.example.faustin_12.ncdev.model;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
-
 /**
  * Created by LIONEL KOUEMENI on 18/09/2016.
  */
 public class ElementActualite {
-    @SerializedName("id_event")
-    @Expose
-    private Integer id_event;
-    @SerializedName("title")
-    @Expose
+    private int imageID;
     private String title;
-    @SerializedName("date")
-    @Expose
-    private Integer date; //To be a date in a particular date format
-    @SerializedName("description")
-    @Expose
     private String description;
-    @SerializedName("image")
-    @Expose
-    private int image;
-    @SerializedName("comment")
-    @Expose
-    private int comment;
-    @SerializedName("price")
-    @Expose
+    private int nbreCom;
+    private String date; //To be a date in a particular date format
     private int price;
-    @SerializedName("localisation")
-    @Expose
-    private String localisation; //To be an Object GMap
-    @SerializedName("categorie")
-    @Expose
-    private String categorie;
-    @SerializedName("like")
-    @Expose
-    private int like;
+    private String place; //To be an Object GMap
+    private String categories;
+    private int nbreLove;
 
     public ElementActualite(int imageID, String title, String description, int nbreCom, String date, int price, String place, String categories, int nbreLove) {
-        /*this.imageID = imageID;
+        this.imageID = imageID;
         this.title = title;
         this.description = description;
         this.nbreCom = nbreCom;
@@ -47,15 +23,15 @@ public class ElementActualite {
         this.price = price;
         this.place = place;
         this.categories = categories;
-        this.nbreLove = nbreLove;*/
+        this.nbreLove = nbreLove;
     }
 
-    public Integer getId_event() {
-        return id_event;
+    public int getImageID() {
+        return imageID;
     }
 
-    public void setId_event(Integer id_event) {
-        this.id_event = id_event;
+    public void setImageID(int imageID) {
+        this.imageID = imageID;
     }
 
     public String getTitle() {
@@ -66,14 +42,6 @@ public class ElementActualite {
         this.title = title;
     }
 
-    public Integer getDate() {
-        return date;
-    }
-
-    public void setDate(Integer date) {
-        this.date = date;
-    }
-
     public String getDescription() {
         return description;
     }
@@ -82,20 +50,20 @@ public class ElementActualite {
         this.description = description;
     }
 
-    public int getImage() {
-        return image;
+    public int getNbreCom() {
+        return nbreCom;
     }
 
-    public void setImage(int image) {
-        this.image = image;
+    public void setNbreCom(int nbreCom) {
+        this.nbreCom = nbreCom;
     }
 
-    public int getComment() {
-        return comment;
+    public String getDate() {
+        return date;
     }
 
-    public void setComment(int comment) {
-        this.comment = comment;
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public int getPrice() {
@@ -106,28 +74,28 @@ public class ElementActualite {
         this.price = price;
     }
 
-    public String getLocalisation() {
-        return localisation;
+    public String getPlace() {
+        return place;
     }
 
-    public void setLocalisation(String localisation) {
-        this.localisation = localisation;
+    public void setPlace(String place) {
+        this.place = place;
     }
 
-    public String getCategorie() {
-        return categorie;
+    public String getCategories() {
+        return categories;
     }
 
-    public void setCategorie(String categorie) {
-        this.categorie = categorie;
+    public void setCategories(String categories) {
+        this.categories = categories;
     }
 
-    public int getLike() {
-        return like;
+    public int getNbreLove() {
+        return nbreLove;
     }
 
-    public void setLike(int like) {
-        this.like = like;
+    public void setNbreLove(int nbreLove) {
+        this.nbreLove = nbreLove;
     }
 }
 
