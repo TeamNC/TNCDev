@@ -156,6 +156,7 @@ public class EvenementFragment extends Fragment implements RecyclerAdapterEvenem
                     new Thread(new Runnable() {
                         @Override
                         public void run() {
+                            //Thales
                             mHandler.post(new Runnable() {
                                 @Override
                                 public void run() {
