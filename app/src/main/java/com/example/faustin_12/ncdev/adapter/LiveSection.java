@@ -105,6 +105,10 @@ public class LiveSection extends StatelessSection {
         this.sectionData.add(item);
     }
 
+    public void setData (List<ElementLive> mData){
+        this.sectionData = mData;
+    }
+
     public List<ElementLive> getData (){ return this.sectionData;}
 
     class LiveHeaderHolder extends RecyclerView.ViewHolder {

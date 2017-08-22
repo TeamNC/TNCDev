@@ -68,7 +68,9 @@ public class OffreSpecialeFragment extends Fragment implements RecyclerAdapterOf
                                              Calendar c = Calendar.getInstance();
                                              DateFormat df = new SimpleDateFormat("yyyy-MM-dd-hh.mm.ss");
                                              if (index > 9) index = 0;
-                                             ElementOffresSpeciales item = new ElementOffresSpeciales(flags[index],countries[index],index);
+                                             ElementOffresSpeciales item = new ElementOffresSpeciales();
+                                             item.setImageIDOffresSpeciales(flags[index]);
+                                             item.setName(countries[index]);
                                              //if(index==0) item.setImageID(R.drawable.particular_row);
                                              addInfo(item);
                                              index++;

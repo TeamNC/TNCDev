@@ -10,20 +10,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.faustin_12.ncdev.R;
-import com.example.faustin_12.ncdev.activity.fragment.EightFragment;
-import com.example.faustin_12.ncdev.activity.fragment.ElevenFragment;
-import com.example.faustin_12.ncdev.activity.fragment.FiveFragment;
-import com.example.faustin_12.ncdev.activity.fragment.FourFragment;
-import com.example.faustin_12.ncdev.activity.fragment.FourteenFragment;
-import com.example.faustin_12.ncdev.activity.fragment.NineFragment;
 import com.example.faustin_12.ncdev.activity.fragment.OneFragment;
-import com.example.faustin_12.ncdev.activity.fragment.SevenFragment;
-import com.example.faustin_12.ncdev.activity.fragment.SixFragment;
-import com.example.faustin_12.ncdev.activity.fragment.TenFragment;
-import com.example.faustin_12.ncdev.activity.fragment.ThirteenFragment;
-import com.example.faustin_12.ncdev.activity.fragment.ThreeFragment;
-import com.example.faustin_12.ncdev.activity.fragment.TwelveFragment;
-import com.example.faustin_12.ncdev.activity.fragment.TwoFragment;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

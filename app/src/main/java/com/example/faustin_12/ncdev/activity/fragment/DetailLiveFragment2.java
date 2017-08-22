@@ -29,7 +29,7 @@ import butterknife.OnClick;
  * Created by LIONEL KOUEMENI on 08/04/2017.
  */
 
-public class DetailLiveFragment2 extends Fragment {
+/*public class DetailLiveFragment2 extends Fragment {
 
     android.support.v4.app.FragmentManager mFragmentManager;
     public static final String ACTION_SHOW_LOADING_ITEM = "action_show_loading_item";
@@ -217,4 +217,4 @@ public Toolbar getToolbar() {
     public void showLikedSnackbar() {
         Snackbar.make(clContent, "Liked!", Snackbar.LENGTH_SHORT).show();
     }
-}
+}*/

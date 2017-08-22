@@ -95,6 +95,11 @@ public class RecyclerAdapterOffresSpeciales extends RecyclerView.Adapter <Recycl
         mHandler.post(displayCustomNotification);
     }
 
+    public void setData (List<ElementOffresSpeciales> mData){
+        this.mData = mData;
+        notifyDataSetChanged();
+    }
+
     public void setClickListener(ClickListener clickListener) {
         this.clickListener = clickListener;
     }

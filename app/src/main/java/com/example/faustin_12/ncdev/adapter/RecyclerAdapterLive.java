@@ -75,6 +75,11 @@ public class RecyclerAdapterLive extends RecyclerView.Adapter<RecyclerAdapterLiv
         notifyItemInserted(mData.size());
     }
 
+    public void setData (List<ElementDetailsLive> mData){
+        this.mData = mData;
+        notifyDataSetChanged();
+    }
+
     class mViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         ImageView imgRow;
         SquaredImageView pictureLive;

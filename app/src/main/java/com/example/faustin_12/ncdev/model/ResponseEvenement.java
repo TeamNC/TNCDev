@@ -13,13 +13,13 @@ public class ResponseEvenement {
 
         @SerializedName("evenements")
         @Expose
-        private List<ElementEvenement> enevements = null;
+        private List<ElementActualite> enevements = null;
 
-        public List<ElementEvenement> getEnevements() {
+        public List<ElementActualite> getEnevements() {
             return enevements;
         }
 
-        public void setEnevements(List<ElementEvenement> enevements) {
+        public void setEnevements(List<ElementActualite> enevements) {
             this.enevements = enevements;
         }
 }

@@ -79,6 +79,11 @@ public class RecyclerAdapterCategorie extends RecyclerView.Adapter <RecyclerAdap
         notifyItemInserted(mData.size());
     }
 
+    public void setData (List<ElementCategorie> mData){
+        this.mData = mData;
+        notifyDataSetChanged();
+    }
+
     public void setClickListener(ClickListener clickListener) {
         this.clickListener = clickListener;
     }

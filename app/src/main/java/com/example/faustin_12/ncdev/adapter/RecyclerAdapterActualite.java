@@ -77,6 +77,11 @@ public class RecyclerAdapterActualite extends RecyclerView.Adapter <RecyclerAdap
         notifyItemInserted(mData.size());
     }
 
+    public void setData (List<ElementActualite> mData){
+        this.mData = mData;
+        notifyDataSetChanged();
+    }
+
     class mViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         ImageView imgRow;
         TextView  price, date ,title, description, localisation, categorie, nbreLove, nbreCom;
