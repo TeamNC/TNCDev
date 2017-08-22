@@ -15,7 +15,7 @@ import retrofit2.http.Part;
 
 
 public interface FileApi {
-    //LK
+    //LK Moi m)ee
 
     @Multipart
     @POST("nca/db_upload_test.php")
