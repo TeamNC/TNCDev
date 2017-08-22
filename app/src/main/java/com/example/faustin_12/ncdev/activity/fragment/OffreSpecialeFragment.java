@@ -17,13 +17,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.faustin_12.ncdev.R;
-import com.example.faustin_12.ncdev.adapter.RecyclerAdapterEvenement;
 import com.example.faustin_12.ncdev.adapter.RecyclerAdapterOffresSpeciales;
-import com.example.faustin_12.ncdev.model.ElementEvenement;
 import com.example.faustin_12.ncdev.model.ElementOffresSpeciales;
 
 import java.text.DateFormat;

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Inscription"
+        android:layout_gravity="center_horizontal"
+        android:textSize="40sp"/>
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@color/black"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"/>
+
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp">
+            <EditText
+                android:id="@+id/NomUt"
+                android:textColor="@color/white"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nom"
+                android:textSize="24sp"
+                android:layout_marginTop="50dp"/>
+            <EditText
+                android:id="@+id/PréUt"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="Prénom"
+                android:textSize="24sp"
+                android:layout_marginTop="10dp"/>
+
+            <EditText
+                android:id="@+id/mailUt"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="Votre email"
+                android:textSize="24sp"
+                android:layout_marginTop="10dp"/>
+
+            <EditText
+                android:id="@+id/MotDePasse"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="Mot de passe"
+                android:textSize="24sp"
+                android:layout_marginTop="10dp"
+                android:inputType="textPassword"/>
+
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dip"
+                android:text="Category:"
+                android:layout_marginBottom="5dp"
+                />
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/category_arrays"
+                android:prompt="@string/spinner_title"
+                android:drawSelectorOnTop="true"
+
+
+                />
+
+            <Button
+                android:id="@+id/Sign_up"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="S'enregistrer"
+                android:gravity="center"
+                android:background="@drawable/cadre_con"
+                android:textSize="22sp"
+                android:layout_marginTop="50dp"/>
+        </LinearLayout>
+
+</LinearLayout>

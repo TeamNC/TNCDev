@@ -1,6 +1,7 @@
 package com.example.faustin_12.ncdev.adapter;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -9,40 +10,40 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.faustin_12.ncdev.R;
-import com.example.faustin_12.ncdev.activity.fragment.ActualiteFragment;
-import com.example.faustin_12.ncdev.activity.fragment.CategoriesFragment;
 import com.example.faustin_12.ncdev.activity.fragment.EightFragment;
 import com.example.faustin_12.ncdev.activity.fragment.ElevenFragment;
-import com.example.faustin_12.ncdev.activity.fragment.EvenementFragment;
-import com.example.faustin_12.ncdev.activity.fragment.FifteenFragment;
 import com.example.faustin_12.ncdev.activity.fragment.FiveFragment;
 import com.example.faustin_12.ncdev.activity.fragment.FourFragment;
 import com.example.faustin_12.ncdev.activity.fragment.FourteenFragment;
-import com.example.faustin_12.ncdev.activity.fragment.LiveFragment;
 import com.example.faustin_12.ncdev.activity.fragment.NineFragment;
 import com.example.faustin_12.ncdev.activity.fragment.OneFragment;
 import com.example.faustin_12.ncdev.activity.fragment.SevenFragment;
-import com.example.faustin_12.ncdev.activity.fragment.SeventeenFragment;
 import com.example.faustin_12.ncdev.activity.fragment.SixFragment;
-import com.example.faustin_12.ncdev.activity.fragment.SixteenFragment;
 import com.example.faustin_12.ncdev.activity.fragment.TenFragment;
 import com.example.faustin_12.ncdev.activity.fragment.ThirteenFragment;
 import com.example.faustin_12.ncdev.activity.fragment.ThreeFragment;
 import com.example.faustin_12.ncdev.activity.fragment.TwelveFragment;
 import com.example.faustin_12.ncdev.activity.fragment.TwoFragment;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 /**
  * Created by LIONEL KOUEMENI on 04/10/2016.
  */
 public class TabsAdapter2 extends FragmentStatePagerAdapter{
-    public static int int_items = 30 ;
+    public static int int_items = 14 ;
+    private String categorie = "To be Init";
     private static Context context;
-    private static String[] tabTitles=new String[]{"Lun","Mar","Mer","Jeu","Ven","Sam","Dim"};
+    private static String[] tabTitles=new String[]{"Dim", "Lun","Mar","Mer","Jeu","Ven","Sam"};
     private String tabSubTitles[]=new String[]{"1","2","3","4","5","6","7"};
+
     public TabsAdapter2(Context context, FragmentManager fm) {
         super(fm);
         this.context = context;
     }
+
+    public void setCategorie (String categorie){this.categorie=categorie;}
 
     /**
      * Return fragment with respect to Position .
@@ -50,29 +51,65 @@ public class TabsAdapter2 extends FragmentStatePagerAdapter{
 
     @Override
     public Fragment getItem(int position) {
+        Bundle bundle = new Bundle();
+        bundle.putString("categorie",  categorie);
         switch (position){
-            case 0 : return new OneFragment();
-            case 1 : return new TwoFragment();
-            case 2 : return new ThreeFragment();
-            case 3 : return new FourFragment();
-            case 4 : return new FiveFragment();
-            case 5 : return new SixFragment();
-            case 6 : return new SevenFragment();
-            case 7 : return new EightFragment();
-            case 8 : return new NineFragment();
-            case 9 : return new TenFragment();
-            case 10 : return new ElevenFragment();
-            case 11: return new TwelveFragment();
-            case 12: return new ThirteenFragment();
-            case 13: return new FourteenFragment();
-            case 14: return new FifteenFragment();
-            case 15: return new SixteenFragment();
-            case 16: return new SeventeenFragment();
-            //case 3 : return new SnackFragment();
-        }
-        if (position>=17)
-        {
-            return new SeventeenFragment();
+            case 0 :
+                OneFragment oneFragment = new OneFragment();
+                oneFragment.setArguments(bundle);
+                return oneFragment;
+            case 1 :
+                TwoFragment twoFragment = new TwoFragment();
+                twoFragment.setArguments(bundle);
+                return twoFragment;
+            case 2 :
+                ThreeFragment treeFragment = new ThreeFragment();
+                treeFragment.setArguments(bundle);
+                return treeFragment;
+            case 3 :
+                FourFragment fourFragment = new FourFragment();
+                fourFragment.setArguments(bundle);
+                return fourFragment;
+            case 4 :
+                FiveFragment fiveFragment = new FiveFragment();
+                fiveFragment.setArguments(bundle);
+                return fiveFragment;
+            case 5 :
+                SixFragment sixFragment = new SixFragment();
+                sixFragment.setArguments(bundle);
+                return sixFragment;
+            case 6 :
+                SevenFragment sevenFragment = new SevenFragment();
+                sevenFragment.setArguments(bundle);
+                return sevenFragment;
+            case 7 :
+                EightFragment eightFragment = new EightFragment();
+                eightFragment.setArguments(bundle);
+                return eightFragment;
+            case 8 :
+                NineFragment nineFragment = new NineFragment();
+                nineFragment.setArguments(bundle);
+                return nineFragment;
+            case 9 :
+                TenFragment tenFragment = new TenFragment();
+                tenFragment.setArguments(bundle);
+                return tenFragment;
+            case 10 :
+                ElevenFragment elevenFragment = new ElevenFragment();
+                elevenFragment.setArguments(bundle);
+                return elevenFragment;
+            case 11:
+                TwelveFragment twelveFragment = new TwelveFragment();
+                twelveFragment.setArguments(bundle);
+                return twelveFragment;
+            case 12:
+                ThirteenFragment thirteenFragment = new ThirteenFragment();
+                thirteenFragment.setArguments(bundle);
+                return thirteenFragment;
+            case 13:
+                FourteenFragment fourteenFragment = new FourteenFragment();
+                fourteenFragment.setArguments(bundle);
+                return fourteenFragment;
         }
         return null;
     }
@@ -96,12 +133,18 @@ public class TabsAdapter2 extends FragmentStatePagerAdapter{
 
             public static View getTabView(int position)
             {
+                Calendar c = Calendar.getInstance();
+                c.add(Calendar.DATE, position - 10);
+                SimpleDateFormat df = new SimpleDateFormat("EEE");
                 View v = LayoutInflater.from(context).inflate(R.layout.date_filter,null);
                 TextView tv1=(TextView)v.findViewById(R.id.days);
-                int day = position%7;
-                tv1.setText(tabTitles[day]);
+
+                int day = c.get(Calendar.DAY_OF_MONTH);
+                int day2 = c.get(Calendar.DAY_OF_WEEK) -1;
+
+                tv1.setText(tabTitles[day2]);
                 TextView tv2=(TextView)v.findViewById(R.id.numbers);
-                tv2.setText(""+position);
+                tv2.setText("" + day);
 
                 return v;
             }

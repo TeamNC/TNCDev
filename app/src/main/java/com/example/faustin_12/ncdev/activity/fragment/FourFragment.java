@@ -30,7 +30,7 @@ public class FourFragment extends Fragment {
          */
         View x = inflater.inflate(R.layout.fragment_fixe, null);
         TextView tv= (TextView)x.findViewById(R.id.textView1);
-        tv.setText("Offres Speciales");
+        tv.setText("Cat : " + getArguments().getString("categorie"));
         tv.setTextSize(25);
         return x;
     }

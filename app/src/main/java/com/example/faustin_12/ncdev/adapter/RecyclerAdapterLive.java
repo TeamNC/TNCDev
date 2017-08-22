@@ -10,10 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.faustin_12.ncdev.R;
-import com.example.faustin_12.ncdev.model.ElementEvenement;
 import com.example.faustin_12.ncdev.model.ElementLive;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,10 +19,11 @@ import java.util.List;
  */
 public class RecyclerAdapterLive extends RecyclerView.Adapter<RecyclerAdapterLive.MyViewHolder> {
 
-    private static final String TAG = RecyclerAdapter.class.getSimpleName();
+    private static final String TAG = RecyclerAdapterDetailsLive.class.getSimpleName();
     private LayoutInflater inflater;
     private ClickListener clickListener;
     private List<ElementLive> data;
+
 
 
     public RecyclerAdapterLive(Context Context, List<ElementLive> data){
@@ -52,14 +51,25 @@ public class RecyclerAdapterLive extends RecyclerView.Adapter<RecyclerAdapterLiv
         }
         return null;
     }
-
-
-    @Override
+     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
         Log.d(TAG, "onBindViewHolder" + position);
         ElementLive currentObj = data.get(position);
         holder.setData(currentObj, position);
     }
+    public void setClickListener(RecyclerAdapterLive.ClickListener clickListener) {
+        this.clickListener = clickListener;
+    }
+    public String getTitle (int position){
+        return data.get(position).getTitle();
+    }
+    //public String getDescription_Actualité (int position){
+      //  return data.get(position).getDescription();
+    //}
+    public int getIcon (int position){
+        return data.get(position).getImageID();
+    }
+    public String getDate (int position) {return data.get(position).getDate();}
     public void addItemLive(ElementLive item) {
         data.add(item);
         notifyItemInserted(data.size());
@@ -72,7 +82,8 @@ public class RecyclerAdapterLive extends RecyclerView.Adapter<RecyclerAdapterLiv
 
 
     class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView title;
+        //public TextView itemContent;
+        TextView title,date;
         ImageView imgRow;
         ElementLive current;
         int position;
@@ -81,6 +92,8 @@ public class RecyclerAdapterLive extends RecyclerView.Adapter<RecyclerAdapterLiv
             itemView.setOnClickListener(this);
             title= (TextView) itemView.findViewById(R.id.live_title);
             imgRow= (ImageView) itemView.findViewById(R.id.live_item);
+
+          //  itemContent = (TextView)itemView.findViewById(R.id.item_content);
         }
 
         @Override
@@ -90,8 +103,9 @@ public class RecyclerAdapterLive extends RecyclerView.Adapter<RecyclerAdapterLiv
 
         }
         public void setData(ElementLive current, int position) {
-            this.title.setText(current.getTitlelive());
-            this.imgRow.setImageResource(current.getIconIDLIVE());
+            this.title.setText(current.getTitle());
+            this.imgRow.setImageResource(current.getImageID());
+            this.date.setText(current.getDate());
             this.current = current;
             this.position = position;
         }

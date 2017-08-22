@@ -10,7 +10,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.faustin_12.ncdev.R;
-import com.example.faustin_12.ncdev.model.ElementEvenement;
 import com.example.faustin_12.ncdev.model.ElementOffresSpeciales;
 
 import java.util.List;
@@ -19,7 +18,7 @@ import java.util.List;
  * Created by LIONEL KOUEMENI on 14/12/2016.
  */
 public class RecyclerAdapterOffresSpeciales extends RecyclerView.Adapter <RecyclerAdapterOffresSpeciales.mViewHolder> {
-    private static final String TAG = RecyclerAdapter.class.getSimpleName();
+    private static final String TAG = RecyclerAdapterBoiteSnack.class.getSimpleName();
     private List<ElementOffresSpeciales> mData;
     private ClickListener clickListener;
     private LayoutInflater mInflater;

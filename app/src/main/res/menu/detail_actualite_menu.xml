@@ -11,4 +11,9 @@
         android:title="Search"
         app:showAsAction="always|collapseActionView"
         />
+    <item
+        android:id="@+id/action_clip"
+        android:icon="@drawable/ic_attach"
+        android:title="Media"
+        app:showAsAction="always|collapseActionView" />
 </menu>

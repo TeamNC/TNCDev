@@ -14,24 +14,21 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
 import com.example.faustin_12.ncdev.R;
-import com.example.faustin_12.ncdev.adapter.RecyclerAdapter;
-import com.example.faustin_12.ncdev.model.Element;
+import com.example.faustin_12.ncdev.adapter.RecyclerAdapterBoiteSnack;
+import com.example.faustin_12.ncdev.model.ElementBoiteSnack;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.HashMap;
-import java.util.List;
 
 /**
  * Created by FAUSTIN-12 on 17/03/2016.
  */
-public class BoiteFragment extends Fragment {
+public class  BoiteFragment extends Fragment {
     // Array of strings storing country names
     int index=0;
     String[] countries = new String[] {"India", "Pakistan", "Sri Lanka", "China", "Bangladesh", "Nepal", "Afghanistan", "North Korea", "South Korea", "Japan"
@@ -51,22 +48,22 @@ public class BoiteFragment extends Fragment {
     String[] currency = new String[]{"Indian Rupee", "Pakistani Rupee", "Sri Lankan Rupee", "Renminbi", "Bangladeshi Taka", "Nepalese Rupee", "Afghani", "North Korean Won", "South Korean Won", "Japanese Yen"
     };
     RecyclerView recyclerView;
-    RecyclerAdapter mAdapter;
+    RecyclerAdapterBoiteSnack mAdapter;
     FragmentManager mFragmentManager;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         setHasOptionsMenu(true);
 
-        View v=inflater.inflate(R.layout.recyclerview_layout, container, false);
-        FloatingActionButton addButton = (FloatingActionButton) v.findViewById(R.id.button_add);
+        View v=inflater.inflate(R.layout.boite_layout, container, false);
+        FloatingActionButton addButton = (FloatingActionButton) v.findViewById(R.id.boutonBoite);
+
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Calendar c = Calendar.getInstance();
                 DateFormat df = new SimpleDateFormat("HH:mm");
                 if (index > 9) index = 0;
-                Element item = new Element(flags[index], countries[index], currency[index], df.format(c.getTime()));
-                item.setNbreCom(index);
+                ElementBoiteSnack item = new ElementBoiteSnack(flags[index], countries[index], currency[index], index*1000, "Localisation #" +index);
                 if(index==0) item.setImageID(R.drawable.particular_row);
                 addInfo(item);
                 index++;
@@ -74,30 +71,27 @@ public class BoiteFragment extends Fragment {
         }
         );
 
-        recyclerView = (RecyclerView) v.findViewById(R.id.recyclerList);
-        mAdapter = new RecyclerAdapter(getContext(), new ArrayList<Element>());
-        recyclerView.setAdapter(mAdapter);
+        recyclerView = (RecyclerView) v.findViewById(R.id.BoiteList);
+        mAdapter = new RecyclerAdapterBoiteSnack(getContext(), new ArrayList<ElementBoiteSnack>());
 
         LinearLayoutManager mLinearLayoutManager = new LinearLayoutManager(getContext());
         mLinearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(mLinearLayoutManager);
 
         recyclerView.setItemAnimator(new DefaultItemAnimator());
+
+        recyclerView.setAdapter(mAdapter);
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+
         return v;
     }
 
-    public void addInfo (Element item){
+    public void addInfo (ElementBoiteSnack item){
         mAdapter.addInfo(item);
     }
 
-    //@Override
-    public void itemClicked(View view, int position) {
-        Toast.makeText(getActivity(), "Tu as sélectionné :" + mAdapter.getTitle(position), Toast.LENGTH_SHORT).show();
-        DetailFragment temps = new DetailFragment();
-        temps.setTitle("Détail de :" + mAdapter.getTitle(position));
-        FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.containerView, temps).addToBackStack(null).commit();
-    }
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
@@ -120,4 +114,14 @@ public class BoiteFragment extends Fragment {
 
         return super.onOptionsItemSelected(item);
     }
+
+    //@Override
+    public void itemClicked(View view, int position) {
+        Toast.makeText(getActivity(), "Tu as sélectionné :" + mAdapter.getTitle(position), Toast.LENGTH_SHORT).show();
+        DetailFragment temps = new DetailFragment();
+        temps.setTitle("Détail de :" + mAdapter.getTitle(position));
+        FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.containerView0, temps).addToBackStack(null).commit();
+    }
+
 }

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector  xmlns:android="http://schemas.android.com/apk/res/android"
+    android:exitFadeDuration="@android:integer/config_longAnimTime">
+    <item>
+        <shape
+            android:shape="oval">
+            <solid android:shape="@color/orange"/>
+            <stroke android:color="#000" android:width="2dp"/>/>
+
+        </shape>
+    </item>
+
+</selector>

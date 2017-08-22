@@ -10,9 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.faustin_12.ncdev.R;
-import com.example.faustin_12.ncdev.activity.fragment.EvenementFragment;
-import com.example.faustin_12.ncdev.model.Element;
-import com.example.faustin_12.ncdev.model.ElementEvenement;
+import com.example.faustin_12.ncdev.model.ElementCategorie;
 
 import java.util.List;
 
@@ -20,12 +18,12 @@ import java.util.List;
  * Created by LIONEL KOUEMENI on 01/10/2016.
  */
 public class RecyclerAdapterEvenement extends RecyclerView.Adapter <RecyclerAdapterEvenement.mViewHolder> {
-    private static final String TAG = RecyclerAdapter.class.getSimpleName();
-    private List<ElementEvenement> mData;
+    private static final String TAG = RecyclerAdapterBoiteSnack.class.getSimpleName();
+    private List<ElementCategorie> mData;
     private ClickListener clickListener;
     private LayoutInflater mInflater;
 
-    public RecyclerAdapterEvenement(Context context, List<ElementEvenement> data) {
+    public RecyclerAdapterEvenement(Context context, List<ElementCategorie> data) {
         this.mData = data;
         this.mInflater = LayoutInflater.from(context);
     }
@@ -54,7 +52,7 @@ public class RecyclerAdapterEvenement extends RecyclerView.Adapter <RecyclerAdap
     @Override
     public void onBindViewHolder(mViewHolder holder, int position) {
         Log.d(TAG, "onBindViewHolder" + position);
-        ElementEvenement currentObj = mData.get(position);
+        ElementCategorie currentObj = mData.get(position);
         holder.setData(currentObj, position);
 
     }
@@ -77,7 +75,7 @@ public class RecyclerAdapterEvenement extends RecyclerView.Adapter <RecyclerAdap
         return mData.size();
     }
 
-    public void addInfo(ElementEvenement item) {
+    public void addInfo(ElementCategorie item) {
         mData.add(item);
         notifyItemInserted(mData.size());
     }
@@ -90,7 +88,7 @@ public class RecyclerAdapterEvenement extends RecyclerView.Adapter <RecyclerAdap
     class mViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView title,nbreEvents;
         ImageView imgRow;
-        ElementEvenement current;
+        ElementCategorie current;
         int position;
 
         public mViewHolder(View itemView) {
@@ -107,7 +105,7 @@ public class RecyclerAdapterEvenement extends RecyclerView.Adapter <RecyclerAdap
             }
         }
 
-        public void setData(ElementEvenement current, int position) {
+        public void setData(ElementCategorie current, int position) {
             this.title.setText(current.getTitle());
             this.imgRow.setImageResource(current.getImageID());
             this.nbreEvents.setText("" + current.getNbreEvents());

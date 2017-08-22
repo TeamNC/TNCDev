@@ -3,6 +3,8 @@ package com.example.faustin_12.ncdev.activity.fragment;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.example.faustin_12.ncdev.R;
 import com.example.faustin_12.ncdev.adapter.RecyclerAdapterLive;
@@ -20,7 +23,7 @@ import java.util.ArrayList;
 /**
  * Created by LIONEL KOUEMENI on 12/09/2016.
  */
-public class LiveFragment extends Fragment {
+public class LiveFragment extends Fragment implements RecyclerAdapterLive.ClickListener{
    /** public LiveFragment() {
         // Required empty public constructor
     }
@@ -61,25 +64,33 @@ public class LiveFragment extends Fragment {
     public FloatingActionButton addbuton;
     public int index=0;
 
+    FragmentManager mFragmentManager;
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstancetate) {
         setHasOptionsMenu(true);
         View layout=inflater.inflate(R.layout.live_layout,null);
-        addbuton= (FloatingActionButton)layout.findViewById(R.id.boutondel);
+
+
+       /** addbuton= (FloatingActionButton)layout.findViewById(R.id.boutondel);
         addbuton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
+                Calendar c = Calendar.getInstance();
+                DateFormat df = new SimpleDateFormat("yyyy-MM-dd-hh.mm.ss");
                 if (index>3) index=0;
                 ElementLive item=new ElementLive(
-                icons[index], titles[index]);
+                icons[index], titles[index], index, df.format(c.getTime()));
                 addItemLive(item);
                 index++;
             }
         });
+        */
         recyclerView= (RecyclerView) layout.findViewById(R.id.LiveList);
         adapter=new RecyclerAdapterLive(getContext(),new ArrayList<ElementLive>());
+        adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-
+        mFragmentManager=getActivity().getSupportFragmentManager();
 
         return layout;
     }
@@ -92,7 +103,18 @@ public class LiveFragment extends Fragment {
         inflater.inflate(R.menu.actualite_menu, menu);
         super.onCreateOptionsMenu(menu, inflater);
     }
+    public void itemClicked(View view, int position) {
+        DetailLiveFragment temps = new DetailLiveFragment();
+        //temps.setTitle(adapter.getTitle(position));
+        //temps.setSince(adapter.getSince(position));
+        //temps.setPrice("" + adapter.getPrice(position));
+        ImageView icon = (ImageView) view.findViewById(R.id.live_item);
+        temps.setMyImageView(icon);
+        FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.containerView0, temps).addToBackStack(null).commit();
+    }
 }
+
 
 
 

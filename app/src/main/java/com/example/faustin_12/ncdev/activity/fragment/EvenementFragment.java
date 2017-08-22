@@ -8,10 +8,8 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -20,16 +18,11 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.support.v7.widget.SearchView;
 import android.widget.Toast;
 
 import com.example.faustin_12.ncdev.R;
-import com.example.faustin_12.ncdev.adapter.RecyclerAdapterActualité;
 import com.example.faustin_12.ncdev.adapter.RecyclerAdapterEvenement;
-import com.example.faustin_12.ncdev.adapter.RecyclerViewAdapter;
-import com.example.faustin_12.ncdev.model.ElementActualité;
-import com.example.faustin_12.ncdev.model.ElementEvenement;
-import com.example.faustin_12.ncdev.model.Informations;
+import com.example.faustin_12.ncdev.model.ElementCategorie;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -76,8 +69,7 @@ public class EvenementFragment extends Fragment implements RecyclerAdapterEvenem
                                              Calendar c = Calendar.getInstance();
                                              DateFormat df = new SimpleDateFormat("yyyy-MM-dd-hh.mm.ss");
                                              if (index > 9) index = 0;
-                                             ElementEvenement item = new ElementEvenement(flags[index],countries[index],index);
-                                              //if(index==0) item.setImageID(R.drawable.particular_row);
+                                             ElementCategorie item = new ElementCategorie(flags[index],countries[index],index);
                                              addInfo(item);
                                              index++;
                                          }
@@ -85,7 +77,7 @@ public class EvenementFragment extends Fragment implements RecyclerAdapterEvenem
         );
 
         recyclerView = (RecyclerView) v.findViewById(R.id.recyclerList);
-        mAdapter = new RecyclerAdapterEvenement(getContext(), new ArrayList<ElementEvenement>());
+        mAdapter = new RecyclerAdapterEvenement(getContext(), new ArrayList<ElementCategorie>());
 
 
        // LinearLayoutManager mLinearLayoutManager = new LinearLayoutManager(getContext());
@@ -102,21 +94,17 @@ public class EvenementFragment extends Fragment implements RecyclerAdapterEvenem
                     case 1:
                         return 2;
                    default:return 0;
-
-
                 }
             }
         });
         recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(10), true));
+        //recyclerView.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(10), true));
 
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
         mAdapter.setClickListener(this);
         recyclerView.setAdapter(mAdapter);
 
-
-        //recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mFragmentManager=getActivity().getSupportFragmentManager();
         return v;
     }
@@ -168,7 +156,7 @@ public class EvenementFragment extends Fragment implements RecyclerAdapterEvenem
 
 
 
-    public void addInfo (ElementEvenement item){
+    public void addInfo (ElementCategorie item){
         mAdapter.addInfo(item);
     }
     @Override
@@ -200,11 +188,10 @@ public class EvenementFragment extends Fragment implements RecyclerAdapterEvenem
 
    // @Override
     public void itemClicked(View view, int position) {
-        Toast.makeText(getActivity(), "Tu as sélectionné :" + mAdapter.getTitle(position), Toast.LENGTH_SHORT).show();
         CategoriesFragment temps = new CategoriesFragment();
-        //temps.setTitle("Détail de :" + mAdapter.getTitle(position));
+        temps.setCategorie(mAdapter.getTitle(position));
         FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.containerView, temps).addToBackStack(null).commit();
+        fragmentTransaction.replace(R.id.containerView0, temps).addToBackStack(null).commit();
     }
 
 }

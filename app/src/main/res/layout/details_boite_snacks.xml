@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/title_boitesnacks"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="14dp"
+        android:textColor="@color/black"
+        android:layout_height="wrap_content"
+        android:text="OPIUM-NIGHTCLUB"/>
+    <RelativeLayout
+        android:id="@+id/first_part"
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="14dp"
+        android:layout_below="@+id/title_boitesnacks"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/calendar"
+            android:src="@drawable/ic_calendar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"/>
+        <TextView
+            android:id="@+id/date_opened"
+            android:layout_width="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Lundi-Dimanche"
+            android:layout_toRightOf="@+id/calendar"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/time_opened"
+            android:layout_width="wrap_content"
+            android:text="17h A 06h"
+            android:layout_centerInParent="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_height="wrap_content"
+            />
+        <ImageView
+            android:id="@+id/time"
+            android:src="@drawable/ic_time_opened"
+            android:layout_toLeftOf="@+id/time_opened"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/second_part"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginLeft="08dp"
+        android:layout_below="@+id/first_part"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/pic_location"
+            android:src="@drawable/pic_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"/>
+        <TextView
+            android:id="@+id/localisation"
+            android:layout_width="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Bloc E20, MAKEPE ( DOUALA )"
+            android:layout_toRightOf="@+id/pic_location"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+    <LinearLayout
+        android:id="@+id/third_part"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:weightSum="1"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:layout_marginLeft="16dp"
+
+        android:layout_below="@+id/second_part"
+        android:layout_height="wrap_content"
+        >
+        <ImageView
+            android:layout_weight="0.5"
+            android:src="@drawable/images6"
+            android:id="@+id/pic_boitesnacks"
+            android:contentDescription="@null"
+            android:scaleType="fitXY"
+            android:layout_width="100dp"
+            android:layout_height="160dp" />
+        <LinearLayout
+            android:id="@+id/button_part"
+            android:orientation="vertical"
+            android:weightSum="1"
+            android:layout_weight="0.5"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_width="120dp"
+            android:layout_height="140dp">
+            <Button
+                android:layout_weight="0.5"
+                android:id="@+id/button1"
+                android:background="@drawable/round_corner_second"
+                android:layout_width="match_parent"
+                android:textColor="@color/white"
+                android:text="VIEW ON MAP"
+                android:layout_marginLeft="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_height="0dp"
+              />
+            <Button
+                android:paddingTop="5dp"
+                android:layout_weight="0.5"
+                android:id="@+id/button2"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="5dp"
+                android:textColor="@color/white"
+                android:text="PROMOTEUR INFO"
+                android:background="@drawable/round_corner_second"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                />
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+<TextView
+    android:id="@+id/link_boitesnack"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:textColor="@color/blue"
+    android:layout_margin="14dp"
+    android:layout_below="@+id/third_part"
+    android:text="http://www.opium.com"/>
+
+    <LinearLayout
+        android:id="@+id/category_1"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:layout_marginBottom="14dp"
+        android:layout_below="@+id/link_boitesnack"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/categorie_title1"
+            android:layout_width="wrap_content"
+            android:text="Type Musique : "
+            android:textColor="@color/black"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/categorie_description1"
+            android:text="Latine,Reggaeton,RapFrancais,Rap USA"
+            android:ellipsize="end"
+            android:textColor="@color/grey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/category_2"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:layout_marginBottom="14dp"
+        android:layout_below="@+id/category_1"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/categorie_title2"
+            android:layout_width="wrap_content"
+            android:text="Type Clientele : "
+            android:textColor="@color/black"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/categorie_description2"
+            android:text="Mixte,Jeunes,"
+            android:ellipsize="end"
+            android:textColor="@color/grey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/category_3"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:layout_marginBottom="14dp"
+        android:layout_below="@+id/category_2"
+        android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/categorie_title3"
+        android:layout_width="wrap_content"
+        android:text=" Age : "
+        android:textColor="@color/black"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/categorie_description3"
+        android:text="21+"
+        android:ellipsize="end"
+        android:textColor="@color/grey"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/category_4"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:layout_marginBottom="14dp"
+        android:layout_below="@+id/category_3"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/categorie_title4"
+            android:layout_width="wrap_content"
+            android:text="Prix bieres : "
+            android:textColor="@color/black"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/categorie_description4"
+            android:text="1000,....,2000"
+            android:ellipsize="end"
+            android:textColor="@color/grey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/category_5"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:layout_marginBottom="14dp"
+        android:layout_below="@+id/category_4"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/categorie_title5"
+            android:layout_width="wrap_content"
+            android:text="Prix Whisky : "
+            android:textColor="@color/black"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/categorie_description5"
+            android:text="15000,....,30000"
+            android:ellipsize="end"
+            android:textColor="@color/grey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/category_6"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:layout_marginBottom="14dp"
+        android:layout_below="@+id/category_5"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/categorie_title6"
+            android:layout_width="wrap_content"
+            android:text="DJ : "
+            android:textColor="@color/black"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/categorie_description6"
+            android:text="Labastille,arafat,sarkodie"
+            android:ellipsize="end"
+            android:textColor="@color/grey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/category_7"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:layout_marginBottom="14dp"
+        android:layout_below="@+id/category_6"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/categorie_title7"
+            android:layout_width="wrap_content"
+            android:text="Bon pour danser : "
+            android:textColor="@color/black"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/categorie_description7"
+            android:text="oui"
+            android:ellipsize="end"
+            android:textColor="@color/grey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/category_8"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:layout_marginBottom="14dp"
+        android:layout_below="@+id/category_7"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/categorie_title8"
+            android:layout_width="wrap_content"
+            android:text="CHICHA : "
+            android:textColor="@color/black"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/categorie_description8"
+            android:text="OUI"
+            android:ellipsize="end"
+            android:textColor="@color/grey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/category_9"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:layout_marginBottom="14dp"
+        android:layout_below="@+id/category_8"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/categorie_title9"
+            android:layout_width="wrap_content"
+            android:text="Prix CHIHCA : "
+            android:textColor="@color/black"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/categorie_description9"
+            android:text="2000"
+            android:ellipsize="end"
+            android:textColor="@color/grey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/category_10"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:layout_marginBottom="14dp"
+        android:layout_below="@+id/category_9"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/categorie_title10"
+            android:layout_width="wrap_content"
+            android:text="Meilleures Soirées: "
+            android:textColor="@color/black"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/categorie_description10"
+            android:text="Mercredi,Vendredi,samedi"
+            android:ellipsize="end"
+            android:textColor="@color/grey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/category_11"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
+        android:layout_marginBottom="14dp"
+        android:layout_below="@+id/category_10"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/categorie_title11"
+            android:layout_width="wrap_content"
+            android:text="Matinée : "
+            android:textColor="@color/black"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/categorie_description11"
+            android:text="OUI"
+            android:ellipsize="end"
+            android:textColor="@color/grey"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+
+</RelativeLayout>
