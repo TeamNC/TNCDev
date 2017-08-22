@@ -50,6 +50,8 @@ public class ElementEvenement {
     @Expose
     private String sponsor;
 
+    private int nbreLove = 10;
+
     public ElementEvenement(int id_event, String title, int date, int datepost, int duration, String mark, int participant, String description, int categorie, int image, int price, String localisation, String promoter, String sponsor) {
         this.id_event = id_event;
         this.title = title;
@@ -65,6 +67,14 @@ public class ElementEvenement {
         this.localisation = localisation;
         this.promoter = promoter;
         this.sponsor = sponsor;
+    }
+
+    public int getNbreLove() {
+        return nbreLove;
+    }
+
+    public void setNbreLove(int nbreLove) {
+        this.nbreLove = nbreLove;
     }
 
     public int getId_event() {

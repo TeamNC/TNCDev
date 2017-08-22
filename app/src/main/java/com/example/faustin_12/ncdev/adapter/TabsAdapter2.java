@@ -49,67 +49,45 @@ public class TabsAdapter2 extends FragmentStatePagerAdapter{
      * Return fragment with respect to Position .
      */
 
+    public OneFragment getOneFragment(Bundle bundle){
+        OneFragment oneFragment = new OneFragment();
+        oneFragment.setArguments(bundle);
+        return oneFragment;
+    }
+
     @Override
     public Fragment getItem(int position) {
         Bundle bundle = new Bundle();
         bundle.putString("categorie",  categorie);
         switch (position){
             case 0 :
-                OneFragment oneFragment = new OneFragment();
-                oneFragment.setArguments(bundle);
-                return oneFragment;
+                return getOneFragment(bundle);
             case 1 :
-                TwoFragment twoFragment = new TwoFragment();
-                twoFragment.setArguments(bundle);
-                return twoFragment;
+                return getOneFragment(bundle);
             case 2 :
-                ThreeFragment treeFragment = new ThreeFragment();
-                treeFragment.setArguments(bundle);
-                return treeFragment;
+                return getOneFragment(bundle);
             case 3 :
-                FourFragment fourFragment = new FourFragment();
-                fourFragment.setArguments(bundle);
-                return fourFragment;
+                return getOneFragment(bundle);
             case 4 :
-                FiveFragment fiveFragment = new FiveFragment();
-                fiveFragment.setArguments(bundle);
-                return fiveFragment;
+                return getOneFragment(bundle);
             case 5 :
-                SixFragment sixFragment = new SixFragment();
-                sixFragment.setArguments(bundle);
-                return sixFragment;
+                return getOneFragment(bundle);
             case 6 :
-                SevenFragment sevenFragment = new SevenFragment();
-                sevenFragment.setArguments(bundle);
-                return sevenFragment;
+                return getOneFragment(bundle);
             case 7 :
-                EightFragment eightFragment = new EightFragment();
-                eightFragment.setArguments(bundle);
-                return eightFragment;
+                return getOneFragment(bundle);
             case 8 :
-                NineFragment nineFragment = new NineFragment();
-                nineFragment.setArguments(bundle);
-                return nineFragment;
+                return getOneFragment(bundle);
             case 9 :
-                TenFragment tenFragment = new TenFragment();
-                tenFragment.setArguments(bundle);
-                return tenFragment;
+                return getOneFragment(bundle);
             case 10 :
-                ElevenFragment elevenFragment = new ElevenFragment();
-                elevenFragment.setArguments(bundle);
-                return elevenFragment;
+                return getOneFragment(bundle);
             case 11:
-                TwelveFragment twelveFragment = new TwelveFragment();
-                twelveFragment.setArguments(bundle);
-                return twelveFragment;
+                return getOneFragment(bundle);
             case 12:
-                ThirteenFragment thirteenFragment = new ThirteenFragment();
-                thirteenFragment.setArguments(bundle);
-                return thirteenFragment;
+                return getOneFragment(bundle);
             case 13:
-                FourteenFragment fourteenFragment = new FourteenFragment();
-                fourteenFragment.setArguments(bundle);
-                return fourteenFragment;
+                return getOneFragment(bundle);
         }
         return null;
     }

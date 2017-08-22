@@ -9,107 +9,105 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.faustin_12.ncdev.R;
+import com.example.faustin_12.ncdev.model.ElementDetailsLive;
 import com.example.faustin_12.ncdev.model.ElementLive;
+import com.example.faustin_12.ncdev.view.SquaredImageView;
 
 import java.util.List;
 
 /**
  * Created by LIONEL KOUEMENI on 30/11/2016.
  */
-public class RecyclerAdapterLive extends RecyclerView.Adapter<RecyclerAdapterLive.MyViewHolder> {
+public class RecyclerAdapterLive extends RecyclerView.Adapter<RecyclerAdapterLive.mViewHolder> {
 
-    private static final String TAG = RecyclerAdapterDetailsLive.class.getSimpleName();
-    private LayoutInflater inflater;
+
+    private List<ElementDetailsLive> mData;
     private ClickListener clickListener;
-    private List<ElementLive> data;
+    private LayoutInflater mInflater;
+    private Context context;
 
-
-
-    public RecyclerAdapterLive(Context Context, List<ElementLive> data){
-        this.data=data;
-        inflater=LayoutInflater.from(Context);
+    public RecyclerAdapterLive(Context context, List<ElementDetailsLive> data){
+        this.mData=data;
+        this.mInflater = LayoutInflater.from(context);
+        this.context = context;
     }
+
+    @Override
     public int getItemViewType(int position) {
-        int viewType = 0;
-        if (position == 0) viewType = 1;
-        if (position == 1) viewType = 2;
+        int viewType=0;
+        if(position==0) viewType=1;
         return viewType;
     }
+
     @Override
-    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        switch (viewType) {
+    public mViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        switch (viewType)
+        {
             case 0:
-                View view = inflater.inflate(R.layout.particular_row_live, parent, false);
-                return new MyViewHolder(view);
+                View view = mInflater.inflate(R.layout.particular_row_live_details5, parent, false);
+                return new mViewHolder(view);
             case 1:
-                View pview = inflater.inflate(R.layout.particular_row_live2, parent, false);
-                return new MyViewHolder(pview);
-            case 2:
-                View sview = inflater.inflate(R.layout. particular_row_live3, parent, false);
-                return new MyViewHolder(sview);
+                View pview = mInflater.inflate(R.layout.particular_row_live_details5, parent, false);
+                return new mViewHolder(pview);
         }
         return null;
     }
-     @Override
-    public void onBindViewHolder(MyViewHolder holder, final int position) {
-        Log.d(TAG, "onBindViewHolder" + position);
-        ElementLive currentObj = data.get(position);
+
+    @Override
+    public void onBindViewHolder(mViewHolder holder, int position) {
+        ElementDetailsLive currentObj = mData.get(position);
         holder.setData(currentObj, position);
+
     }
-    public void setClickListener(RecyclerAdapterLive.ClickListener clickListener) {
+
+    public void setClickListener(ClickListener clickListener) {
         this.clickListener = clickListener;
     }
-    public String getTitle (int position){
-        return data.get(position).getTitlelive();
-    }
-    //public String getDescription_Actualité (int position){
-      //  return data.get(position).getDescription();
-    //}
-    public int getIcon (int position){
-        return data.get(position).getIconIDLIVE();
-    }
-    public String getDate (int position) {return data.get(position).getTitlelive();}
-    public void addItemLive(ElementLive item) {
-        data.add(item);
-        notifyItemInserted(data.size());
-    }
-    @Override
+
     public int getItemCount() {
-        return data.size();
+        return mData.size();
     }
 
+    public void addInfo(ElementDetailsLive item) {
+        mData.add(item);
+        notifyItemInserted(mData.size());
+    }
 
-
-    class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        //public TextView itemContent;
-        TextView title,date;
+    class mViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         ImageView imgRow;
-        ElementLive current;
+        SquaredImageView pictureLive;
+        TextView  title, since, description;
+        ElementDetailsLive current;
         int position;
-        public MyViewHolder(View itemView) {
+
+        public mViewHolder(View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
-            title= (TextView) itemView.findViewById(R.id.live_title);
-            imgRow= (ImageView) itemView.findViewById(R.id.live_item);
-
-          //  itemContent = (TextView)itemView.findViewById(R.id.item_content);
+            pictureLive = (SquaredImageView) itemView.findViewById(R.id.picture_live);
+            since = (TextView)itemView.findViewById(R.id.since);
+            title = (TextView)itemView.findViewById(R.id.title_live_details);
+            description = (TextView)itemView.findViewById(R.id.description_live_details);
         }
 
         @Override
-        public void onClick(View v) {if (clickListener != null) {
-            clickListener.itemClicked(v, getPosition());
+        public void onClick(View v) {
+            if (clickListener != null) {
+                clickListener.itemClicked(v, getPosition());
+            }
         }
 
-        }
-        public void setData(ElementLive current, int position) {
-            this.title.setText(current.getTitlelive());
-            this.imgRow.setImageResource(current.getIconIDLIVE());
-            this.date.setText(current.getTitlelive());
-            this.current = current;
-            this.position = position;
+        public void setData(ElementDetailsLive current, int position) {
+            this.since.setText(""+current.getSince());
+            this.title.setText(""+current.getIconID());
+            this.description.setText(""+current.getDescription());
+            Glide.with(context).load(current.getImageID()).placeholder(R.drawable.placeholder).into(this.pictureLive);
+            this.current=current;
+            this.position=position;
         }
     }
+
     public interface ClickListener {
         public void itemClicked(View view, int position);
     }
