@@ -18,11 +18,7 @@
         android:textStyle="bold"
         android:id="@+id/tvTitle" />-->
     <TextView
-<<<<<<< 20193fdc625a9364dcbb487a087b65022777da9f
         android:id="@+id/sectionLiveTitle"
-=======
-        android:id="@+id/tvTitle"
->>>>>>> TEMP
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:textSize="@dimen/abc_text_size_large_material"
@@ -30,7 +26,6 @@
         android:textColor="@color/md_black_1000"
         android:gravity="center"
         android:text="@string/app_name"/>
-
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"

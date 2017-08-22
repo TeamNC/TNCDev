@@ -1,30 +1,5 @@
 package com.example.faustin_12.ncdev.activity.fragment;
 
-import android.os.Bundle;
-import android.os.Handler;
-import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.animation.OvershootInterpolator;
-import android.widget.Toast;
-
-import com.example.faustin_12.ncdev.R;
-import com.example.faustin_12.ncdev.adapter.FeedAdapter;
-import com.example.faustin_12.ncdev.adapter.FeedItemAnimator;
-
-import butterknife.BindView;
-import butterknife.OnClick;
-
 /**
  * Created by LIONEL KOUEMENI on 08/04/2017.
  */
@@ -97,7 +72,7 @@ import butterknife.OnClick;
         }
     }
 */
-    private void showFeedLoadingItemDelayed() {
+   /* private void showFeedLoadingItemDelayed() {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -106,9 +81,9 @@ import butterknife.OnClick;
             }
         }, 500);
     }
+*/
 
-
-    @Override
+   /* @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         // Inflate the menu; this adds items to the action bar if it is present.
         inflater.inflate(R.menu.details_live_menu, menu);
@@ -116,8 +91,8 @@ import butterknife.OnClick;
      /*   if (pendingIntroAnimation) {
             pendingIntroAnimation = false;
             startIntroAnimation();
-        }*/
-    }
+        }
+    }*/
 
    /* private void startIntroAnimation() {
         fabCreate.setTranslationY(2 * getResources().getDimensionPixelOffset(R.dimen.btn_fab_size));
@@ -148,7 +123,7 @@ import butterknife.OnClick;
                 .start();*/
   //  }
 
-    private void startContentAnimation() {
+   /* private void startContentAnimation() {
         fabCreate.animate()
                 .translationY(0)
                 .setInterpolator(new OvershootInterpolator(1.f))
@@ -156,7 +131,7 @@ import butterknife.OnClick;
                 .setDuration(ANIM_DURATION_FAB)
                 .start();
         feedAdapter.updateItems(true);
-    }
+    }*/
 /*
     @Override
     public void onCommentsClick(View v, int position) {
@@ -202,7 +177,7 @@ import butterknife.OnClick;
         FeedContextMenuManager.getInstance().hideContextMenu();
     }*/
 
-    @OnClick(R.id.btnCreate)
+   /* @OnClick(R.id.btnCreate)
     public void onTakePhotoClick() {
         int[] startingLocation = new int[2];
         fabCreate.getLocationOnScreen(startingLocation);

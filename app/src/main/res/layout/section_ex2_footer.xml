@@ -18,10 +18,5 @@
         android:text="@string/see_more"
         android:textColor="@color/colorPrimary"
         android:textStyle="bold"
-<<<<<<< 20193fdc625a9364dcbb487a087b65022777da9f
         android:id="@+id/liveSeeMore" />
-=======
-        android:id="@+id/tvSeeMore" />
->>>>>>> TEMP
-
 </RelativeLayout>

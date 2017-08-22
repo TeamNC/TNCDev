@@ -49,9 +49,6 @@
                 android:layout_margin="20dp"
                 android:textColor="#FFFFFF"
                 android:textSize="14sp"/>
-<<<<<<< 20193fdc625a9364dcbb487a087b65022777da9f
-=======
-
             <RatingBar
                 style="@style/foodRatingBar"
                 android:theme="@style/RatingBar"
