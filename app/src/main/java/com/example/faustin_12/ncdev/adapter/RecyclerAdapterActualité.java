@@ -10,7 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.faustin_12.ncdev.R;
-import com.example.faustin_12.ncdev.model.ElementActualite;
+import com.example.faustin_12.ncdev.model.Element;
+import com.example.faustin_12.ncdev.model.ElementActualité;
 
 import java.util.List;
 
@@ -18,12 +19,12 @@ import java.util.List;
  * Created by LIONEL KOUEMENI on 18/09/2016.
  */
 public class RecyclerAdapterActualité extends RecyclerView.Adapter <RecyclerAdapterActualité.mViewHolder> {
-    private static final String TAG = RecyclerAdapterBoiteSnack.class.getSimpleName();
-    private List<ElementActualite> mData;
+    private static final String TAG = RecyclerAdapter.class.getSimpleName();
+    private List<ElementActualité> mData;
     private LayoutInflater mInflater;
     private ClickListener clickListener;
 
-    public RecyclerAdapterActualité (Context context, List<ElementActualite> data){
+    public RecyclerAdapterActualité (Context context, List<ElementActualité> data){
         this.mData=data;
         this.mInflater=LayoutInflater.from(context);
     }
@@ -53,7 +54,7 @@ public class RecyclerAdapterActualité extends RecyclerView.Adapter <RecyclerAda
     @Override
     public void onBindViewHolder(mViewHolder holder, int position) {
         Log.d(TAG, "onBindViewHolder" +position);
-        ElementActualite currentObj = mData.get(position);
+        ElementActualité currentObj = mData.get(position);
         holder.setData(currentObj, position);
 
     }
@@ -61,14 +62,14 @@ public class RecyclerAdapterActualité extends RecyclerView.Adapter <RecyclerAda
         this.clickListener = clickListener;
     }
 
-    public int getPrice (int position){
+    public String getPrice (int position){
         return mData.get(position).getPrice();
     }
     public String getTitle (int position){
         return mData.get(position).getTitle();
     }
     public String getDescription_Actualité (int position){
-        return mData.get(position).getDescription();
+        return mData.get(position).getDescription_actualite();
     }
     public int getIcon (int position){
         return mData.get(position).getImageID();
@@ -82,7 +83,7 @@ public class RecyclerAdapterActualité extends RecyclerView.Adapter <RecyclerAda
         return mData.size();
     }
 
-    public void addInfo(ElementActualite item) {
+    public void addInfo(ElementActualité item) {
         mData.add(item);
         notifyItemInserted(mData.size());
     }
@@ -90,7 +91,7 @@ public class RecyclerAdapterActualité extends RecyclerView.Adapter <RecyclerAda
     class mViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         TextView price, date, title, description_actualite, localisation,categories, nbreCom,nbreLove;
         ImageView imgRow;
-        ElementActualite current;
+        ElementActualité current;
         int position;
 
         public mViewHolder(View itemView) {
@@ -114,12 +115,12 @@ public class RecyclerAdapterActualité extends RecyclerView.Adapter <RecyclerAda
             }
         }
 
-        public void setData(ElementActualite current, int position) {
-            this.price.setText("" + current.getPrice());
+        public void setData(ElementActualité current, int position) {
+            this.price.setText(current.getPrice());
             this.date.setText(current.getDate());
             this.title.setText(current.getTitle());
-            this.description_actualite.setText(current.getDescription());
-            this.localisation.setText(current.getPlace());
+            this.description_actualite.setText(current.getDescription_actualite());
+            this.localisation.setText(current.getLocalisation());
             this.imgRow.setImageResource(current.getImageID());
             this.categories.setText(current.getCategories());
             this.nbreCom.setText(""+current.getNbreCom());

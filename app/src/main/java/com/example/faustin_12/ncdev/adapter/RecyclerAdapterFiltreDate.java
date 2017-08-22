@@ -9,20 +9,20 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.faustin_12.ncdev.R;
-import com.example.faustin_12.ncdev.model.ElementFiltreDate;
+import com.example.faustin_12.ncdev.model.ElementCatégorie;
 
 import java.util.List;
 
 /**
  * Created by LIONEL KOUEMENI on 12/11/2016.
  */
-public class RecyclerAdapterFiltreDate extends RecyclerView.Adapter <RecyclerAdapterFiltreDate.mViewHolder> {
-        private static final String TAG = RecyclerAdapterBoiteSnack.class.getSimpleName();
-        private List<ElementFiltreDate> mData;
+public class RecyclerAdapterCategorie extends RecyclerView.Adapter <RecyclerAdapterCategorie.mViewHolder> {
+        private static final String TAG = RecyclerAdapter.class.getSimpleName();
+        private List<ElementCatégorie> mData;
         private LayoutInflater mInflater;
         private ClickListener clickListener;
 
-        public RecyclerAdapterFiltreDate(Context context, List<ElementFiltreDate> data){
+        public RecyclerAdapterCategorie (Context context, List<ElementCatégorie> data){
             this.mData=data;
             this.mInflater=LayoutInflater.from(context);
         }
@@ -52,7 +52,7 @@ public class RecyclerAdapterFiltreDate extends RecyclerView.Adapter <RecyclerAda
         @Override
         public void onBindViewHolder(mViewHolder holder, int position) {
             Log.d(TAG, "onBindViewHolder" +position);
-            ElementFiltreDate currentObj = mData.get(position);
+            ElementCatégorie currentObj = mData.get(position);
             holder.setData(currentObj, position);
 
         }
@@ -71,14 +71,14 @@ public class RecyclerAdapterFiltreDate extends RecyclerView.Adapter <RecyclerAda
         return mData.size();
     }
 
-    public void addInfo(ElementFiltreDate item) {
+    public void addInfo(ElementCatégorie item) {
         mData.add(item);
         notifyItemInserted(mData.size());
     }
 
     class mViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         TextView  date,title;
-        ElementFiltreDate current;
+        ElementCatégorie current;
         int position;
 
         public mViewHolder(View itemView) {
@@ -94,7 +94,7 @@ public class RecyclerAdapterFiltreDate extends RecyclerView.Adapter <RecyclerAda
             }
         }
 
-        public void setData(ElementFiltreDate current, int position) {
+        public void setData(ElementCatégorie current, int position) {
 
             this.date.setText(current.getDate());
             this.title.setText(""+current.getTitle());

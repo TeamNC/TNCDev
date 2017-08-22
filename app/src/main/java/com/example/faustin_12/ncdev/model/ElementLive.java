@@ -4,49 +4,26 @@ package com.example.faustin_12.ncdev.model;
  * Created by LIONEL KOUEMENI on 30/11/2016.
  */
 public class ElementLive {
-    private int imageID;
-    private String title;
-    private int nbreLive;
-    private String date;
-
-    public ElementLive(int imageID, String title, int nbreLive,String date) {
-        this.imageID = imageID;
-        this.title = title;
-        this.date = date;
-        this.nbreLive = nbreLive;
+    private int IconIDLIVE;
+    private String titlelive;
+    public ElementLive(int IconIDLIVE,String titlelive){
+        this.IconIDLIVE=IconIDLIVE;
+        this.titlelive=titlelive;
     }
 
-    public int getImageID() {
-        return imageID;
+    public int getIconIDLIVE() {
+        return IconIDLIVE;
     }
 
-    public void setImageID(int imageID) {
-        this.imageID = imageID;
+    public void setIconIDLIVE(int iconIDLIVE) {
+        IconIDLIVE = iconIDLIVE;
     }
 
-    public String getTitle() {
-        return title;
+    public String getTitlelive() {
+        return titlelive;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public int getNbreLive() {
-        return nbreLive;
-    }
-
-    public void setNbreLive(int nbreLive) {
-        this.nbreLive = nbreLive;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
+    public void setTitlelive(String titlelive) {
+        this.titlelive = titlelive;
     }
 }
-
-

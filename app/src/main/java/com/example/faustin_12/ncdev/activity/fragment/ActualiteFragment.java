@@ -15,10 +15,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.faustin_12.ncdev.R;
 import com.example.faustin_12.ncdev.adapter.RecyclerAdapterActualité;
-import com.example.faustin_12.ncdev.model.ElementActualite;
+import com.example.faustin_12.ncdev.model.ElementActualité;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -67,8 +68,8 @@ public class ActualiteFragment extends Fragment implements RecyclerAdapterActual
                                              Calendar c = Calendar.getInstance();
                                             DateFormat df = new SimpleDateFormat("yyyy-MM-dd-hh.mm.ss");
                                              if (index > 9) index = 0;
-                                             ElementActualite item = new ElementActualite(flags[index], countries[index],
-                                                     "les mechants n'ont pas besoin de raison pour hair.leur mechanceté  suffit"+index, index, df.format(c.getTime()),index*1000, "Localisation#" + index,"#Catégories" + index, index );
+                                             ElementActualité item = new ElementActualité(flags[index], currency[index],countries[index],"les mechants n'ont pas besoin de raison pour hair.leur mechanceté  suffit"+index,df.format(c.getTime()),"Localisation#" + index,"#Catégories" + index );
+                                             item.setNbreCom(index);
                                             // if(index==0) item.setImageID(R.drawable.particular_row);
                                              addInfo(item);
                                              index++;
@@ -77,7 +78,7 @@ public class ActualiteFragment extends Fragment implements RecyclerAdapterActual
         );
 
         recyclerView = (RecyclerView) v.findViewById(R.id.recyclerList);
-        mAdapter = new RecyclerAdapterActualité(getContext(), new ArrayList<ElementActualite>());
+        mAdapter = new RecyclerAdapterActualité(getContext(), new ArrayList<ElementActualité>());
 
 
         LinearLayoutManager mLinearLayoutManager = new LinearLayoutManager(getContext());
@@ -97,7 +98,7 @@ public class ActualiteFragment extends Fragment implements RecyclerAdapterActual
         return v;
     }
 
-    public void addInfo (ElementActualite item){
+    public void addInfo (ElementActualité item){
         mAdapter.addInfo(item);
     }
 
@@ -132,10 +133,11 @@ public class ActualiteFragment extends Fragment implements RecyclerAdapterActual
 
     //@Override
     public void itemClicked(View view, int position) {
+        Toast.makeText(getActivity(), "Tu as sélectionné :" + mAdapter.getDescription_Actualité(position), Toast.LENGTH_SHORT).show();
         DetailFragment temps = new DetailFragment();
         temps.setTitle(mAdapter.getTitle(position));
         temps.setDate(mAdapter.getDate(position));
-        temps.setPrice("" + mAdapter.getPrice(position));
+        temps.setPrice(mAdapter.getPrice(position));
         ImageView icon = (ImageView) view.findViewById(R.id.imgRow);
         temps.setMyImageView(icon);
         FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
