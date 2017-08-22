@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Map;
 
 
-public class FeedItemAnimator extends DefaultItemAnimator {
+/*public class FeedItemAnimator extends DefaultItemAnimator {
     private static final DecelerateInterpolator DECCELERATE_INTERPOLATOR = new DecelerateInterpolator();
     private static final AccelerateInterpolator ACCELERATE_INTERPOLATOR = new AccelerateInterpolator();
     private static final OvershootInterpolator OVERSHOOT_INTERPOLATOR = new OvershootInterpolator(4);
@@ -243,4 +243,4 @@ public class FeedItemAnimator extends DefaultItemAnimator {
             this.updateAction = updateAction;
         }
     }
-}
+}*/

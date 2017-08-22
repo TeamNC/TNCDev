@@ -1,10 +1,6 @@
 package com.example.faustin_12.ncdev.adapter;
 
 import android.content.Context;
-<<<<<<< 20193fdc625a9364dcbb487a087b65022777da9f
-import android.os.Handler;
-=======
->>>>>>> TEMP
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,17 +11,10 @@ import android.widget.TextView;
 
 import com.example.faustin_12.ncdev.R;
 import com.example.faustin_12.ncdev.model.ElementBoiteSnack;
-<<<<<<< 20193fdc625a9364dcbb487a087b65022777da9f
-import com.example.faustin_12.ncdev.notification.DisplayCustomNotification;
-import com.example.faustin_12.ncdev.notification.DisplayNotification;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-=======
-
-import java.util.ArrayList;
->>>>>>> TEMP
 import java.util.List;
 
 /**
@@ -36,22 +25,11 @@ public class RecyclerAdapterBoiteSnack extends RecyclerView.Adapter <RecyclerAda
     private List<ElementBoiteSnack> mData;
     private LayoutInflater mInflater;
     private ClickListener clickListener;
-<<<<<<< 20193fdc625a9364dcbb487a087b65022777da9f
-    Handler mHandler = new Handler();
-    Context mContext;
-    DisplayCustomNotification displayCustomNotification;
-    DisplayNotification displayNotification;
-=======
->>>>>>> TEMP
+
 
     public RecyclerAdapterBoiteSnack(Context context, List<ElementBoiteSnack> data){
         this.mData=data;
         this.mInflater=LayoutInflater.from(context);
-<<<<<<< 20193fdc625a9364dcbb487a087b65022777da9f
-        displayCustomNotification = new DisplayCustomNotification(context, "NCDev", " ", " ", " ", " ");
-        //displayNotification = new DisplayNotification(context, "NCDev", " ", " ", " ", " ");
-=======
->>>>>>> TEMP
     }
 
     @Override
@@ -111,13 +89,6 @@ public class RecyclerAdapterBoiteSnack extends RecyclerView.Adapter <RecyclerAda
     public void addInfo (ElementBoiteSnack item){
         mData.add(item);
         notifyItemInserted(mData.size());
-<<<<<<< 20193fdc625a9364dcbb487a087b65022777da9f
-        displayCustomNotification.setnDescription("Nouvelle Boite ! " + item.getTitle());
-        displayCustomNotification.setnTickerM("Nouvelle Boite ! " + item.getTitle());
-        displayCustomNotification.setnTime(""+(new SimpleDateFormat("HH:MM").format(Calendar.getInstance().getTime())));
-        mHandler.post(displayCustomNotification);
-=======
->>>>>>> TEMP
     }
 
     public void removeItem (ElementBoiteSnack item){

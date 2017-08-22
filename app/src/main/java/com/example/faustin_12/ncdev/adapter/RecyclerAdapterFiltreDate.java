@@ -2,27 +2,25 @@ package com.example.faustin_12.ncdev.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.faustin_12.ncdev.R;
-import com.example.faustin_12.ncdev.model.ElementCatégorie;
+import com.example.faustin_12.ncdev.model.ElementCategorie;
 
 import java.util.List;
 
 /**
  * Created by LIONEL KOUEMENI on 12/11/2016.
  */
-public class RecyclerAdapterCategorie extends RecyclerView.Adapter <RecyclerAdapterCategorie.mViewHolder> {
-        private static final String TAG = RecyclerAdapter.class.getSimpleName();
-        private List<ElementCatégorie> mData;
+public class RecyclerAdapterFiltreDate extends RecyclerView.Adapter <RecyclerAdapterFiltreDate.mViewHolder> {
+        private List<ElementCategorie> mData;
         private LayoutInflater mInflater;
         private ClickListener clickListener;
 
-        public RecyclerAdapterCategorie (Context context, List<ElementCatégorie> data){
+        public RecyclerAdapterFiltreDate(Context context, List<ElementCategorie> data){
             this.mData=data;
             this.mInflater=LayoutInflater.from(context);
         }
@@ -36,7 +34,6 @@ public class RecyclerAdapterCategorie extends RecyclerView.Adapter <RecyclerAdap
 
         @Override
         public mViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            Log.d(TAG, "onCreateViewHolder");
             switch (viewType)
             {
                 case 0:
@@ -51,8 +48,7 @@ public class RecyclerAdapterCategorie extends RecyclerView.Adapter <RecyclerAdap
 
         @Override
         public void onBindViewHolder(mViewHolder holder, int position) {
-            Log.d(TAG, "onBindViewHolder" +position);
-            ElementCatégorie currentObj = mData.get(position);
+            ElementCategorie currentObj = mData.get(position);
             holder.setData(currentObj, position);
 
         }
@@ -60,25 +56,25 @@ public class RecyclerAdapterCategorie extends RecyclerView.Adapter <RecyclerAdap
         this.clickListener = clickListener;
     }
 
-    public int getTitle (int position){
-        return mData.get(position).getTitle();
+    public String getTitle (int position){
+        return mData.get(position).getName();
     }
 
-    public String getDate (int position) {return mData.get(position).getDate();}
+    public String getDate (int position) {return mData.get(position).getName();}
 
 
         public int getItemCount() {
         return mData.size();
     }
 
-    public void addInfo(ElementCatégorie item) {
+    public void addInfo(ElementCategorie item) {
         mData.add(item);
         notifyItemInserted(mData.size());
     }
 
     class mViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         TextView  date,title;
-        ElementCatégorie current;
+        ElementCategorie current;
         int position;
 
         public mViewHolder(View itemView) {
@@ -94,10 +90,10 @@ public class RecyclerAdapterCategorie extends RecyclerView.Adapter <RecyclerAdap
             }
         }
 
-        public void setData(ElementCatégorie current, int position) {
+        public void setData(ElementCategorie current, int position) {
 
-            this.date.setText(current.getDate());
-            this.title.setText(""+current.getTitle());
+            this.date.setText(current.getName());
+            this.title.setText(""+current.getName());
             this.current=current;
             this.position=position;
         }

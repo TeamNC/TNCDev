@@ -16,7 +16,6 @@ import com.example.faustin_12.ncdev.R;
 
 import com.example.faustin_12.ncdev.adapter.TabsAdapter2;
 
-import com.example.faustin_12.ncdev.model.Informations;
 
 import java.util.ArrayList;
 
@@ -30,7 +29,6 @@ public class CategoriesFragment extends Fragment {    public static TabLayout ta
     public int check;
     public TabsAdapter2 adapter;
     public EvenementFragment evenementFragment = new EvenementFragment();
-    public ArrayList<Informations> mdata = new ArrayList<>();
 
     @Nullable
     @Override
@@ -93,7 +91,7 @@ public class CategoriesFragment extends Fragment {    public static TabLayout ta
     }
 }
 
-   /*  public class CategoriesFragment extends Fragment implements RecyclerAdapterCategorie.ClickListener{
+   /*  public class CategoriesFragment extends Fragment implements RecyclerAdapterFiltreDate.ClickListener{
 
          // Array of strings storing country names
          int index=0;
@@ -102,7 +100,7 @@ public class CategoriesFragment extends Fragment {    public static TabLayout ta
          ;
 
          RecyclerView recyclerView;
-         RecyclerAdapterCategorie mAdapter;
+         RecyclerAdapterFiltreDate mAdapter;
          FragmentManager mFragmentManager;
 
          public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -130,7 +128,7 @@ public class CategoriesFragment extends Fragment {    public static TabLayout ta
              );
 
              recyclerView = (RecyclerView) v.findViewById(R.id.recyclerList2);
-             mAdapter = new RecyclerAdapterCategorie(getContext(), new ArrayList<ElementCatégorie>());
+             mAdapter = new RecyclerAdapterFiltreDate(getContext(), new ArrayList<ElementCatégorie>());
              recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
              mFragmentManager=getActivity().getSupportFragmentManager();
 

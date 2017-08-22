@@ -19,12 +19,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
 
 
 
-public class FeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+/*public class FeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public static final String ACTION_LIKE_BUTTON_CLICKED = "action_like_button_button";
     public static final String ACTION_LIKE_IMAGE_CLICKED = "action_like_image_button";
 
@@ -42,7 +40,7 @@ public class FeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         this.context = context;
     }
 
-    @Override
+    /*@Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (viewType == VIEW_TYPE_DEFAULT) {
             View view = LayoutInflater.from(context).inflate(R.layout.particular_row_live_details5, parent, false);
@@ -61,7 +59,7 @@ public class FeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         return null;
     }
 
-    private void setupClickableViews(final View view, final CellFeedViewHolder cellFeedViewHolder) {
+    /*private void setupClickableViews(final View view, final CellFeedViewHolder cellFeedViewHolder) {
         cellFeedViewHolder.btnComments.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,7 +80,7 @@ public class FeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 notifyItemChanged(adapterPosition, ACTION_LIKE_IMAGE_CLICKED);
             /*    if (context instanceof MainActivity) {
                     ((MainActivity) context).showLikedSnackbar();
-                }*/
+                }
             }
         });
         cellFeedViewHolder.btnLike.setOnClickListener(new View.OnClickListener() {
@@ -93,7 +91,7 @@ public class FeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 notifyItemChanged(adapterPosition, ACTION_LIKE_BUTTON_CLICKED);
                /* if (get(Activity)) {
                     ((MainActivity) context).showLikedSnackbar();
-                }*/
+                }
             }
         });
         cellFeedViewHolder.ivUserProfile.setOnClickListener(new View.OnClickListener() {
@@ -165,7 +163,7 @@ public class FeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         notifyItemChanged(0);
     }
 
-    public static class CellFeedViewHolder extends RecyclerView.ViewHolder {
+    /*public static class CellFeedViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.picture_live)
         ImageView ivFeedCenter;
         @BindView(R.id.description_live_details)
@@ -242,4 +240,4 @@ public class FeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
         void onProfileClick(View v);
     }
-}
+}*/

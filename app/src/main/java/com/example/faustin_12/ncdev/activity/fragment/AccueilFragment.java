@@ -12,7 +12,6 @@ import android.widget.Toast;
 
 import com.example.faustin_12.ncdev.R;
 import com.example.faustin_12.ncdev.adapter.TabsAdapter;
-import com.example.faustin_12.ncdev.model.Informations;
 
 import java.util.ArrayList;
 
@@ -26,7 +25,6 @@ public class AccueilFragment extends Fragment {
     public int check;
     public TabsAdapter adapter;
     public EvenementFragment evenementFragment = new EvenementFragment();
-    public ArrayList<Informations> mdata = new ArrayList<>();
 
     @Nullable
     @Override

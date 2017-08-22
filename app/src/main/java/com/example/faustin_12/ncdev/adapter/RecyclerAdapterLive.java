@@ -61,15 +61,15 @@ public class RecyclerAdapterLive extends RecyclerView.Adapter<RecyclerAdapterLiv
         this.clickListener = clickListener;
     }
     public String getTitle (int position){
-        return data.get(position).getTitle();
+        return data.get(position).getTitlelive();
     }
     //public String getDescription_Actualité (int position){
       //  return data.get(position).getDescription();
     //}
     public int getIcon (int position){
-        return data.get(position).getImageID();
+        return data.get(position).getIconIDLIVE();
     }
-    public String getDate (int position) {return data.get(position).getDate();}
+    public String getDate (int position) {return data.get(position).getTitlelive();}
     public void addItemLive(ElementLive item) {
         data.add(item);
         notifyItemInserted(data.size());
@@ -103,9 +103,9 @@ public class RecyclerAdapterLive extends RecyclerView.Adapter<RecyclerAdapterLiv
 
         }
         public void setData(ElementLive current, int position) {
-            this.title.setText(current.getTitle());
-            this.imgRow.setImageResource(current.getImageID());
-            this.date.setText(current.getDate());
+            this.title.setText(current.getTitlelive());
+            this.imgRow.setImageResource(current.getIconIDLIVE());
+            this.date.setText(current.getTitlelive());
             this.current = current;
             this.position = position;
         }

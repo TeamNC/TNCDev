@@ -1,16 +1,12 @@
 package com.example.faustin_12.ncdev.model;
 
-<<<<<<< 20193fdc625a9364dcbb487a087b65022777da9f
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-=======
->>>>>>> TEMP
 /**
  * Created by LIONEL KOUEMENI on 18/09/2016.
  */
 public class ElementActualite {
-<<<<<<< 20193fdc625a9364dcbb487a087b65022777da9f
     @SerializedName("id_event")
     @Expose
     private Integer id_event;
@@ -44,20 +40,6 @@ public class ElementActualite {
 
     public ElementActualite(int imageID, String title, String description, int nbreCom, String date, int price, String place, String categories, int nbreLove) {
         /*this.imageID = imageID;
-=======
-    private int imageID;
-    private String title;
-    private String description;
-    private int nbreCom;
-    private String date; //To be a date in a particular date format
-    private int price;
-    private String place; //To be an Object GMap
-    private String categories;
-    private int nbreLove;
-
-    public ElementActualite(int imageID, String title, String description, int nbreCom, String date, int price, String place, String categories, int nbreLove) {
-        this.imageID = imageID;
->>>>>>> TEMP
         this.title = title;
         this.description = description;
         this.nbreCom = nbreCom;
@@ -65,7 +47,6 @@ public class ElementActualite {
         this.price = price;
         this.place = place;
         this.categories = categories;
-<<<<<<< 20193fdc625a9364dcbb487a087b65022777da9f
         this.nbreLove = nbreLove;*/
     }
 
@@ -75,17 +56,6 @@ public class ElementActualite {
 
     public void setId_event(Integer id_event) {
         this.id_event = id_event;
-=======
-        this.nbreLove = nbreLove;
-    }
-
-    public int getImageID() {
-        return imageID;
-    }
-
-    public void setImageID(int imageID) {
-        this.imageID = imageID;
->>>>>>> TEMP
     }
 
     public String getTitle() {
@@ -96,7 +66,6 @@ public class ElementActualite {
         this.title = title;
     }
 
-<<<<<<< 20193fdc625a9364dcbb487a087b65022777da9f
     public Integer getDate() {
         return date;
     }
@@ -105,8 +74,6 @@ public class ElementActualite {
         this.date = date;
     }
 
-=======
->>>>>>> TEMP
     public String getDescription() {
         return description;
     }
@@ -115,7 +82,6 @@ public class ElementActualite {
         this.description = description;
     }
 
-<<<<<<< 20193fdc625a9364dcbb487a087b65022777da9f
     public int getImage() {
         return image;
     }
@@ -130,22 +96,6 @@ public class ElementActualite {
 
     public void setComment(int comment) {
         this.comment = comment;
-=======
-    public int getNbreCom() {
-        return nbreCom;
-    }
-
-    public void setNbreCom(int nbreCom) {
-        this.nbreCom = nbreCom;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
->>>>>>> TEMP
     }
 
     public int getPrice() {
@@ -156,7 +106,6 @@ public class ElementActualite {
         this.price = price;
     }
 
-<<<<<<< 20193fdc625a9364dcbb487a087b65022777da9f
     public String getLocalisation() {
         return localisation;
     }
@@ -179,30 +128,6 @@ public class ElementActualite {
 
     public void setLike(int like) {
         this.like = like;
-=======
-    public String getPlace() {
-        return place;
-    }
-
-    public void setPlace(String place) {
-        this.place = place;
-    }
-
-    public String getCategories() {
-        return categories;
-    }
-
-    public void setCategories(String categories) {
-        this.categories = categories;
-    }
-
-    public int getNbreLove() {
-        return nbreLove;
-    }
-
-    public void setNbreLove(int nbreLove) {
-        this.nbreLove = nbreLove;
->>>>>>> TEMP
     }
 }
 

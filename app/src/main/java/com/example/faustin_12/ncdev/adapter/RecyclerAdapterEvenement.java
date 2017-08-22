@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 import com.example.faustin_12.ncdev.R;
 import com.example.faustin_12.ncdev.activity.fragment.EvenementFragment;
-import com.example.faustin_12.ncdev.model.Element;
 import com.example.faustin_12.ncdev.model.ElementEvenement;
 
 import java.util.List;
@@ -20,7 +19,6 @@ import java.util.List;
  * Created by LIONEL KOUEMENI on 01/10/2016.
  */
 public class RecyclerAdapterEvenement extends RecyclerView.Adapter <RecyclerAdapterEvenement.mViewHolder> {
-    private static final String TAG = RecyclerAdapter.class.getSimpleName();
     private List<ElementEvenement> mData;
     private ClickListener clickListener;
     private LayoutInflater mInflater;
@@ -39,7 +37,6 @@ public class RecyclerAdapterEvenement extends RecyclerView.Adapter <RecyclerAdap
 
     @Override
     public mViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        Log.d(TAG, "onCreateViewHolder");
         switch (viewType) {
             case 0:
                 View view = mInflater.inflate(R.layout.row_evenement, parent, false);
@@ -53,7 +50,6 @@ public class RecyclerAdapterEvenement extends RecyclerView.Adapter <RecyclerAdap
 
     @Override
     public void onBindViewHolder(mViewHolder holder, int position) {
-        Log.d(TAG, "onBindViewHolder" + position);
         ElementEvenement currentObj = mData.get(position);
         holder.setData(currentObj, position);
 

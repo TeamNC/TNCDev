@@ -10,8 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.faustin_12.ncdev.R;
-import com.example.faustin_12.ncdev.model.Element;
-import com.example.faustin_12.ncdev.model.ElementActualité;
+import com.example.faustin_12.ncdev.model.ElementActualite;
 
 import java.util.List;
 
@@ -19,12 +18,11 @@ import java.util.List;
  * Created by LIONEL KOUEMENI on 18/09/2016.
  */
 public class RecyclerAdapterActualité extends RecyclerView.Adapter <RecyclerAdapterActualité.mViewHolder> {
-    private static final String TAG = RecyclerAdapter.class.getSimpleName();
-    private List<ElementActualité> mData;
+    private List<ElementActualite> mData;
     private LayoutInflater mInflater;
     private ClickListener clickListener;
 
-    public RecyclerAdapterActualité (Context context, List<ElementActualité> data){
+    public RecyclerAdapterActualité (Context context, List<ElementActualite> data){
         this.mData=data;
         this.mInflater=LayoutInflater.from(context);
     }
@@ -38,7 +36,6 @@ public class RecyclerAdapterActualité extends RecyclerView.Adapter <RecyclerAda
 
     @Override
     public mViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        Log.d(TAG, "onCreateViewHolder");
         switch (viewType)
         {
             case 0:
@@ -53,8 +50,7 @@ public class RecyclerAdapterActualité extends RecyclerView.Adapter <RecyclerAda
 
     @Override
     public void onBindViewHolder(mViewHolder holder, int position) {
-        Log.d(TAG, "onBindViewHolder" +position);
-        ElementActualité currentObj = mData.get(position);
+        ElementActualite currentObj = mData.get(position);
         holder.setData(currentObj, position);
 
     }
@@ -63,19 +59,19 @@ public class RecyclerAdapterActualité extends RecyclerView.Adapter <RecyclerAda
     }
 
     public String getPrice (int position){
-        return mData.get(position).getPrice();
+        return ""+mData.get(position).getPrice();
     }
     public String getTitle (int position){
         return mData.get(position).getTitle();
     }
     public String getDescription_Actualité (int position){
-        return mData.get(position).getDescription_actualite();
+        return mData.get(position).getDescription();
     }
     public int getIcon (int position){
-        return mData.get(position).getImageID();
+        return mData.get(position).getImage();
     }
-    public String getDate (int position) {return mData.get(position).getDate();}
-    public int getNbreCom (int position) {return mData.get(position).getNbreCom();}
+    public String getDate (int position) {return ""+mData.get(position).getDate();}
+    public int getNbreCom (int position) {return mData.get(position).getComment();}
 
 
     @Override
@@ -83,7 +79,7 @@ public class RecyclerAdapterActualité extends RecyclerView.Adapter <RecyclerAda
         return mData.size();
     }
 
-    public void addInfo(ElementActualité item) {
+    public void addInfo(ElementActualite item) {
         mData.add(item);
         notifyItemInserted(mData.size());
     }
@@ -91,7 +87,7 @@ public class RecyclerAdapterActualité extends RecyclerView.Adapter <RecyclerAda
     class mViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         TextView price, date, title, description_actualite, localisation,categories, nbreCom,nbreLove;
         ImageView imgRow;
-        ElementActualité current;
+        ElementActualite current;
         int position;
 
         public mViewHolder(View itemView) {
@@ -115,16 +111,16 @@ public class RecyclerAdapterActualité extends RecyclerView.Adapter <RecyclerAda
             }
         }
 
-        public void setData(ElementActualité current, int position) {
-            this.price.setText(current.getPrice());
-            this.date.setText(current.getDate());
+        public void setData(ElementActualite current, int position) {
+            this.price.setText(""+current.getPrice());
+            this.date.setText(""+current.getDate());
             this.title.setText(current.getTitle());
-            this.description_actualite.setText(current.getDescription_actualite());
+            this.description_actualite.setText(current.getDescription());
             this.localisation.setText(current.getLocalisation());
-            this.imgRow.setImageResource(current.getImageID());
-            this.categories.setText(current.getCategories());
-            this.nbreCom.setText(""+current.getNbreCom());
-            this.nbreLove.setText(""+current.getNbreLove());
+            this.imgRow.setImageResource(current.getImage());
+            this.categories.setText(current.getCategorie());
+            this.nbreCom.setText(""+current.getComment());
+            this.nbreLove.setText(""+current.getLike());
             this.current=current;
             this.position=position;
         }

@@ -58,7 +58,8 @@ public class LiveSection extends StatelessSection {
             @Override
             public void onClick(View v) {
                 Toast.makeText(context, String.format("You clicked on position #%s of Section %s",
-                        sectionedRecyclerViewAdapter.getPositionInSection(holder.getAdapterPosition()), sectionData.get(position).getTitle()), Toast.LENGTH_SHORT).show();
+                        sectionedRecyclerViewAdapter.getPositionInSection(holder.getAdapterPosition()),
+                        sectionData.get(position).getTitlelive()), Toast.LENGTH_SHORT).show();
                 DetailLiveFragment temps = new DetailLiveFragment();
                 ImageView icon = (ImageView) v.findViewById(R.id.live_item);
                 temps.setMyImageView(icon);
@@ -151,11 +152,11 @@ public class LiveSection extends StatelessSection {
         }
 
         public void setData(ElementLive current){
-            this.imgItem.setImageResource(current.getImageID());
-            this.liveTitle.setText(current.getTitle());
-            this.liveTime.setText(current.getDate());
-            this.nbreVue.setText("" + current.getNbreLive());
-            this.categorycolor.setBackgroundColor(current.getCategorieColor());
+            this.imgItem.setImageResource(current.getIconIDLIVE());
+            this.liveTitle.setText(current.getTitlelive());
+            this.liveTime.setText(current.getTitlelive());
+            this.nbreVue.setText("" + current.getTitlelive());
+            //this.categorycolor.setBackgroundColor(current.getCategorieColor());
 
         }
     }

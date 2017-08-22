@@ -160,7 +160,7 @@ public class ActualiteFragment extends Fragment implements DataAdapter.ClickList
                         {
                             if(mAdapter.getItemCount()>0) {
                                 loading = true;
-                                loadMore(mAdapter.getData().get(mAdapter.getItemCount() - 1).getIdEvent());
+                                //loadMore(mAdapter.getData().get(mAdapter.getItemCount() - 1).getIdEvent());
                             }
                         }
                     }
@@ -171,9 +171,9 @@ public class ActualiteFragment extends Fragment implements DataAdapter.ClickList
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                if(mAdapter.getItemCount()>0)
-                    refresh(mAdapter.getData().get(0).getIdEvent());
-                else
+                //if(mAdapter.getItemCount()>0)
+                    //refresh(mAdapter.getData().get(0).getIdEvent());
+               // else
                     download(1);
             }
         });

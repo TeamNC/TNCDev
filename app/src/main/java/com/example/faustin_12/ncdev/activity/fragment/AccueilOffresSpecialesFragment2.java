@@ -12,11 +12,8 @@ import android.view.ViewGroup;
 import com.example.faustin_12.ncdev.R;
 import com.example.faustin_12.ncdev.adapter.TabsAdapter3;
 
-<<<<<<< 20193fdc625a9364dcbb487a087b65022777da9f
 import java.util.ArrayList;
 
-=======
->>>>>>> TEMP
 /**
  * Created by LIONEL KOUEMENI on 23/12/2016.
  */

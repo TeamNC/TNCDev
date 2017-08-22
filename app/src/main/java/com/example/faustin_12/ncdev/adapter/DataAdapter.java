@@ -92,8 +92,8 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
     public String getTitle (int position){
         return evenements.get(position).getTitle();
     }
-    public String getDescription (int position){return evenements.get(position).getDescription();}
-    public int getDate (int position){return evenements.get(position).getDate();}
+    public String getDescription (int position){return evenements.get(position).getTitle();}
+    public int getDate (int position){return evenements.get(position).getNbreEvents();}
 
     public void setClickListener(ClickListener clickListener) {
         this.clickListener = clickListener;
@@ -128,10 +128,10 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
 
         public void setData(ElementEvenement current, int position) {
             this.title.setText(current.getTitle());
-            this.description.setText(current.getDescription());
+            this.description.setText(current.getTitle());
             Date date = new GregorianCalendar().getTime();
             try {
-                date = (new SimpleDateFormat("yyyyMMdd")).parse(""+current.getDate());
+                date = (new SimpleDateFormat("yyyyMMdd")).parse(""+current.getNbreEvents());
             } catch (ParseException e) {
                 e.printStackTrace();
             }
