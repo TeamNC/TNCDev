@@ -8,6 +8,7 @@ import com.example.faustin_12.ncdev.activity.fragment.ActualiteFragment;
 import com.example.faustin_12.ncdev.activity.fragment.BoiteFragment;
 import com.example.faustin_12.ncdev.activity.fragment.EvenementFragment;
 import com.example.faustin_12.ncdev.activity.fragment.LiveFragment;
+import com.example.faustin_12.ncdev.activity.fragment.LiveFragment2;
 
 /**
  * Created by FAUSTIN-12 on 17/03/2016.

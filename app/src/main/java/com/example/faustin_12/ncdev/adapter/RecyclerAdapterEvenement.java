@@ -1,6 +1,7 @@
 package com.example.faustin_12.ncdev.adapter;
 
 import android.content.Context;
+import android.os.Handler;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,24 +11,31 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.faustin_12.ncdev.R;
-import com.example.faustin_12.ncdev.activity.fragment.EvenementFragment;
-import com.example.faustin_12.ncdev.model.Element;
-import com.example.faustin_12.ncdev.model.ElementEvenement;
+import com.example.faustin_12.ncdev.model.ElementCategorie;
+import com.example.faustin_12.ncdev.notification.DisplayCustomNotification;
+import com.example.faustin_12.ncdev.notification.DisplayNotification;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by LIONEL KOUEMENI on 01/10/2016.
  */
 public class RecyclerAdapterEvenement extends RecyclerView.Adapter <RecyclerAdapterEvenement.mViewHolder> {
-    private static final String TAG = RecyclerAdapter.class.getSimpleName();
-    private List<ElementEvenement> mData;
+    private static final String TAG = RecyclerAdapterBoiteSnack.class.getSimpleName();
+    private List<ElementCategorie> categories;
     private ClickListener clickListener;
     private LayoutInflater mInflater;
+    Handler mHandler = new Handler();
+    Context mContext;
+    DisplayCustomNotification displayCustomNotification;
+    DisplayNotification displayNotification;
 
-    public RecyclerAdapterEvenement(Context context, List<ElementEvenement> data) {
-        this.mData = data;
+    public RecyclerAdapterEvenement(Context context, List<ElementCategorie> data) {
+        this.categories = data;
         this.mInflater = LayoutInflater.from(context);
+        displayCustomNotification = new DisplayCustomNotification(context, "NCDev", " ", " ", " ", " ");
+        //displayNotification = new DisplayNotification(context, "NCDev", " ", " ", " ", " ");
     }
 
     @Override
@@ -54,32 +62,38 @@ public class RecyclerAdapterEvenement extends RecyclerView.Adapter <RecyclerAdap
     @Override
     public void onBindViewHolder(mViewHolder holder, int position) {
         Log.d(TAG, "onBindViewHolder" + position);
-        ElementEvenement currentObj = mData.get(position);
+        ElementCategorie currentObj = categories.get(position);
         holder.setData(currentObj, position);
 
     }
 
     public String getTitle(int position) {
-        return mData.get(position).getTitle();
+        return categories.get(position).getName();
     }
 
     public int getImageID(int position) {
-        return mData.get(position).getImageID();
+        return categories.get(position).getImageID();
     }
 
     public int getNbreEvents(int position) {
-        return mData.get(position).getNbreEvents();
+        return categories.get(position).getNombreevts();
     }
 
 
     @Override
     public int getItemCount() {
-        return mData.size();
+        return categories.size();
     }
 
-    public void addInfo(ElementEvenement item) {
-        mData.add(item);
-        notifyItemInserted(mData.size());
+    public void addInfo(ElementCategorie item) {
+        categories.add(item);
+        notifyItemInserted(categories.size());
+    }
+
+    public void setData (List<ElementCategorie> infos){
+        categories = new ArrayList<>();
+        categories.addAll(infos);
+        notifyDataSetChanged();
     }
 
     public void setClickListener(ClickListener clickListener) {
@@ -90,7 +104,7 @@ public class RecyclerAdapterEvenement extends RecyclerView.Adapter <RecyclerAdap
     class mViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView title,nbreEvents;
         ImageView imgRow;
-        ElementEvenement current;
+        ElementCategorie current;
         int position;
 
         public mViewHolder(View itemView) {
@@ -107,10 +121,10 @@ public class RecyclerAdapterEvenement extends RecyclerView.Adapter <RecyclerAdap
             }
         }
 
-        public void setData(ElementEvenement current, int position) {
-            this.title.setText(current.getTitle());
-            this.imgRow.setImageResource(current.getImageID());
-            this.nbreEvents.setText("" + current.getNbreEvents());
+        public void setData(ElementCategorie current, int position) {
+            this.title.setText(current.getName());
+            //this.imgRow.setImageResource(current.getImageID());
+            this.nbreEvents.setText("" + current.getNombreevts());
             this.current = current;
             this.position = position;
         }

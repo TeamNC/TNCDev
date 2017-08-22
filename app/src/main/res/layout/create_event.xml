@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginTop="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:text="Ajouter l'image de l'evenement"/>
+            <ImageView
+                android:id="@+id/Image_of_event"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:hint="Second number"
+                android:src="@drawable/ic_add_image" />
+        </RelativeLayout>
+
+        <EditText
+            android:id="@+id/title_of_event"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:hint="titre de l'évenement" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:src="@drawable/ic_place">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Second number"
+                android:src="@drawable/ic_place" />
+
+            <EditText
+                android:id="@+id/localisation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:hint="Localisation" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:src="@drawable/ic_place">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Second number"
+                android:src="@drawable/ic_add_text" />
+
+            <EditText
+                android:id="@+id/description_of_event"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:hint=" Ajouter une descriptio à votre évenement" />
+
+        </LinearLayout>
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/start_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Date de début"
+                android:inputType="date" />
+
+            <ImageView
+                android:id="@+id/start_date_calendar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@id/start_date"
+                android:hint="Second number"
+                android:src="@drawable/ic_date" />
+
+
+            <EditText
+                android:id="@+id/start_Hour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/start_date_calendar"
+                android:hint="Heure de debut"
+                android:inputType="time" />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/end_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Date de fin"
+                android:inputType="date" />
+
+            <ImageView
+                android:id="@+id/end_date_calendar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="32dp"
+                android:layout_toRightOf="@id/end_date"
+                android:hint="Second number"
+                android:src="@drawable/ic_date" />
+
+
+            <EditText
+                android:id="@+id/end_Hour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/end_date_calendar"
+                android:hint="Heure de debut"
+                android:inputType="time" />
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+</LinearLayout>
+

@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/date_filter"
-    android:orientation="vertical" android:layout_width="wrap_content"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="10dp"
-    android:layout_marginRight="10dp"
-    android:paddingLeft="10dp"
-    android:paddingRight="10dp"
+    android:padding="5dp"
+    android:gravity="center"
     android:clickable="true"
     android:background="@drawable/selected_day"
 
@@ -24,6 +23,14 @@
         android:id="@+id/numbers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="1"
+        android:textColor="@color/white"
+        android:fontFamily="sans-serif"
+        android:layout_gravity="center"/>
+    <TextView
+        android:id="@+id/mydate"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:text="1"
         android:textColor="@color/white"
         android:fontFamily="sans-serif"

@@ -3,37 +3,49 @@ package com.example.faustin_12.ncdev.adapter;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Environment;
+import android.os.Handler;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.drawable.GlideDrawable;
-import com.bumptech.glide.request.RequestListener;
-import com.bumptech.glide.request.target.Target;
 import com.example.faustin_12.ncdev.R;
-import com.example.faustin_12.ncdev.model.FeedItem;
+import com.example.faustin_12.ncdev.model.ElementEvenement;
+import com.example.faustin_12.ncdev.notification.DisplayCustomNotification;
+import com.example.faustin_12.ncdev.notification.DisplayNotification;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
+
+import static android.content.ContentValues.TAG;
 
 /**
  * Created by FAUSTIN-12 on 06/07/2016.
  */
 public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
-    private List<FeedItem> articles;
+    private List<ElementEvenement> evenements;
     private Context mContext;
     private ClickListener clickListener;
     public String root = Environment.getExternalStorageDirectory().toString() + "/NCDev_images";
+    Handler mHandler = new Handler();
+    DisplayCustomNotification displayCustomNotification;
+    DisplayNotification displayNotification;
 
-    public DataAdapter(Context context, List<FeedItem> android) {
-        this.articles = android;
+    public DataAdapter(Context context, List<ElementEvenement> evenements) {
+        this.evenements = evenements;
         this.mContext = context;
+        //displayCustomNotification = new DisplayCustomNotification(context, "NCDev", " ", " ", " ", " ");
+        //displayNotification = new DisplayNotification(context, "NCDev", " ", " ", " ", " ");
     }
 
     @Override
@@ -43,96 +55,59 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(DataAdapter.ViewHolder viewHolder, final int i) {
-
-        viewHolder.title.setText(articles.get(i).getTitle());
-        viewHolder.description.setText(articles.get(i).getDescription());
-        viewHolder.time.setText(articles.get(i).getPubDate());
-        viewHolder.author.setText(articles.get(i).getAuthor());
-
-        String url = articles.get(i).getInternalImageUrl();
-        if (url != null){
-            File test = new File (url);
-            if (!test.exists())
-                url = articles.get(i).getEnclosure().getEnclosureLink();
-        }
-        else{
-            url = articles.get(i).getEnclosure().getEnclosureLink();
-        }
-        Toast.makeText(mContext, url, Toast.LENGTH_SHORT).show();
-
-        Glide.with(mContext)
-                .load(url)
-                .listener(new RequestListener<String, GlideDrawable>() {
-                    @Override
-                    public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
-                        return false;
-                    }
-
-                    @Override
-                    public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
-                        //saveImage(icon, "Image" + articles.get(i).getId(), root);
-                        return false;
-                    }
-                })
-                .fallback(R.drawable.placeholder)
-                .placeholder(R.drawable.placeholder)
-                .into(viewHolder.icom);
-
+    public void onBindViewHolder(DataAdapter.ViewHolder viewHolder, final int position) {
+        Log.d(TAG, "onBindViewHolder" +position);
+        ElementEvenement currentObj = evenements.get(position);
+        viewHolder.setData(currentObj, position);
     }
+
+    public void setData (List<ElementEvenement> infos){
+        evenements = new ArrayList<>();
+        evenements.addAll(infos);
+        notifyDataSetChanged();
+    }
+
+    public List<ElementEvenement> getData(){
+        return this.evenements;
+    }
+
+    public void addInfo (ElementEvenement item){
+        evenements.add(item);
+        notifyItemInserted(evenements.size());
+        //displayCustomNotification.setnDescription("Nouvelle Boite ! " + item.getTitle());
+        //displayCustomNotification.setnTickerM("Nouvelle Boite ! " + item.getTitle());
+        //displayCustomNotification.setnTime(""+(new SimpleDateFormat("HH:MM").format(Calendar.getInstance().getTime())));
+        //mHandler.post(displayCustomNotification);
+    }
+    public void addInfo (int position, ElementEvenement item){
+        evenements.add(position, item);
+        notifyItemInserted(evenements.size());
+        notifyItemInserted(position);
+        //displayCustomNotification.setnDescription("Nouvelle Boite ! " + item.getTitle());
+        //displayCustomNotification.setnTickerM("Nouvelle Boite ! " + item.getTitle());
+        //displayCustomNotification.setnTime(""+(new SimpleDateFormat("HH:MM").format(Calendar.getInstance().getTime())));
+        //mHandler.post(displayCustomNotification);
+    }
+
+    public String getTitle (int position){
+        return evenements.get(position).getTitle();
+    }
+    public String getDescription (int position){return evenements.get(position).getDescription();}
+    public int getDate (int position){return evenements.get(position).getDate();}
 
     public void setClickListener(ClickListener clickListener) {
         this.clickListener = clickListener;
     }
 
-    public FeedItem getItem(int position) {
-        return articles.get(position);
-    }
 
-    public void addItem(FeedItem article) {
-        articles.add(article);
-        notifyItemInserted(articles.size());
-    }
-    public void addItem(List<FeedItem> article) {
-        for(int i=0; i< article.size(); i++) {
-            articles.add(article.get(i));
-        }
-        notifyItemInserted(articles.size());
-    }
-
-    public void removeItem (FeedItem article){
-        int position = articles.indexOf(article);
-        if (position != -1){
-            articles.remove(article);
-            notifyItemRemoved(position);
-            notifyItemRangeChanged(position, articles.size());
-        }
-    }
-    public void removeItem (int position){
-        articles.remove(position);
-        notifyItemRemoved(position);
-        notifyItemRangeChanged(position, articles.size());
-    }
-
-    public void setData (List<FeedItem> data){
-        this.articles = data;
-        notifyDataSetChanged();
-    }
-
-    public void replaceItem(final FeedItem newItem, final int position) {
-        articles.remove(position);
-        articles.add(position, newItem);
-        notifyItemChanged(position);
-        notifyDataSetChanged();
-    }
 
     @Override
     public int getItemCount() {
-        return articles.size();
+        return evenements.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        private TextView title, description, time, author;
+        private TextView title, date, description;
         private ImageView icom;
 
         public ViewHolder(View view) {
@@ -140,8 +115,7 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
             view.setOnClickListener(this);
             title = (TextView) view.findViewById(R.id.list_item_title);
             description = (TextView) view.findViewById(R.id.list_item_description);
-            time = (TextView) view.findViewById(R.id.time);
-            author = (TextView) view.findViewById(R.id.author);
+            date = (TextView) view.findViewById(R.id.time);
             icom = (ImageView) view.findViewById(R.id.list_item_icon);
 
         }
@@ -150,6 +124,19 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
             if (clickListener != null) {
                 clickListener.itemClicked(v, getPosition());
             }
+        }
+
+        public void setData(ElementEvenement current, int position) {
+            this.title.setText(current.getTitle());
+            this.description.setText(current.getDescription());
+            Date date = new GregorianCalendar().getTime();
+            try {
+                date = (new SimpleDateFormat("yyyyMMdd")).parse(""+current.getDate());
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            if(!(date == (new GregorianCalendar()).getTime()))
+                this.date.setText(""+(new SimpleDateFormat("dd/MM/yyyy")).format(date));
         }
     }
 

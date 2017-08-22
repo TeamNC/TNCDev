@@ -1,25 +1,33 @@
 package com.example.faustin_12.ncdev.model;
 
 /**
- * Created by LIONEL KOUEMENI on 02/10/2016.
+ * Created by FAUSTIN-12 on 23/03/2017.
  */
+
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class ElementEvenement {
-    private int imageID;
+
+    @SerializedName("id_event")
+    @Expose
+    private Integer idEvent;
+    @SerializedName("title")
+    @Expose
     private String title;
-    int nbreEvents;
+    @SerializedName("date")
+    @Expose
+    private Integer date;
+    @SerializedName("description")
+    @Expose
+    private String description;
 
-    public ElementEvenement(int imageID,String title,int nbreEvents){
-        this.imageID=imageID;
-        this.title=title;
-        this.nbreEvents=0;
+    public int getIdEvent() {
+        return idEvent;
     }
 
-    public int getImageID() {
-        return imageID;
-    }
-
-    public void setImageID(int imageID) {
-        this.imageID = imageID;
+    public void setIdEvent(int idEvent) {
+        this.idEvent = idEvent;
     }
 
     public String getTitle() {
@@ -30,11 +38,21 @@ public class ElementEvenement {
         this.title = title;
     }
 
-    public int getNbreEvents() {
-        return nbreEvents;
+    public int getDate() {
+        return date;
     }
 
-    public void setNbreEvents(int nbreEvents) {
-        this.nbreEvents = nbreEvents;
+    public void setDate(int date) {
+        this.date = date;
     }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+
 }
