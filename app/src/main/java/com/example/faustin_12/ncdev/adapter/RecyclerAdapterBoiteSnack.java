@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.faustin_12.ncdev.R;
 import com.example.faustin_12.ncdev.model.ElementBoite;
 
@@ -21,13 +22,15 @@ import java.util.List;
 public class RecyclerAdapterBoiteSnack extends RecyclerView.Adapter <RecyclerAdapterBoiteSnack.mViewHolder> {
     private static final String TAG = RecyclerAdapterBoiteSnack.class.getSimpleName();
     private List<ElementBoite> mData;
-    private LayoutInflater mInflater;
     private ClickListener clickListener;
+    private LayoutInflater mInflater;
+    private Context context;
 
 
     public RecyclerAdapterBoiteSnack(Context context, List<ElementBoite> data){
         this.mData=data;
-        this.mInflater=LayoutInflater.from(context);
+        this.mInflater = LayoutInflater.from(context);
+        this.context = context;
     }
 
     @Override
@@ -61,15 +64,15 @@ public class RecyclerAdapterBoiteSnack extends RecyclerView.Adapter <RecyclerAda
     }
 
     public String getTitle (int position){
-        return mData.get(position).getTitle();
+        return mData.get(position).getName();
     }
     public String getDescription (int position){
-        return mData.get(position).getNameDJ();
+        return mData.get(position).getSpecificity();
     }
     public int getIcon (int position){
         return mData.get(position).getImageID();
     }
-    public String getLocalisation (int position) {return mData.get(position).getPlace();}
+    public String getLocalisation (int position) {return mData.get(position).getLocation();}
     public int getPrices (int position) {return mData.get(position).getPrices();}
 
 
@@ -128,11 +131,11 @@ public class RecyclerAdapterBoiteSnack extends RecyclerView.Adapter <RecyclerAda
         }
 
         public void setData(ElementBoite current, int position) {
-            this.title.setText(current.getTitle());
-            this.description.setText(current.getNameDJ());
-            this.imgRow.setImageResource(current.getImageID());
-            this.localisation.setText(current.getPlace());
+            this.title.setText(""+current.getName());
+            this.description.setText(""+current.getSpecificity());
+            this.localisation.setText(""+current.getLocation());
             this.nbreLove.setText(""+current.getPrices());
+            Glide.with(context).load(current.getImageID()).placeholder(R.drawable.placeholder).into(this.imgRow);
             this.current=current;
             this.position=position;
         }

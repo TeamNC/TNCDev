@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.faustin_12.ncdev.R;
 import com.example.faustin_12.ncdev.activity.fragment.DetailLiveFragment;
 import com.example.faustin_12.ncdev.model.ElementLive;
@@ -32,7 +33,7 @@ public class LiveSection extends StatelessSection {
 
     public LiveSection(String sectionTitle, List<ElementLive> sectionData, Context context,
                        FragmentManager fragmentManager, SectionedRecyclerViewAdapter sectionedRecyclerViewAdapter) {
-        super(R.layout.section_ex2_header, R.layout.section_ex2_footer, R.layout.particular_row_live);
+        super(R.layout.section_ex2_header, R.layout.section_ex2_footer, R.layout.particular_row_live2);
         this.sectionTitle = sectionTitle;
         this.sectionData = sectionData;
         this.context = context;
@@ -59,7 +60,7 @@ public class LiveSection extends StatelessSection {
             public void onClick(View v) {
                 Toast.makeText(context, String.format("You clicked on position #%s of Section %s",
                         sectionedRecyclerViewAdapter.getPositionInSection(holder.getAdapterPosition()),
-                        sectionData.get(position).getTitlelive()), Toast.LENGTH_SHORT).show();
+                        sectionData.get(position).getTitle()), Toast.LENGTH_SHORT).show();
                 DetailLiveFragment temps = new DetailLiveFragment();
                 ImageView icon = (ImageView) v.findViewById(R.id.live_item);
                 temps.setMyImageView(icon);
@@ -144,19 +145,14 @@ public class LiveSection extends StatelessSection {
 
             rootView = view;
             imgItem = (ImageView) view.findViewById(R.id.live_item);
-            liveclockicon = (ImageView) view.findViewById(R.id.live_time_icon);
             liveTitle = (TextView) view.findViewById(R.id.live_title);
-            liveTime = (TextView) view.findViewById(R.id.live_time_text);
-            nbreVue = (TextView) view.findViewById(R.id.nbrvue);
             categorycolor = view.findViewById(R.id.Couleur_categorie);
         }
 
         public void setData(ElementLive current){
-            this.imgItem.setImageResource(current.getIconIDLIVE());
-            this.liveTitle.setText(current.getTitlelive());
-            this.liveTime.setText(current.getTitlelive());
-            this.nbreVue.setText("" + current.getTitlelive());
-            //this.categorycolor.setBackgroundColor(current.getCategorieColor());
+            this.liveTitle.setText(""+current.getTitle());
+            this.categorycolor.setBackgroundColor(Color.RED);
+            Glide.with(context).load(current.getIconIDLIVE()).placeholder(R.drawable.placeholder).into(this.imgItem);
 
         }
     }

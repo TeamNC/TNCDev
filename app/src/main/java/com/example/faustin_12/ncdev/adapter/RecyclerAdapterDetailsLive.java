@@ -18,7 +18,7 @@ import java.util.List;
  * Created by LIONEL KOUEMENI on 09/04/2017.
  */
 
-public class RecyclerAdapterDetailsLive extends RecyclerView.Adapter <RecyclerAdapterDetailsLive.mViewHolder> {
+/*public class RecyclerAdapterDetailsLive extends RecyclerView.Adapter <RecyclerAdapterDetailsLive.mViewHolder> {
     private static final String TAG = RecyclerAdapterDetailsLive.class.getSimpleName();
     private List<ElementDetailsLive> mLData;
     private LayoutInflater mInflater;
@@ -118,4 +118,4 @@ public class RecyclerAdapterDetailsLive extends RecyclerView.Adapter <RecyclerAd
     public interface ClickListener {
         public void itemClicked(View view, int position);
     }
-}
+}*/
