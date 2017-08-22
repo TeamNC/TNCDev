@@ -4,12 +4,12 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Created by LIONEL KOUEMENI on 15/12/2016.
+ * Created by FAUSTIN-12 on 12/05/2016.
  */
-public class ElementOffresSpeciales {
-    @SerializedName("id_OS")
+public class ElementBoite {
+    @SerializedName("id_NC")
     @Expose
-    private int id_OS;
+    private int id_NC;
     @SerializedName("name")
     @Expose
     private String name;
@@ -29,19 +29,27 @@ public class ElementOffresSpeciales {
     @Expose
     private String DJname;
 
-    private int imageIDOffresSpeciales;
-    private String titleOffresSpeciales, price;
-    int delais;
+    private int imageID;
+    private int prices; // To be a list of prices
 
-    public ElementOffresSpeciales(){
+    public ElementBoite(int id_NC, String name, String mark, int promoter, String specificity, String location, String DJname, int imageID, int prices) {
+        this.id_NC = id_NC;
+        this.name = name;
+        this.mark = mark;
+        this.promoter = promoter;
+        this.specificity = specificity;
+        this.location = location;
+        this.DJname = DJname;
+        this.imageID = imageID;
+        this.prices = prices;
     }
 
-    public int getId_OS() {
-        return id_OS;
+    public int getId_NC() {
+        return id_NC;
     }
 
-    public void setId_OS(int id_OS) {
-        this.id_OS = id_OS;
+    public void setId_NC(int id_NC) {
+        this.id_NC = id_NC;
     }
 
     public String getName() {
@@ -92,35 +100,19 @@ public class ElementOffresSpeciales {
         this.DJname = DJname;
     }
 
-    public int getImageIDOffresSpeciales() {
-        return imageIDOffresSpeciales;
+    public int getImageID() {
+        return imageID;
     }
 
-    public void setImageIDOffresSpeciales(int imageIDOffresSpeciales) {
-        this.imageIDOffresSpeciales = imageIDOffresSpeciales;
+    public void setImageID(int imageID) {
+        this.imageID = imageID;
     }
 
-    public String getTitleOffresSpeciales() {
-        return titleOffresSpeciales;
+    public int getPrices() {
+        return prices;
     }
 
-    public void setTitleOffresSpeciales(String titleOffresSpeciales) {
-        this.titleOffresSpeciales = titleOffresSpeciales;
-    }
-
-    public String getPrice() {
-        return price;
-    }
-
-    public void setPrice(String price) {
-        this.price = price;
-    }
-
-    public int getDelais() {
-        return delais;
-    }
-
-    public void setDelais(int delais) {
-        this.delais = delais;
+    public void setPrices(int prices) {
+        this.prices = prices;
     }
 }

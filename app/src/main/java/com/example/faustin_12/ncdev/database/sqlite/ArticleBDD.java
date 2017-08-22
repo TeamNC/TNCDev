@@ -5,8 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.faustin_12.ncdev.model.Enclosure;
-import com.example.faustin_12.ncdev.model.FeedItem;
+import com.example.faustin_12.ncdev.model.sample.Enclosure;
+import com.example.faustin_12.ncdev.model.sample.FeedItem;
 
 import java.util.ArrayList;
 import java.util.List;

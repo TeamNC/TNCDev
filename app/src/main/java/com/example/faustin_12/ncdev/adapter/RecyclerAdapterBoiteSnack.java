@@ -10,11 +10,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.faustin_12.ncdev.R;
-import com.example.faustin_12.ncdev.model.ElementBoiteSnack;
+import com.example.faustin_12.ncdev.model.ElementBoite;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -22,12 +20,12 @@ import java.util.List;
  */
 public class RecyclerAdapterBoiteSnack extends RecyclerView.Adapter <RecyclerAdapterBoiteSnack.mViewHolder> {
     private static final String TAG = RecyclerAdapterBoiteSnack.class.getSimpleName();
-    private List<ElementBoiteSnack> mData;
+    private List<ElementBoite> mData;
     private LayoutInflater mInflater;
     private ClickListener clickListener;
 
 
-    public RecyclerAdapterBoiteSnack(Context context, List<ElementBoiteSnack> data){
+    public RecyclerAdapterBoiteSnack(Context context, List<ElementBoite> data){
         this.mData=data;
         this.mInflater=LayoutInflater.from(context);
     }
@@ -57,7 +55,7 @@ public class RecyclerAdapterBoiteSnack extends RecyclerView.Adapter <RecyclerAda
     @Override
     public void onBindViewHolder(mViewHolder holder, final int position) {
         Log.d(TAG, "onBindViewHolder" +position);
-        ElementBoiteSnack currentObj = mData.get(position);
+        ElementBoite currentObj = mData.get(position);
         holder.setData(currentObj, position);
 
     }
@@ -80,18 +78,18 @@ public class RecyclerAdapterBoiteSnack extends RecyclerView.Adapter <RecyclerAda
         return mData.size();
     }
 
-    public void setData (List<ElementBoiteSnack> infos){
+    public void setData (List<ElementBoite> infos){
         mData = new ArrayList<>();
         mData.addAll(infos);
         notifyDataSetChanged();
     }
 
-    public void addInfo (ElementBoiteSnack item){
+    public void addInfo (ElementBoite item){
         mData.add(item);
         notifyItemInserted(mData.size());
     }
 
-    public void removeItem (ElementBoiteSnack item){
+    public void removeItem (ElementBoite item){
         int position = mData.indexOf(item);
         if (position != -1){
             mData.remove(item);
@@ -109,7 +107,7 @@ public class RecyclerAdapterBoiteSnack extends RecyclerView.Adapter <RecyclerAda
     class mViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         TextView title, description, localisation, nbreLove;
         ImageView imgRow;
-        ElementBoiteSnack current;
+        ElementBoite current;
         int position;
 
         public mViewHolder(View itemView) {
@@ -129,7 +127,7 @@ public class RecyclerAdapterBoiteSnack extends RecyclerView.Adapter <RecyclerAda
             }
         }
 
-        public void setData(ElementBoiteSnack current, int position) {
+        public void setData(ElementBoite current, int position) {
             this.title.setText(current.getTitle());
             this.description.setText(current.getNameDJ());
             this.imgRow.setImageResource(current.getImageID());

@@ -105,7 +105,7 @@ public class LiveFragment extends Fragment implements RecyclerAdapterLive.ClickL
     }
     public void itemClicked(View view, int position) {
         DetailLiveFragment temps = new DetailLiveFragment();
-        //temps.setTitle(adapter.getTitle(position));
+        //temps.setTitle(adapter.getName(position));
         //temps.setSince(adapter.getSince(position));
         //temps.setPrice("" + adapter.getPrice(position));
         ImageView icon = (ImageView) view.findViewById(R.id.live_item);

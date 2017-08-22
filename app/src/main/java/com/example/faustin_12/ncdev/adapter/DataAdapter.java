@@ -74,8 +74,8 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
     public void addInfo (ElementEvenement item){
         evenements.add(item);
         notifyItemInserted(evenements.size());
-        //displayCustomNotification.setnDescription("Nouvelle Boite ! " + item.getTitle());
-        //displayCustomNotification.setnTickerM("Nouvelle Boite ! " + item.getTitle());
+        //displayCustomNotification.setnDescription("Nouvelle Boite ! " + item.getName());
+        //displayCustomNotification.setnTickerM("Nouvelle Boite ! " + item.getName());
         //displayCustomNotification.setnTime(""+(new SimpleDateFormat("HH:MM").format(Calendar.getInstance().getTime())));
         //mHandler.post(displayCustomNotification);
     }
@@ -83,8 +83,8 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
         evenements.add(position, item);
         notifyItemInserted(evenements.size());
         notifyItemInserted(position);
-        //displayCustomNotification.setnDescription("Nouvelle Boite ! " + item.getTitle());
-        //displayCustomNotification.setnTickerM("Nouvelle Boite ! " + item.getTitle());
+        //displayCustomNotification.setnDescription("Nouvelle Boite ! " + item.getName());
+        //displayCustomNotification.setnTickerM("Nouvelle Boite ! " + item.getName());
         //displayCustomNotification.setnTime(""+(new SimpleDateFormat("HH:MM").format(Calendar.getInstance().getTime())));
         //mHandler.post(displayCustomNotification);
     }
@@ -93,7 +93,7 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
         return evenements.get(position).getTitle();
     }
     public String getDescription (int position){return evenements.get(position).getTitle();}
-    public int getDate (int position){return evenements.get(position).getNbreEvents();}
+    public int getDate (int position){return evenements.get(position).getImage();}
 
     public void setClickListener(ClickListener clickListener) {
         this.clickListener = clickListener;
@@ -131,7 +131,7 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
             this.description.setText(current.getTitle());
             Date date = new GregorianCalendar().getTime();
             try {
-                date = (new SimpleDateFormat("yyyyMMdd")).parse(""+current.getNbreEvents());
+                date = (new SimpleDateFormat("yyyyMMdd")).parse(""+current.getImage());
             } catch (ParseException e) {
                 e.printStackTrace();
             }

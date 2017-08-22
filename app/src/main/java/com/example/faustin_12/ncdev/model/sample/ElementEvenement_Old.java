@@ -1,4 +1,4 @@
-package com.example.faustin_12.ncdev.model;
+package com.example.faustin_12.ncdev.model.sample;
 
 /**
  * Created by FAUSTIN-12 on 15/01/2017.

@@ -120,7 +120,7 @@ public class TabsAdapter2 extends FragmentStatePagerAdapter{
         return int_items;
     }
     /**
-     * This method returns the title of the tab according to the position.
+     * This method returns the name of the tab according to the position.
      */
 
 

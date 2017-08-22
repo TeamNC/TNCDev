@@ -1,4 +1,4 @@
-package com.example.faustin_12.ncdev.model;
+package com.example.faustin_12.ncdev.model.sample;
 
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;

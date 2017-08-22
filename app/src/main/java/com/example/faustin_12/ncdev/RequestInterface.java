@@ -1,6 +1,6 @@
 package com.example.faustin_12.ncdev;
 
-import com.example.faustin_12.ncdev.model.Feed;
+import com.example.faustin_12.ncdev.model.sample.Feed;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

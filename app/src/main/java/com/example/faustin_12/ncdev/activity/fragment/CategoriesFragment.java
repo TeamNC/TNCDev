@@ -91,7 +91,7 @@ public class CategoriesFragment extends Fragment {    public static TabLayout ta
     }
 }
 
-   /*  public class CategoriesFragment extends Fragment implements RecyclerAdapterFiltreDate.ClickListener{
+   /*  public class CategoriesFragment extends Fragment implements RecyclerAdapterEvenement.ClickListener{
 
          // Array of strings storing country names
          int index=0;
@@ -100,7 +100,7 @@ public class CategoriesFragment extends Fragment {    public static TabLayout ta
          ;
 
          RecyclerView recyclerView;
-         RecyclerAdapterFiltreDate mAdapter;
+         RecyclerAdapterEvenement mAdapter;
          FragmentManager mFragmentManager;
 
          public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -128,7 +128,7 @@ public class CategoriesFragment extends Fragment {    public static TabLayout ta
              );
 
              recyclerView = (RecyclerView) v.findViewById(R.id.recyclerList2);
-             mAdapter = new RecyclerAdapterFiltreDate(getContext(), new ArrayList<ElementCatégorie>());
+             mAdapter = new RecyclerAdapterEvenement(getContext(), new ArrayList<ElementCatégorie>());
              recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
              mFragmentManager=getActivity().getSupportFragmentManager();
 
@@ -185,7 +185,7 @@ public class CategoriesFragment extends Fragment {    public static TabLayout ta
          public void itemClicked(View view, int position) {
              Toast.makeText(getActivity(), "Tu as sélectionné :" + mAdapter.getDate(position), Toast.LENGTH_SHORT).show();
              DetailFragment temps = new DetailFragment();
-           //  temps.setTitle(mAdapter.getTitle(position));
+           //  temps.setTitle(mAdapter.getName(position));
              temps.setDate(mAdapter.getDate(position));
              FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
              fragmentTransaction.replace(R.id.containerView, temps).addToBackStack(null).commit();

@@ -58,7 +58,7 @@ package com.example.faustin_12.ncdev.adapter;
     }
     public String getSince (int position) {return mLData.get(position).getSince();}
     public int getNbreLove (int position) {return mLData.get(position).getNbreLove();}
-    public int getImageDL (int position){return mLData.get(position).getImageID();}
+    public int getImageDL (int position){return mLData.get(position).getImage();}
     @Override
     public int getItemCount() {
         return mLData.size();
@@ -106,7 +106,7 @@ package com.example.faustin_12.ncdev.adapter;
             this.since.setText(current.getSince());
             this.description_live_details.setText(current.getDescription());
          //   this.DLicon.setImageResource(current.getIconID());
-           this.imgDL.setImageResource(current.getImageID());
+           this.imgDL.setImageResource(current.getImage());
            // this.nbreLove.setText(""+current.getNbreLove());
             this.current=current;
             this.position=position;

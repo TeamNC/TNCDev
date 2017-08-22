@@ -18,10 +18,9 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.example.faustin_12.ncdev.R;
-import com.example.faustin_12.ncdev.adapter.RecyclerAdapterEvenement;
+import com.example.faustin_12.ncdev.adapter.RecyclerAdapterCategorie;
 import com.example.faustin_12.ncdev.model.ElementCategorie;
 
 import java.text.DateFormat;
@@ -32,7 +31,7 @@ import java.util.Calendar;
 /**
  * Created by FAUSTIN-12 on 17/03/2016.
  */
-public class EvenementFragment extends Fragment implements RecyclerAdapterEvenement.ClickListener{
+public class EvenementFragment extends Fragment implements RecyclerAdapterCategorie.ClickListener{
     // Array of strings storing country names
     int index=0;
     String[] countries = new String[] {"India", "Pakistan", "Sri Lanka", "China", "Bangladesh", "Nepal", "Afghanistan", "North Korea", "South Korea", "Japan"
@@ -52,7 +51,7 @@ public class EvenementFragment extends Fragment implements RecyclerAdapterEvenem
     String[] currency = new String[]{"Indian Rupee", "Pakistani Rupee", "Sri Lankan Rupee", "Renminbi", "Bangladeshi Taka", "Nepalese Rupee", "Afghani", "North Korean Won", "South Korean Won", "Japanese Yen"
     };
     RecyclerView recyclerView;
-    RecyclerAdapterEvenement mAdapter;
+    RecyclerAdapterCategorie mAdapter;
     FragmentManager mFragmentManager;
 
     @Override
@@ -77,7 +76,7 @@ public class EvenementFragment extends Fragment implements RecyclerAdapterEvenem
         );
 
         recyclerView = (RecyclerView) v.findViewById(R.id.recyclerList);
-        mAdapter = new RecyclerAdapterEvenement(getContext(), new ArrayList<ElementCategorie>());
+        mAdapter = new RecyclerAdapterCategorie(getContext(), new ArrayList<ElementCategorie>());
 
 
        // LinearLayoutManager mLinearLayoutManager = new LinearLayoutManager(getContext());
@@ -190,7 +189,7 @@ public class EvenementFragment extends Fragment implements RecyclerAdapterEvenem
    // @Override
     public void itemClicked(View view, int position) {
         CategoriesFragment temps = new CategoriesFragment();
-        temps.setCategorie(mAdapter.getTitle(position));
+        temps.setCategorie(mAdapter.getName(position));
         FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.containerView0, temps).addToBackStack(null).commit();
     }

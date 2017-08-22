@@ -9,28 +9,34 @@ import com.google.gson.annotations.SerializedName;
 public class ElementCategorie {
     @SerializedName("id_cat")
     @Expose
-    private Integer idCat;
+    private int id_cat;
     @SerializedName("name")
     @Expose
     private String name;
     @SerializedName("nombreevts")
     @Expose
-    private Integer nombreevts;
-    private int imageID;
+    private int nombreevts;
+    @SerializedName("image")
+    @Expose
+    private String image;
+    @SerializedName("couleur")
+    @Expose
+    private int couleur;
 
-    public ElementCategorie(int idCat, int imageID, String name, int nombreevts){
-        this.idCat = idCat;
-        this.imageID=imageID;
+    public ElementCategorie(int id_cat, String name, int nombreevts, String image, int couleur) {
+        this.id_cat = id_cat;
         this.name = name;
         this.nombreevts = nombreevts;
+        this.image = image;
+        this.couleur = couleur;
     }
 
-    public Integer getIdCat() {
-        return idCat;
+    public int getId_cat() {
+        return id_cat;
     }
 
-    public void setIdCat(Integer idCat) {
-        this.idCat = idCat;
+    public void setId_cat(int id_cat) {
+        this.id_cat = id_cat;
     }
 
     public String getName() {
@@ -41,19 +47,27 @@ public class ElementCategorie {
         this.name = name;
     }
 
-    public Integer getNombreevts() {
+    public int getNombreevts() {
         return nombreevts;
     }
 
-    public void setNombreevts(Integer nombreevts) {
+    public void setNombreevts(int nombreevts) {
         this.nombreevts = nombreevts;
     }
 
-    public int getImageID() {
-        return imageID;
+    public String getImage() {
+        return image;
     }
 
-    public void setImageID(int imageID) {
-        this.imageID = imageID;
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public int getCouleur() {
+        return couleur;
+    }
+
+    public void setCouleur(int couleur) {
+        this.couleur = couleur;
     }
 }

@@ -18,7 +18,7 @@ import android.widget.Toast;
 
 import com.example.faustin_12.ncdev.R;
 import com.example.faustin_12.ncdev.adapter.RecyclerAdapterBoiteSnack;
-import com.example.faustin_12.ncdev.model.ElementBoiteSnack;
+import com.example.faustin_12.ncdev.model.ElementBoite;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -63,7 +63,7 @@ public class  BoiteFragment extends Fragment {
                 Calendar c = Calendar.getInstance();
                 DateFormat df = new SimpleDateFormat("HH:mm");
                 if (index > 9) index = 0;
-                ElementBoiteSnack item = new ElementBoiteSnack(flags[index], countries[index], currency[index], index*1000, "Localisation #" +index);
+                ElementBoite item = new ElementBoite(flags[index], countries[index], currency[index], index*1000, "Localisation #" +index);
                 if(index==0) item.setImageID(R.drawable.particular_row);
                 addInfo(item);
                 index++;
@@ -72,7 +72,7 @@ public class  BoiteFragment extends Fragment {
         );
 
         recyclerView = (RecyclerView) v.findViewById(R.id.BoiteList);
-        mAdapter = new RecyclerAdapterBoiteSnack(getContext(), new ArrayList<ElementBoiteSnack>());
+        mAdapter = new RecyclerAdapterBoiteSnack(getContext(), new ArrayList<ElementBoite>());
 
         LinearLayoutManager mLinearLayoutManager = new LinearLayoutManager(getContext());
         mLinearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -88,7 +88,7 @@ public class  BoiteFragment extends Fragment {
         return v;
     }
 
-    public void addInfo (ElementBoiteSnack item){
+    public void addInfo (ElementBoite item){
         mAdapter.addInfo(item);
     }
 

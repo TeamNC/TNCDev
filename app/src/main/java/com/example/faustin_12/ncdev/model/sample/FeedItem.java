@@ -1,4 +1,4 @@
-package com.example.faustin_12.ncdev.model;
+package com.example.faustin_12.ncdev.model.sample;
 
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
@@ -18,7 +18,7 @@ public class FeedItem implements Serializable {
     private String description;
     @Element(name = "author", required = false)
     private String author;
-    //@ElementBoiteSnack(name = "category", required = false)
+    //@ElementBoite(name = "category", required = false)
     //private String category;
     @Element(name = "comments", required = false)
     private String comments;
