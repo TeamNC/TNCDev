@@ -6,21 +6,16 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:context="com.example.faustin_12.ncdev.activity.MainActivity">
-
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar2"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        >
-
+        android:layout_height="200dp">
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/collapsing_toolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:contentScrim="?attr/colorPrimary"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            >
-
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
             <ImageView
                 android:id="@+id/imgRow"
                 android:layout_alignParentTop="true"
@@ -47,189 +42,275 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/toolbarD">
-
                 <include layout="@layout/media_attach_menu" />
-
             </io.codetail.widget.RevealFrameLayout>
             </RelativeLayout>
-
         </android.support.design.widget.CollapsingToolbarLayout>
-
-
     </android.support.design.widget.AppBarLayout>
-
     <android.support.v4.widget.NestedScrollView
         android:id="@+id/testons1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@color/red"
+        android:background="@color/viewBg"
         android:clipToPadding="false"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
-
-        <android.support.v7.widget.CardView
-            android:layout_marginTop="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardBackgroundColor="@color/white"
-            app:cardUseCompatPadding="true"
-            app:cardCornerRadius="0dp"
-            android:layout_marginLeft="7dp"
-            android:layout_marginRight="7dp"
-            >
-
-        <RelativeLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <RelativeLayout
-                android:id="@+id/middle"
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                >
-                <LinearLayout
-                    android:id="@+id/title_part"
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="7dp"
+                android:layout_marginTop="15dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="0dp"
+                app:cardUseCompatPadding="true">
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    >
-                <de.hdodenhof.circleimageview.CircleImageView
+                    android:orientation="vertical">
+                    <RelativeLayout
+                        android:id="@+id/middle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <LinearLayout
+                            android:id="@+id/title_part"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/profile_image"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:src="@drawable/audrey" />
+                            <TextView
+                                android:id="@+id/title_actualite"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_margin="@dimen/activity_horizontal_margin"
+                                android:ellipsize="none"
+                                android:fontFamily="sans-serif"
+                                android:includeFontPadding="false"
+                                android:maxLines="1"
+                                android:minLines="1"
+                                android:text="hommage à ANDRE LOTTIN"
+                                android:textColor="@color/black"
+                                android:textSize="18sp"
+                                android:textStyle="italic" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:id="@+id/days"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/title_part"
+                            android:orientation="horizontal">
+                            <ImageView
+                                android:id="@+id/clock"
+                                android:contentDescription="@null"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@null"
+                                android:src="@drawable/ic_clock_black" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:fontFamily="sans-serif"
+                                android:paddingLeft="5dp"
+                                android:text="Date.Heure : min"
+                                android:textColor="@color/black" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:id="@+id/part_location"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/days"
+                            android:orientation="horizontal">
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_place" />
+                            <TextView
+                                android:id="@+id/localisation"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:fontFamily="sans-serif"
+                                android:text="localisation"
+                                android:textColor="@color/black"
+                                android:textSize="15sp"
+                                android:textStyle="italic" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:id="@+id/details_nbre_love"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/part_location"
+                            android:orientation="horizontal">
+                            <ImageView
+                                android:id="@+id/pic_d_love"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_red_love" />
+                            <TextView
+                                android:id="@+id/dnre_love"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:fontFamily="sans-serif"
+                                android:text="1.5k"
+                                android:textColor="@color/black"
+                                android:textSize="18sp"
+                                android:textStyle="italic" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:id="@+id/details_nbre_places"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/details_nbre_love"
+                            android:orientation="horizontal">
 
-                    android:id="@+id/profile_image"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:src="@drawable/audrey"
-                    />
-                <TextView
-                    android:id="@+id/title_actualite"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:textStyle="italic"
-                    android:fontFamily="sans-serif"
-                    android:layout_gravity="center_vertical"
-                    android:layout_margin="@dimen/activity_horizontal_margin"
-                    android:includeFontPadding="false"
-                    android:maxLines="1"
-                    android:minLines="1"
-                    android:ellipsize="none"
-                    android:text="hommage à ANDRE LOTTIN"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:id="@+id/days"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/title_part"
-                    android:orientation="horizontal">
-                    <ImageView
-                        android:id="@+id/clock"
+                            <ImageView
+                                android:id="@+id/pic_d_tickets"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_blue_tickets" />
+                            <TextView
+                                android:id="@+id/dnre_tickets"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:fontFamily="sans-serif"
+                                android:text="1.5k places/tickets"
+                                android:textColor="@color/black"
+                                android:textSize="18sp"
+                                android:textStyle="italic" />
+                        </LinearLayout>
+                        <TextView
+                            android:id="@+id/d_category"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/details_nbre_places"
+                            android:layout_marginLeft="07dp"
+                            android:layout_marginStart="07dp"
+                            android:fontFamily="sans-serif"
+                            android:text="#soirée #saintvalentin"
+                            android:textColor="@color/black"
+                            android:textSize="17sp"
+                            android:textStyle="italic" />
+                        <TextView
+                            android:id="@+id/d_guests"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/d_category"
+                            android:layout_marginLeft="07dp"
+                            android:layout_marginStart="07dp"
+                            android:fontFamily="sans-serif"
+                            android:text="Guest:@Tenor@Maahlox@pentium"
+                            android:textColor="@color/black"
+                            android:textSize="17sp"
+                            android:textStyle="italic" />
+                        <TextView
+                            android:id="@+id/d_sponsors"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/d_guests"
+                            android:layout_marginLeft="07dp"
+                            android:layout_marginStart="07dp"
+                            android:fontFamily="sans-serif"
+                            android:text="sponsors:@MTN@Orange@HotelBellevue"
+                            android:textColor="@color/black"
+                            android:textSize="17sp"
+                            android:textStyle="italic" />
+                    </RelativeLayout>
+                    <TextView
+                        android:id="@+id/textDetail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@null"
-                        android:src="@drawable/ic_clock_black" />
-                    <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_below="@+id/middle"
+                        android:layout_gravity="center"
+                        android:fontFamily="serif"
+                        android:lineSpacingMultiplier="0.9"
                         android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="5dp"
+                        android:text="Noir est son avenir proche, le bruit des anges frappe à ma porte,le hashtag vie tient peut etre d'elle"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+                    <View
+                        android:id="@+id/line"
+                        android:layout_width="match_parent"
+                        android:layout_height="10dp"
+                        android:layout_below="@+id/textDetail"
+                        android:background="@color/viewBg"
+                        android:paddingBottom="?attr/actionBarSize" />
+                    <LinearLayout
+                        android:id="@+id/daily"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:text="Date.Heure : min"
-                        android:fontFamily="sans-serif"
-                        android:textColor="@color/black"
-                        />
-
-                </LinearLayout>
-                <LinearLayout
-                    android:id="@+id/part_location"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/days"
-                    android:orientation="horizontal">
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/ic_place"/>
+                        android:layout_gravity="bottom"
+                        android:weightSum="2"
+                        android:background="@color/white"
+                        android:padding="20dp"
+                        android:layout_below="@+id/line"
+                        xmlns:android="http://schemas.android.com/apk/res/android">
+                      <LinearLayout
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:background="@color/md_indigo_500">
+                        <ImageButton
+                            android:contentDescription="@null"
+                            android:id="@+id/prix_details"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/ic_add_favorite_white"
+                            android:textColor="#FFFFFF"
+                            android:gravity="center"
+                            android:textAppearance="@style/collapsedappbar"
+                            android:layout_weight="0.5"
+                            android:text="ca m'intéresse"
+                            android:fontFamily="sans-serif"
+                            android:background="@color/md_indigo_900"
+                            />
+                        <Button
+                            android:id="@+id/achat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1.5"
+                            android:text="ca m'intéresse"
+                            android:background="@drawable/round_corner3"
+                            android:textColor="@color/white"
+                            android:padding="10dp"
+                            />
+                      </LinearLayout>
+                    </LinearLayout>
+                    <View
+                        android:id="@+id/line2"
+                        android:layout_width="match_parent"
+                        android:layout_height="5dp"
+                        android:layout_below="@+id/daily"
+                        android:background="@color/viewBg" />
                     <TextView
-                        android:id="@+id/localisation"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/nb_participants"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="localisation"
-                        android:layout_gravity="center_vertical"
-                        android:fontFamily="sans-serif"
-                        android:textSize="15sp"
-                        android:textStyle="italic"
-                        android:textColor="@color/black"
-                        />
-
-
-                </LinearLayout>
-                <LinearLayout
-                    android:id="@+id/details_nbre_love"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/part_location"
-                    android:orientation="horizontal">
-                    <ImageView
-                        android:id="@+id/pic_d_love"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/ic_red_love"/>
+                        android:text="40"
+                        android:textStyle="bold"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_below="@+id/line2" />
                     <TextView
-                        android:id="@+id/dnre_love"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/text_nb_participants"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="1.5k"
-                        android:layout_gravity="center_vertical"
-                        android:fontFamily="sans-serif"
-                        android:textSize="18sp"
-                        android:textStyle="italic"
-                        android:textColor="@color/black"
-                        />
-                </LinearLayout>
-                <TextView
-                    android:id="@+id/d_category"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="#soirée #saintvalentin"
-                    android:fontFamily="sans-serif"
-                    android:textSize="17sp"
-                    android:layout_marginLeft="07dp"
-                    android:layout_marginStart="07dp"
-                    android:layout_below="@+id/details_nbre_love"
-                    android:textStyle="italic"
-                    android:textColor="@color/black"
-                    />
-
-
-
-            </RelativeLayout>
-
-            <TextView
-                android:id="@+id/textDetail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Noir est son avenir proche, le bruit des anges frappe à ma porte,le hashtag vie tient peut etre d'elle"
-                android:fontFamily="serif"
-                android:lineSpacingMultiplier="0.9"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-                android:layout_below="@+id/middle"
-                android:paddingRight="5dp"
-                android:paddingLeft="5dp"
-                android:paddingTop="5dp"
-                android:paddingBottom="?attr/actionBarSize"
-
-               />
-        </RelativeLayout>
-
-        </android.support.v7.widget.CardView>
+                        android:layout_gravity="center_horizontal"
+                        android:text="participants"
+                        android:layout_below="@+id/nb_participants" />
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
         </FrameLayout>
     </android.support.v4.widget.NestedScrollView>
-
         <android.support.design.widget.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -240,11 +321,9 @@
             app:backgroundTint="#003366"
             app:rippleColor="@color/blue"
             app:layout_anchor="@id/appbar2"
-            app:layout_anchorGravity="bottom|right|end"
-            />
-
+            app:layout_anchorGravity="bottom|right|end" />
     <LinearLayout
-        android:id="@+id/daily"
+        android:id="@+id/daily3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
@@ -252,10 +331,8 @@
         android:background="#B3000000"
         android:padding="5dp"
         xmlns:android="http://schemas.android.com/apk/res/android">
-
-
             <TextView
-                android:id="@+id/prix_details"
+                android:id="@+id/prix_details3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="GRATUIT"
@@ -263,19 +340,15 @@
                 android:gravity="center"
                 android:textAppearance="@style/collapsedappbar"
                 android:layout_weight="1"
-                android:fontFamily="sans-serif"
-               />
-
+                android:fontFamily="sans-serif" />
         <Button
-            android:id="@+id/achat"
+            android:id="@+id/achat3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@drawable/round_corner"
             android:text="Acheter votre billet"
             android:textColor="@color/white"
-            android:padding="10dp"
-            />
+            android:padding="10dp" />
     </LinearLayout>
-
 </android.support.design.widget.CoordinatorLayout>
