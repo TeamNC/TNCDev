@@ -26,9 +26,9 @@ import java.util.ArrayList;
 public class CategoriesFragment extends Fragment {    public static TabLayout tabLayout2;
     public static ViewPager viewPager;
     public int tabId=0;
-    public int check;
+    public String[] date = {"a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a" };
+    public String categorie;
     public TabsAdapter2 adapter;
-    public EvenementFragment evenementFragment = new EvenementFragment();
 
     @Nullable
     @Override
@@ -45,10 +45,9 @@ public class CategoriesFragment extends Fragment {    public static TabLayout ta
         /**
          *Set an Apater for the View Pager
          */
-       // mdata = evenementFragment.getData();
+        // mdata = evenementFragment.getData();
 
         viewPager.setAdapter(adapter);
-        viewPager.setCurrentItem(tabId);
 
         /**
          * Now , this is a workaround ,
@@ -57,16 +56,27 @@ public class CategoriesFragment extends Fragment {    public static TabLayout ta
          */
 
         tabLayout2.setupWithViewPager(viewPager);
+
         /**
          * Iterate over all the tabs and set the custom view
          */
 
         for (int i =0 ;i<tabLayout2.getTabCount();i++)
         {
-           TabLayout.Tab tab =tabLayout2.getTabAt(i);
-           tab.setCustomView(TabsAdapter2.getTabView(i));
+            TabLayout.Tab tab =tabLayout2.getTabAt(i);
+            tab.setCustomView(TabsAdapter2.getTabView(i));
+            View v = TabsAdapter2.getTabView(i);
+            TextView tv1=(TextView)v.findViewById(R.id.mydate);
+            date[i]= tv1.getText().toString();
         }
+
+        adapter.setCategorie(categorie);
+        adapter.setDate(date);
+        TabLayout.Tab tab = tabLayout2.getTabAt(10);
+        tab.select();
+
         Toolbar toolbarC= (Toolbar) x.findViewById(R.id.toolbarC);
+        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbarC);
         toolbarC.setNavigationIcon(R.drawable.ic_action_important);
         toolbarC.setNavigationIcon(R.drawable.ic_action_back);
         toolbarC.setNavigationOnClickListener(new View.OnClickListener() {
@@ -77,8 +87,7 @@ public class CategoriesFragment extends Fragment {    public static TabLayout ta
             }
         });
 
-        Toolbar toolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
-        toolbar.setVisibility(View.GONE);
+        Toast.makeText(getContext(), "Catégorie : " + categorie, Toast.LENGTH_SHORT).show();
 
         return x;
     }
@@ -89,6 +98,7 @@ public class CategoriesFragment extends Fragment {    public static TabLayout ta
     public void setTabId(int tabid){
         this.tabId=tabid;
     }
+    public void setCategorie(String categorie){this.categorie = categorie;}
 }
 
    /*  public class CategoriesFragment extends Fragment implements RecyclerAdapterEvenement.ClickListener{
