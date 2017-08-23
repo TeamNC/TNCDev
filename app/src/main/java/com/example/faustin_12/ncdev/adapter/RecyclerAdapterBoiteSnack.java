@@ -92,6 +92,12 @@ public class RecyclerAdapterBoiteSnack extends RecyclerView.Adapter <RecyclerAda
         notifyItemInserted(mData.size());
     }
 
+    public void addInfo (int position, ElementBoite item){
+        mData.add(position, item);
+        notifyItemInserted(mData.size());
+        notifyItemInserted(position);
+    }
+
     public void removeItem (ElementBoite item){
         int position = mData.indexOf(item);
         if (position != -1){

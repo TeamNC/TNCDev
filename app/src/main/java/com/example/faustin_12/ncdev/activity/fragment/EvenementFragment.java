@@ -3,6 +3,7 @@ package com.example.faustin_12.ncdev.activity.fragment;
 
 import android.content.res.Resources;
 import android.graphics.Rect;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -36,16 +37,16 @@ public class EvenementFragment extends Fragment implements RecyclerAdapterCatego
     int index=0;
     String[] countries = new String[] {"India", "Pakistan", "Sri Lanka", "China", "Bangladesh", "Nepal", "Afghanistan", "North Korea", "South Korea", "Japan"
     };
-    int[] flags = new int[]{R.drawable.images6,
-            R.drawable.images3,
-            R.drawable.images6,
-            R.drawable.images3,
-            R.drawable.images6,
-            R.drawable.images3,
-            R.drawable.images6,
-            R.drawable.images3,
-            R.drawable.audrey,
-            R.drawable.images3
+    String[] flags = new String[]{"R.drawable.images6",
+            "R.drawable.images3",
+            "R.drawable.images6",
+            "R.drawable.images3",
+            "R.drawable.images6",
+            "R.drawable.images3",
+            "R.drawable.images6",
+            "R.drawable.images3",
+            "R.drawable.audrey",
+            "R.drawable.images3"
     };
     // Array of strings to store currencies
     String[] currency = new String[]{"Indian Rupee", "Pakistani Rupee", "Sri Lankan Rupee", "Renminbi", "Bangladeshi Taka", "Nepalese Rupee", "Afghani", "North Korean Won", "South Korean Won", "Japanese Yen"
@@ -68,7 +69,8 @@ public class EvenementFragment extends Fragment implements RecyclerAdapterCatego
                                              Calendar c = Calendar.getInstance();
                                              DateFormat df = new SimpleDateFormat("yyyy-MM-dd-hh.mm.ss");
                                              if (index > 9) index = 0;
-                                             ElementCategorie item = new ElementCategorie(flags[index],countries[index],index);
+                                             ElementCategorie item = new ElementCategorie(index,
+                                                     countries[index],0,flags[index], 0);
                                              addInfo(item);
                                              index++;
                                          }
@@ -189,7 +191,7 @@ public class EvenementFragment extends Fragment implements RecyclerAdapterCatego
    // @Override
     public void itemClicked(View view, int position) {
         CategoriesFragment temps = new CategoriesFragment();
-        temps.setCategorie(mAdapter.getName(position));
+        //temps.setCategorie(mAdapter.getName(position));
         FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.containerView0, temps).addToBackStack(null).commit();
     }

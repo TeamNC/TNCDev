@@ -135,7 +135,7 @@ public class LiveFragment2 extends Fragment {
                     public void onClick(View v) {
                         Toast.makeText(getContext(), String.format("Clicked on position #%s of Section %s",
                                 sectionAdapter.getPositionInSection(itemHolder.getAdapterPosition()), title), Toast.LENGTH_SHORT).show();
-                        DetailLiveFragment2 temps = new DetailLiveFragment2();
+                        DetailLiveFragment temps = new DetailLiveFragment();
                        // ImageView icon = (ImageView) v.findViewById(R.id.live_item);
                        // temps.setMyImageView(icon);
                         FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();

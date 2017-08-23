@@ -75,6 +75,12 @@ public class RecyclerAdapterLive extends RecyclerView.Adapter<RecyclerAdapterLiv
         notifyItemInserted(mData.size());
     }
 
+    public void addInfo (int position, ElementDetailsLive item){
+        mData.add(position, item);
+        notifyItemInserted(mData.size());
+        notifyItemInserted(position);
+    }
+
     public void setData (List<ElementDetailsLive> mData){
         this.mData = mData;
         notifyDataSetChanged();

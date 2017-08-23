@@ -16,6 +16,7 @@ import android.widget.ImageView;
 
 import com.example.faustin_12.ncdev.R;
 import com.example.faustin_12.ncdev.adapter.RecyclerAdapterLive;
+import com.example.faustin_12.ncdev.model.ElementDetailsLive;
 import com.example.faustin_12.ncdev.model.ElementLive;
 
 import java.util.ArrayList;
@@ -86,7 +87,7 @@ public class LiveFragment extends Fragment implements RecyclerAdapterLive.ClickL
         });
         */
         recyclerView= (RecyclerView) layout.findViewById(R.id.LiveList);
-        adapter=new RecyclerAdapterLive(getContext(),new ArrayList<ElementLive>());
+        adapter=new RecyclerAdapterLive(getContext(),new ArrayList<ElementDetailsLive>());
         adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -95,7 +96,7 @@ public class LiveFragment extends Fragment implements RecyclerAdapterLive.ClickL
         return layout;
     }
 
-    public void addItemLive (ElementLive item){adapter.addItemLive(item);
+    public void addItemLive (ElementDetailsLive item){adapter.addInfo(item);
     }
 
     @Override

@@ -79,6 +79,12 @@ public class RecyclerAdapterEvenement extends RecyclerView.Adapter <RecyclerAdap
         notifyItemInserted(mData.size());
     }
 
+    public void addInfo (int position, ElementActualite item){
+        mData.add(position, item);
+        notifyItemInserted(mData.size());
+        notifyItemInserted(position);
+    }
+
     public void setData (List<ElementActualite> mData){
         this.mData = mData;
         notifyDataSetChanged();

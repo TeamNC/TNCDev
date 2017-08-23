@@ -18,7 +18,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.faustin_12.ncdev.R;
-import com.example.faustin_12.ncdev.adapter.RecyclerAdapterDetailsLive;
+import com.example.faustin_12.ncdev.adapter.RecyclerAdapterLive;
 import com.example.faustin_12.ncdev.model.ElementDetailsLive;
 
 import java.text.DateFormat;
@@ -30,7 +30,7 @@ import java.util.Calendar;
  * Created by LIONEL KOUEMENI on 08/04/2017.
  */
 
-public class DetailLiveFragment extends Fragment implements RecyclerAdapterDetailsLive.ClickListener{
+public class DetailLiveFragment extends Fragment implements RecyclerAdapterLive.ClickListener{
 
     // Array of strings storing country names
     int index=0;
@@ -49,7 +49,7 @@ public class DetailLiveFragment extends Fragment implements RecyclerAdapterDetai
     String[] currency = new String[]{"Indian Rupee ", "Pakistani Rupee", "Sri Lankan Rupee", "Renminbi", "Bangladeshi Taka", "Nepalese Rupee", "Afghani", "North Korean Won", "South Korean Won", "Japanese Yen"
     };
     RecyclerView recyclerView;
-    RecyclerAdapterDetailsLive mAdapter;
+    RecyclerAdapterLive mAdapter;
     public ImageView myImageView;
     FragmentManager mFragmentManager;
 
@@ -88,7 +88,7 @@ public class DetailLiveFragment extends Fragment implements RecyclerAdapterDetai
         );
 
         recyclerView = (RecyclerView) v.findViewById(R.id.DLList);
-        mAdapter=new RecyclerAdapterDetailsLive(getContext(),new ArrayList<ElementDetailsLive>());
+        mAdapter=new RecyclerAdapterLive(getContext(),new ArrayList<ElementDetailsLive>());
         mAdapter.setClickListener(this);
         recyclerView.setAdapter(mAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -131,7 +131,7 @@ public class DetailLiveFragment extends Fragment implements RecyclerAdapterDetai
 
     //@Override
     public void itemClicked(View view, int position) {
-        Toast.makeText(getActivity(), "Tu as sélectionné :" + mAdapter.getDescription_Live_Details(position), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "Tu as sélectionné :" + mAdapter.getItemCount(), Toast.LENGTH_SHORT).show();
 
     }
 

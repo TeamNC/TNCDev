@@ -104,6 +104,9 @@ public class LiveSection extends StatelessSection {
     public void addItem(ElementLive item) {
         this.sectionData.add(item);
     }
+    public void addInfo (int position, ElementLive item){
+        this.sectionData.add(position, item);
+    }
 
     public void setData (List<ElementLive> mData){
         this.sectionData = mData;

@@ -63,7 +63,8 @@ public class  BoiteFragment extends Fragment {
                 Calendar c = Calendar.getInstance();
                 DateFormat df = new SimpleDateFormat("HH:mm");
                 if (index > 9) index = 0;
-                ElementBoite item = new ElementBoite(flags[index], countries[index], currency[index], index*1000, "Localisation #" +index);
+                ElementBoite item = new ElementBoite(index, countries[index], "", index, "",
+                        "Localisation #" +index, "", flags[index], index*1000);
                 if(index==0) item.setImageID(R.drawable.particular_row);
                 addInfo(item);
                 index++;

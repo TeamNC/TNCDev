@@ -32,7 +32,7 @@ import static android.content.ContentValues.TAG;
 /**
  * Created by FAUSTIN-12 on 06/07/2016.
  */
-public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
+/*public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
     private List<ElementEvenement> evenements;
     private Context mContext;
     private ClickListener clickListener;
@@ -166,5 +166,5 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
             e.printStackTrace();
         }
     }
-}
+}*/
 
