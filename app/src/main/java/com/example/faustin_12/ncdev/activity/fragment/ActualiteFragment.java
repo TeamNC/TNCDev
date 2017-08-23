@@ -35,9 +35,7 @@ import com.example.faustin_12.ncdev.R;
 import com.example.faustin_12.ncdev.UploadClient;
 import com.example.faustin_12.ncdev.activity.MainActivity;
 import com.example.faustin_12.ncdev.adapter.RecyclerAdapterActualite;
-import com.example.faustin_12.ncdev.adapter.RecyclerAdapterEvenement;
 import com.example.faustin_12.ncdev.model.ElementActualite;
-import com.example.faustin_12.ncdev.model.ElementEvenement;
 import com.example.faustin_12.ncdev.model.ResponseEvenement;
 import com.example.faustin_12.ncdev.model.UploadResponse;
 
