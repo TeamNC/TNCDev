@@ -33,6 +33,8 @@ Sin autem ad adulescentiam perduxissent, dirimi tamen interdum contentione vel u
     <string name="biz_topic">Business</string>
     <string name="tech_topic">Technology</string>
     <string name="sports_topic">Sports</string>
+    <string name="ON">ON</string>
+    <string name="OFF">OFF</string>
 
     <string name="top_rated_movies_topic">Top Rated Movies</string>
     <string name="most_popular_movies_topic">Most Popular Movies</string>
