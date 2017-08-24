@@ -81,9 +81,17 @@ public class RecyclerAdapterLive extends RecyclerView.Adapter<RecyclerAdapterLiv
         notifyItemInserted(position);
     }
 
+    public ElementDetailsLive getItem(int position) {
+        return mData.get(position);
+    }
+
     public void setData (List<ElementDetailsLive> mData){
         this.mData = mData;
         notifyDataSetChanged();
+    }
+
+    public List<ElementDetailsLive> getData(){
+        return this.mData;
     }
 
     class mViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
@@ -113,7 +121,7 @@ public class RecyclerAdapterLive extends RecyclerView.Adapter<RecyclerAdapterLiv
             this.since.setText(""+current.getSince());
             this.title.setText(""+current.getIconID());
             this.description.setText(""+current.getDescription());
-            Glide.with(context).load(current.getImageID()).placeholder(R.drawable.placeholder).into(this.pictureLive);
+            Glide.with(context).load(current.getImageID()).placeholder(R.drawable.placeholder).centerCrop().into(this.pictureLive);
             this.current=current;
             this.position=position;
         }

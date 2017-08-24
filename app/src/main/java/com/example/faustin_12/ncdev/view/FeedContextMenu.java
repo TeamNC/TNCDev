@@ -1,4 +1,4 @@
-package com.example.faustin_12.ncdev.view;
+/*package com.example.faustin_12.ncdev.view;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,8 +8,6 @@ import android.widget.LinearLayout;
 import com.example.faustin_12.ncdev.R;
 import com.example.faustin_12.ncdev.Utils;
 
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 
 
@@ -87,4 +85,4 @@ public class FeedContextMenu extends LinearLayout {
 
         public void onCancelClick(int feedItem);
     }
-}
+}*/

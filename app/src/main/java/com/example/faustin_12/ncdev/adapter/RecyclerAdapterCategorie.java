@@ -40,7 +40,7 @@ public class RecyclerAdapterCategorie extends RecyclerView.Adapter <RecyclerAdap
     public mViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         switch (viewType) {
             case 0:
-                View view = mInflater.inflate(R.layout.row_categorie, parent, false);
+                View view = mInflater.inflate(R.layout.particular_row_categorie, parent, false);
                 return new mViewHolder(view);
             case 1:
                 View pview = mInflater.inflate(R.layout.particular_row_categorie, parent, false);
@@ -56,16 +56,8 @@ public class RecyclerAdapterCategorie extends RecyclerView.Adapter <RecyclerAdap
 
     }
 
-    public String getName(int position) {
-        return mData.get(position).getName();
-    }
-
-    public String getImage(int position) {
-        return mData.get(position).getImage();
-    }
-
-    public int getNbreEvents(int position) {
-        return mData.get(position).getNombreevts();
+    public ElementCategorie getItem(int position) {
+        return mData.get(position);
     }
 
 
@@ -88,6 +80,10 @@ public class RecyclerAdapterCategorie extends RecyclerView.Adapter <RecyclerAdap
     public void setData (List<ElementCategorie> mData){
         this.mData = mData;
         notifyDataSetChanged();
+    }
+
+    public List<ElementCategorie> getData(){
+        return this.mData;
     }
 
     public void setClickListener(ClickListener clickListener) {
@@ -117,7 +113,7 @@ public class RecyclerAdapterCategorie extends RecyclerView.Adapter <RecyclerAdap
 
         public void setData(ElementCategorie current, int position) {
             this.name.setText(current.getName());
-            Glide.with(context).load(current.getImage()).placeholder(R.drawable.placeholder).into(this.imgRow);
+            Glide.with(context).load(current.getImage()).placeholder(R.drawable.placeholder).centerCrop().into(this.imgRow);
             this.nbreEvents.setText("" + current.getNombreevts());
             this.current = current;
             this.position = position;

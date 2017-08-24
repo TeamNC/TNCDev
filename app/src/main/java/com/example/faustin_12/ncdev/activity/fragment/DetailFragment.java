@@ -67,8 +67,8 @@ public  class DetailFragment extends Fragment implements View.OnClickListener {
 
 
         View x = inflater.inflate(R.layout.fragment_detail, null);
-        //TextView tv= (TextView)x.findViewById(R.id.title1);
-        TextView prix= (TextView)x.findViewById(R.id.prix_details);
+        TextView tv= (TextView)x.findViewById(R.id.title_actualite);
+        TextView prix= (TextView)x.findViewById(R.id.prix_details3);
         ImageView imageView = (ImageView) x.findViewById(R.id.imgRow);
 
         if (myImageView == null)
@@ -118,6 +118,7 @@ public  class DetailFragment extends Fragment implements View.OnClickListener {
         /*Toolbar toolbar = (Toolbar) getActivity().findViewById(R.id.toolbar);
         toolbar.setVisibility(View.GONE);*/
 
+        tv.setText(title);
         prix.setText(price);
 
         ;
@@ -142,8 +143,8 @@ public  class DetailFragment extends Fragment implements View.OnClickListener {
     // we can fetch the color we want and set it to our CollapsingToolbarLayout,
     //  which in turn will color our Toolbar when we scroll up.
    private void dynamicToolbarColor() {
-        myImageView.buildDrawingCache();
-        final Bitmap bitmap = ((BitmapDrawable)myImageView.getDrawable()).getBitmap();
+        this.myImageView.buildDrawingCache();
+        final Bitmap bitmap = this.myImageView.getDrawingCache();
         Palette.from(bitmap).generate(new Palette.PaletteAsyncListener() {
             @Override
             public void onGenerated(Palette palette) {

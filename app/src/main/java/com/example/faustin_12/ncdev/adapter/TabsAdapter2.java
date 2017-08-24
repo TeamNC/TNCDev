@@ -24,6 +24,7 @@ public class TabsAdapter2 extends FragmentStatePagerAdapter{
     private static Context context;
     private static String[] tabTitles=new String[]{"Dim", "Lun","Mar","Mer","Jeu","Ven","Sam"};
     private String tabSubTitles[]=new String[]{"1","2","3","4","5","6","7"};
+    public String[] date = {"a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a" };
 
     public TabsAdapter2(Context context, FragmentManager fm) {
         super(fm);
@@ -31,7 +32,8 @@ public class TabsAdapter2 extends FragmentStatePagerAdapter{
     }
 
     public void setCategorie (String categorie){this.categorie=categorie;}
-
+    public void setDate(String[] date){this.date = date;}
+    public void setitemCount (int count){this.int_items = count;}
     /**
      * Return fragment with respect to Position .
      */
@@ -46,35 +48,9 @@ public class TabsAdapter2 extends FragmentStatePagerAdapter{
     public Fragment getItem(int position) {
         Bundle bundle = new Bundle();
         bundle.putString("categorie",  categorie);
-        switch (position){
-            case 0 :
-                return getOneFragment(bundle);
-            case 1 :
-                return getOneFragment(bundle);
-            case 2 :
-                return getOneFragment(bundle);
-            case 3 :
-                return getOneFragment(bundle);
-            case 4 :
-                return getOneFragment(bundle);
-            case 5 :
-                return getOneFragment(bundle);
-            case 6 :
-                return getOneFragment(bundle);
-            case 7 :
-                return getOneFragment(bundle);
-            case 8 :
-                return getOneFragment(bundle);
-            case 9 :
-                return getOneFragment(bundle);
-            case 10 :
-                return getOneFragment(bundle);
-            case 11:
-                return getOneFragment(bundle);
-            case 12:
-                return getOneFragment(bundle);
-            case 13:
-                return getOneFragment(bundle);
+        if(position<int_items){
+            bundle.putString("date",  date[position]);
+            return getOneFragment(bundle);
         }
         return null;
     }
@@ -100,16 +76,19 @@ public class TabsAdapter2 extends FragmentStatePagerAdapter{
             {
                 Calendar c = Calendar.getInstance();
                 c.add(Calendar.DATE, position - 10);
-                SimpleDateFormat df = new SimpleDateFormat("EEE");
+                SimpleDateFormat df = new SimpleDateFormat("yyyMMdd");
                 View v = LayoutInflater.from(context).inflate(R.layout.date_filter,null);
                 TextView tv1=(TextView)v.findViewById(R.id.days);
+                TextView tv2=(TextView)v.findViewById(R.id.numbers);
+                TextView tv3=(TextView)v.findViewById(R.id.mydate);
 
                 int day = c.get(Calendar.DAY_OF_MONTH);
+                String day1 = df.format(c.getTime());
                 int day2 = c.get(Calendar.DAY_OF_WEEK) -1;
 
                 tv1.setText(tabTitles[day2]);
-                TextView tv2=(TextView)v.findViewById(R.id.numbers);
                 tv2.setText("" + day);
+                tv3.setText("" + day1);
 
                 return v;
             }

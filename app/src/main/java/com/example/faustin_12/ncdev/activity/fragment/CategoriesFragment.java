@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.faustin_12.ncdev.R;
@@ -86,8 +87,6 @@ public class CategoriesFragment extends Fragment {    public static TabLayout ta
                 ((AppCompatActivity) getActivity()).onBackPressed();
             }
         });
-
-        Toast.makeText(getContext(), "Catégorie : " + categorie, Toast.LENGTH_SHORT).show();
 
         return x;
     }

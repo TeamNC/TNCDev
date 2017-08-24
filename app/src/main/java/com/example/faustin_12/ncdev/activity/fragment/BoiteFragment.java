@@ -28,7 +28,7 @@ import java.util.Calendar;
 /**
  * Created by FAUSTIN-12 on 17/03/2016.
  */
-public class  BoiteFragment extends Fragment {
+public class  BoiteFragment extends Fragment implements RecyclerAdapterBoiteSnack.ClickListener {
     // Array of strings storing country names
     int index=0;
     String[] countries = new String[] {"India", "Pakistan", "Sri Lanka", "China", "Bangladesh", "Nepal", "Afghanistan", "North Korea", "South Korea", "Japan"
@@ -74,6 +74,7 @@ public class  BoiteFragment extends Fragment {
 
         recyclerView = (RecyclerView) v.findViewById(R.id.BoiteList);
         mAdapter = new RecyclerAdapterBoiteSnack(getContext(), new ArrayList<ElementBoite>());
+        mAdapter.setClickListener(this);
 
         LinearLayoutManager mLinearLayoutManager = new LinearLayoutManager(getContext());
         mLinearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -118,9 +119,9 @@ public class  BoiteFragment extends Fragment {
 
     //@Override
     public void itemClicked(View view, int position) {
-        Toast.makeText(getActivity(), "Tu as sélectionné :" + mAdapter.getTitle(position), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "Tu as sélectionné :" + mAdapter.getItem(position).getName(), Toast.LENGTH_SHORT).show();
         DetailFragment temps = new DetailFragment();
-        temps.setTitle("Détail de :" + mAdapter.getTitle(position));
+        temps.setTitle("Détail de :" + mAdapter.getItem(position).getName());
         FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.containerView0, temps).addToBackStack(null).commit();
     }

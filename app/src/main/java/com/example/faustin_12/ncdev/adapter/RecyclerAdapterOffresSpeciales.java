@@ -68,16 +68,8 @@ public class RecyclerAdapterOffresSpeciales extends RecyclerView.Adapter <Recycl
 
     }
 
-    public String getTitleOffresSpeciales(int position) {
-        return mData.get(position).getTitleOffresSpeciales();
-    }
-
-    public int getImageIDOffresSpeciales(int position) {
-        return mData.get(position).getImageIDOffresSpeciales();
-    }
-
-    public int getDelais(int position) {
-        return mData.get(position).getDelais();
+    public ElementOffresSpeciales getItem(int position) {
+        return mData.get(position);
     }
 
 
@@ -98,6 +90,10 @@ public class RecyclerAdapterOffresSpeciales extends RecyclerView.Adapter <Recycl
     public void setData (List<ElementOffresSpeciales> mData){
         this.mData = mData;
         notifyDataSetChanged();
+    }
+
+    public List<ElementOffresSpeciales> getData(){
+        return this.mData;
     }
 
     public void setClickListener(ClickListener clickListener) {
