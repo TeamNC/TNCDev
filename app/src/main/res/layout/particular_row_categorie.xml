@@ -35,8 +35,8 @@
             android:checked="false"
             android:text="FOLLOW "
             android:textColor="@color/white"
-            android:textOff="OFF"
-            android:textOn="ON"
+            android:textOff="@string/OFF"
+            android:textOn="@string/ON"
             app:showText="true"
             android:theme="@style/MySwitch" />
 
