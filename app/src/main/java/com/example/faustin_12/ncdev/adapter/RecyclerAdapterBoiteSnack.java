@@ -63,17 +63,9 @@ public class RecyclerAdapterBoiteSnack extends RecyclerView.Adapter <RecyclerAda
 
     }
 
-    public String getTitle (int position){
-        return mData.get(position).getName();
+    public ElementBoite getItem(int position) {
+        return mData.get(position);
     }
-    public String getDescription (int position){
-        return mData.get(position).getSpecificity();
-    }
-    public int getIcon (int position){
-        return mData.get(position).getImageID();
-    }
-    public String getLocalisation (int position) {return mData.get(position).getLocation();}
-    public int getPrices (int position) {return mData.get(position).getPrices();}
 
 
     @Override
@@ -85,6 +77,10 @@ public class RecyclerAdapterBoiteSnack extends RecyclerView.Adapter <RecyclerAda
         mData = new ArrayList<>();
         mData.addAll(infos);
         notifyDataSetChanged();
+    }
+
+    public List<ElementBoite> getData(){
+        return this.mData;
     }
 
     public void addInfo (ElementBoite item){
@@ -111,6 +107,10 @@ public class RecyclerAdapterBoiteSnack extends RecyclerView.Adapter <RecyclerAda
         mData.remove(position);
         notifyItemRemoved(position);
         notifyItemRangeChanged(position, mData.size());
+    }
+
+    public void setClickListener(ClickListener clickListener) {
+        this.clickListener = clickListener;
     }
 
     class mViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
@@ -141,7 +141,7 @@ public class RecyclerAdapterBoiteSnack extends RecyclerView.Adapter <RecyclerAda
             this.description.setText(""+current.getSpecificity());
             this.localisation.setText(""+current.getLocation());
             this.nbreLove.setText(""+current.getPrices());
-            Glide.with(context).load(current.getImageID()).placeholder(R.drawable.placeholder).into(this.imgRow);
+            Glide.with(context).load(current.getImageID()).placeholder(R.drawable.placeholder).centerCrop().into(this.imgRow);
             this.current=current;
             this.position=position;
         }

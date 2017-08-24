@@ -22,6 +22,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.faustin_12.ncdev.InterfaceCategories;
 import com.example.faustin_12.ncdev.R;
@@ -156,21 +157,25 @@ public class EvenementFragment extends Fragment implements RecyclerAdapterCatego
                 ResponseCategorie responseCategorie = response.body();
                 mData = responseCategorie.getCategories();
 
-                if (mData.size()>0){
-                    new Thread(new Runnable() {
-                        @Override
-                        public void run() {
-                            //Thales Moi Même ++ ++
-                            mHandler.post(new Runnable() {
-                                @Override
-                                public void run() {
-                                    currentPage=1;
-                                    mAdapter.setData(mData);
-                                    recyclerView.setAdapter(mAdapter);
-                                }
-                            });
-                        }
-                    }).start();
+                try{
+                    if (mData.size()>0){
+                        new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                //Thales Moi Même ++ ++
+                                mHandler.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        currentPage=1;
+                                        mAdapter.setData(mData);
+                                        recyclerView.setAdapter(mAdapter);
+                                    }
+                                });
+                            }
+                        }).start();
+                    }
+                }catch (Exception e){
+                    Toast.makeText(getContext(), "Error :"+e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
                 swipeContainer.setRefreshing(false);
@@ -180,6 +185,7 @@ public class EvenementFragment extends Fragment implements RecyclerAdapterCatego
             @Override
             public void onFailure(Call<ResponseCategorie> call, Throwable t) {
                 // Log error here since request failed
+                Toast.makeText(getContext(),"Error : "+ t.getMessage(),Toast.LENGTH_LONG).show();
                 Log.d("Error",t.getMessage());
 
                 swipeContainer.setRefreshing(false);
@@ -267,8 +273,9 @@ public class EvenementFragment extends Fragment implements RecyclerAdapterCatego
 
     // @Override
     public void itemClicked(View view, int position) {
+        Toast.makeText(getContext(), "Ah, don't touch me!", Toast.LENGTH_SHORT).show();
         CategoriesFragment temps = new CategoriesFragment();
-        //temps.setCategorie(mAdapter.getTitle(position));
+        temps.setCategorie(""+mAdapter.getItem(position).getId_cat());
         FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.containerView0, temps).addToBackStack(null).commit();
     }

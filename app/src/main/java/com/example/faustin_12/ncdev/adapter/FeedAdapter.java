@@ -1,4 +1,4 @@
-package com.example.faustin_12.ncdev.adapter;
+/*package com.example.faustin_12.ncdev.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutCompat;
@@ -22,7 +22,7 @@ import java.util.List;
 
 
 
-/*public class FeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class FeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public static final String ACTION_LIKE_BUTTON_CLICKED = "action_like_button_button";
     public static final String ACTION_LIKE_IMAGE_CLICKED = "action_like_image_button";
 

@@ -2,6 +2,7 @@ package com.example.faustin_12.ncdev.activity.fragment;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -15,6 +16,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -78,7 +80,7 @@ public class ActualiteFragment extends Fragment implements RecyclerAdapterActual
             Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.WRITE_EXTERNAL_STORAGE
     };
-    String imagePath;
+    String mediaPath;
     String server;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -101,12 +103,9 @@ public class ActualiteFragment extends Fragment implements RecyclerAdapterActual
             @Override
             public void onClick(View v) {
                 Toast.makeText(getContext(), server, Toast.LENGTH_SHORT).show();
-                if(imagePath!=null)
+                if(mediaPath !=null)
                     uploadFile();
-                else
-                    Toast.makeText(getContext(),"Please select image", Toast.LENGTH_LONG).show();
-
-                if(!is_progress && imagePath == null)
+                if(!is_progress && mediaPath == null)
                     doSomething();
             }
         });
@@ -118,12 +117,9 @@ public class ActualiteFragment extends Fragment implements RecyclerAdapterActual
             }
         });
 
-
-
-
-
         recyclerView = (RecyclerView) v.findViewById(R.id.recyclerList);
         mAdapter = new RecyclerAdapterActualite(getContext(), new ArrayList<ElementActualite>());
+        mAdapter.setClickListener(this);
 
         mLinearLayoutManager = new LinearLayoutManager(getContext());
         mLinearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -132,6 +128,7 @@ public class ActualiteFragment extends Fragment implements RecyclerAdapterActual
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
         recyclerView.setAdapter(mAdapter);
+
 
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener()
         {
@@ -150,7 +147,7 @@ public class ActualiteFragment extends Fragment implements RecyclerAdapterActual
                         {
                             if(mAdapter.getItemCount()>0) {
                                 loading = true;
-                                //loadMore(mAdapter.getData().get(mAdapter.getItemCount() - 1).getIdEvent());
+                                loadMore(mAdapter.getData().get(mAdapter.getItemCount() - 1).getId_event());
                             }
                         }
                     }
@@ -161,9 +158,9 @@ public class ActualiteFragment extends Fragment implements RecyclerAdapterActual
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                //if(mAdapter.getItemCount()>0)
-                    //refresh(mAdapter.getData().get(0).getIdEvent());
-               // else
+                if(mAdapter.getItemCount()>0)
+                    refresh(mAdapter.getData().get(0).getId_event());
+                else
                     download(1);
             }
         });
@@ -183,7 +180,7 @@ public class ActualiteFragment extends Fragment implements RecyclerAdapterActual
         is_progress= true;
         FileApi service = new UploadClient(server).getApiService();
 
-        File file = new File(imagePath);
+        File file = new File(mediaPath);
 
         //RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);
         RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);
@@ -211,7 +208,7 @@ public class ActualiteFragment extends Fragment implements RecyclerAdapterActual
                 } else {
                     Toast.makeText(getContext(),response.body().getMessage(),Toast.LENGTH_LONG).show();
                 }
-                imagePath = null;
+                mediaPath = null;
                 is_progress= false;
 
             }
@@ -225,13 +222,29 @@ public class ActualiteFragment extends Fragment implements RecyclerAdapterActual
     }
 
     public void showImagePopup() {
+        final CharSequence[] options = {"Images", "Videos", "Cancel"};
         final Intent galleryIntent = new Intent();
-        galleryIntent.setType("image/*");
-        galleryIntent.setAction(Intent.ACTION_PICK);
-
-        final Intent chooserIntent = Intent.createChooser(galleryIntent, "Choose image");
-        getParentFragment().startActivityForResult(chooserIntent, 100);
-
+        final Intent chooserIntent = Intent.createChooser(galleryIntent, "Choose media file");
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle("Select Media File");
+        builder.setItems(options, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                if (options[i].equals("Images")) {
+                    galleryIntent.setAction(Intent.ACTION_PICK);
+                    galleryIntent.setType("image/*");
+                    getParentFragment().startActivityForResult(chooserIntent, 100);
+                }else if(options[i].equals("Videos")) {
+                    galleryIntent.setAction(Intent.ACTION_PICK);
+                    galleryIntent.setType("video/*");
+                    getParentFragment().startActivityForResult(chooserIntent, 100);
+                }else if(options[i].equals("Cancel")) {
+                    dialogInterface.dismiss();
+                }
+                dialogInterface.dismiss();
+            }
+        });
+        builder.show();
     }
 
     @Override
@@ -239,12 +252,13 @@ public class ActualiteFragment extends Fragment implements RecyclerAdapterActual
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK && requestCode == 100) {
             if (data == null) {
-                Toast.makeText(getContext(),"Unable to pick image",Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(),"Unable to pick media file",Toast.LENGTH_LONG).show();
                 return;
             }
 
-            Uri imageUri = data.getData();
-            imagePath = getRealPathFromURI(imageUri);
+            Uri mediaUri = data.getData();
+            mediaPath = getRealPathFromURI(mediaUri);
+            Toast.makeText(getContext(),"Picked :" + mediaPath,Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -353,22 +367,25 @@ public class ActualiteFragment extends Fragment implements RecyclerAdapterActual
                 ResponseEvenement responseEvenement = response.body();
                 mData = responseEvenement.getEnevements();
 
-                if (mData.size()>0){
-                    new Thread(new Runnable() {
-                        @Override
-                        public void run() {
-                            mHandler.post(new Runnable() {
-                                @Override
-                                public void run() {
-                                    for (int i=0; i<mData.size(); i++){
-                                        mAdapter.addInfo(0, mData.get(i));
+                try{
+                    if (mData.size()>0){
+                        new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                mHandler.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        for (int i=0; i<mData.size(); i++){
+                                            mAdapter.addInfo(0, mData.get(i));
+                                        }
                                     }
-                                }
-                            });
-                        }
-                    }).start();
+                                });
+                            }
+                        }).start();
+                    }
+                }catch (Exception e){
+                    Toast.makeText(getContext(), "Error :"+e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
-
 
                 swipeContainer.setRefreshing(false);
             }
@@ -376,6 +393,7 @@ public class ActualiteFragment extends Fragment implements RecyclerAdapterActual
             @Override
             public void onFailure(Call<ResponseEvenement> call, Throwable t) {
                 // Log error here since request failed
+                Toast.makeText(getContext(),"Error : "+ t.getMessage(),Toast.LENGTH_LONG).show();
                 Log.d("Error",t.getMessage());
                 swipeContainer.setRefreshing(false);
             }
@@ -383,6 +401,7 @@ public class ActualiteFragment extends Fragment implements RecyclerAdapterActual
     }
 
     public void loadMore (int id_event){
+        Toast.makeText(getContext(),"More Loading",Toast.LENGTH_LONG).show();
         server=((MainActivity) getActivity()).getServerT();
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(server) //http://192.168.197.1
@@ -396,27 +415,33 @@ public class ActualiteFragment extends Fragment implements RecyclerAdapterActual
                 ResponseEvenement responseEvenement = response.body();
                 mData = responseEvenement.getEnevements();
 
-                if (mData.size()>0){
-                    new Thread(new Runnable() {
-                        @Override
-                        public void run() {
-                            mHandler.post(new Runnable() {
-                                @Override
-                                public void run() {
-                                    for (int i=0; i<mData.size(); i++){
-                                        mAdapter.addInfo(mAdapter.getItemCount(), mData.get(i));
+                try{
+                    if (mData.size()>0){
+                        new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                mHandler.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        for (int i=0; i<mData.size(); i++){
+                                            mAdapter.addInfo(mAdapter.getItemCount(), mData.get(i));
+                                        }
                                     }
-                                }
-                            });
-                        }
-                    }).start();
+                                });
+                            }
+                        }).start();
+                    }
+                }catch (Exception e){
+                    Toast.makeText(getContext(), "Error :"+e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
+
                 loading=false;
             }
 
             @Override
             public void onFailure(Call<ResponseEvenement> call, Throwable t) {
                 // Log error here since request failed
+                Toast.makeText(getContext(),"Error : "+ t.getMessage(),Toast.LENGTH_LONG).show();
                 Log.d("Error",t.getMessage());
                 loading=false;
             }
@@ -438,19 +463,23 @@ public class ActualiteFragment extends Fragment implements RecyclerAdapterActual
                 ResponseEvenement responseEvenement = response.body();
                 mData = responseEvenement.getEnevements();
 
-                if (mData.size()>0){
-                    new Thread(new Runnable() {
-                        @Override
-                        public void run() {
-                            mHandler.post(new Runnable() {
-                                @Override
-                                public void run() {
-                                    mAdapter.setData(mData);
-                                    recyclerView.setAdapter(mAdapter);
-                                }
-                            });
-                        }
-                    }).start();
+                try{
+                    if (mData.size()>0){
+                        new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                mHandler.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        mAdapter.setData(mData);
+                                        recyclerView.setAdapter(mAdapter);
+                                    }
+                                });
+                            }
+                        }).start();
+                    }
+                }catch (Exception e){
+                    Toast.makeText(getContext(), "Error :"+e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
                 swipeContainer.setRefreshing(false);
@@ -459,6 +488,7 @@ public class ActualiteFragment extends Fragment implements RecyclerAdapterActual
             @Override
             public void onFailure(Call<ResponseEvenement> call, Throwable t) {
                 // Log error here since request failed
+                Toast.makeText(getContext(),"Error : "+ t.getMessage(),Toast.LENGTH_LONG).show();
                 Log.d("Error",t.getMessage());
                 swipeContainer.setRefreshing(false);
             }
@@ -497,11 +527,12 @@ public class ActualiteFragment extends Fragment implements RecyclerAdapterActual
     //@Override
     public void itemClicked(View view, int position) {
         DetailFragment temps = new DetailFragment();
-        temps.setTitle(mAdapter.getTitle(position));
-        temps.setDate(""+mAdapter.getDate(position));
-        //temps.setPrice("" + mAdapter.getPrice(position));
+        temps.setTitle(mAdapter.getItem(position).getTitle());
+        temps.setDate(""+mAdapter.getItem(position).getDate());
+        temps.setPrice("" + mAdapter.getItem(position).getDescription());
         ImageView icon = (ImageView) view.findViewById(R.id.imgRow);
         temps.setMyImageView(icon);
+        Toast.makeText(getContext(),"Clicked : "+ mAdapter.getItem(position).getTitle(),Toast.LENGTH_LONG).show();
         FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.containerView0, temps).addToBackStack(null).commit();
     }
