@@ -1,33 +1,65 @@
 package com.example.faustin_12.ncdev.activity.fragment;
 
+import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.Toast;
+
+import com.example.faustin_12.ncdev.R;
+import com.example.faustin_12.ncdev.adapter.FeedItemAnimator;
+import com.example.faustin_12.ncdev.adapter.RecyclerAdapterDetailsLive2;
+import com.example.faustin_12.ncdev.model.ElementDetailsLive;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+
 /**
  * Created by LIONEL KOUEMENI on 08/04/2017.
  */
 
-/*public class DetailLiveFragment2 extends Fragment {
+public class DetailLiveFragment2 extends Fragment {
 
-    android.support.v4.app.FragmentManager mFragmentManager;
-    public static final String ACTION_SHOW_LOADING_ITEM = "action_show_loading_item";
-
-    private static final int ANIM_DURATION_TOOLBAR = 300;
-    private static final int ANIM_DURATION_FAB = 400;
-
-    @BindView(R.id.DLList)
-    RecyclerView rvFeed;
-    @BindView(R.id.boutonBoite)
-    FloatingActionButton fabCreate;
-    @BindView(R.id.content)
-    CoordinatorLayout clContent;
-    @BindView(R.id.toolbarDL)
-    Toolbar toolbarDL;
-    private FeedAdapter feedAdapter;
-
-    private boolean pendingIntroAnimation;
+    // Array of strings storing country names
+    int index=0;
+    int[] flags = new int[]{R.drawable.images3,
+            R.drawable.images6,
+            R.drawable.images3,
+            R.drawable.images6,
+            R.drawable.images3,
+            R.drawable.images6,
+            R.drawable.images3,
+            R.drawable.images6,
+            R.drawable.images3,
+            R.drawable.images6,
+    };
+    // Array of strings to store currencies
+    String[] currency = new String[]{"Indian Rupee ", "Pakistani Rupee", "Sri Lankan Rupee", "Renminbi", "Bangladeshi Taka", "Nepalese Rupee", "Afghani", "North Korean Won", "South Korean Won", "Japanese Yen"
+    };
+    RecyclerView recyclerView;
+    RecyclerAdapterDetailsLive2 mAdapter;
+    public ImageView myImageView;
+    FragmentManager mFragmentManager;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         setHasOptionsMenu(true);
+       // setupFeed();
+        View v=inflater.inflate(R.layout.details_live_layout2, container, false);
 
-        View v = inflater.inflate(R.layout.details_live_layout2, container, false);
+
         Toolbar toolbarDL = (Toolbar) v.findViewById(R.id.toolbarDL);
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbarDL);
         toolbarDL.setNavigationIcon(R.drawable.ic_action_back);
@@ -38,158 +70,97 @@ package com.example.faustin_12.ncdev.activity.fragment;
                 ((AppCompatActivity) getActivity()).onBackPressed();
             }
         });
-        FloatingActionButton fabcreate = (FloatingActionButton) v.findViewById(R.id.boutonBoite);
-        CoordinatorLayout clContent = (CoordinatorLayout)v.findViewById(R.id.content);
-        rvFeed= (RecyclerView) v.findViewById(R.id.DLList);
-        rvFeed.setLayoutManager(new LinearLayoutManager(getContext()));
-        rvFeed.setAdapter(feedAdapter);
+        FloatingActionButton addButton = (FloatingActionButton) v.findViewById(R.id.boutonBoite);
+
+        addButton.setOnClickListener(new View.OnClickListener() {
+                                         @Override
+                                         public void onClick(View v) {
+                                             Calendar c = Calendar.getInstance();
+                                             DateFormat df = new SimpleDateFormat("HH:mm");
+                                             if (index > 9) index = 0;
+                                             ElementDetailsLive item = new ElementDetailsLive( currency[index],df.format(c.getTime()),flags[index],flags[index])  ;
+                                             if(index==0) item.setImageID(R.drawable.particular_row);
+                                             addInfo(item);
+                                             index++;
+                                         }
+                                     }
+        );
+
+        recyclerView = (RecyclerView) v.findViewById(R.id.DLList);
+        mAdapter=new RecyclerAdapterDetailsLive2(getContext(),new ArrayList<ElementDetailsLive>());
+       // mAdapter.setClickListener(this);
+        recyclerView.setAdapter(mAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity()) {
+            @Override
+            protected int getExtraLayoutSpace(RecyclerView.State state) {
+                return 300;
+            }
+        };
+         recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setItemAnimator(new FeedItemAnimator());
 
         mFragmentManager=getActivity().getSupportFragmentManager();
 
-        if (savedInstanceState == null) {
-            pendingIntroAnimation = true;
-        } else {
-            feedAdapter.updateItems(false);
-        }
-        rvFeed.setItemAnimator(new FeedItemAnimator());
+
 
         return v;
     }
-
-
-
-
-
-
-
-
-/*
-    @Override
-    protected void onNewIntent(Intent intent) {
-        super.onNewIntent(intent);
-        if (ACTION_SHOW_LOADING_ITEM.equals(intent.getAction())) {
-            showFeedLoadingItemDelayed();
-        }
-    }
-*/
-   /* private void showFeedLoadingItemDelayed() {
-        new Handler().postDelayed(new Runnable() {
+   /* private void setupFeed() {
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity()) {
             @Override
-            public void run() {
-                rvFeed.smoothScrollToPosition(0);
-                feedAdapter.showLoadingView();
+            protected int getExtraLayoutSpace(RecyclerView.State state) {
+                return 300;
             }
-        }, 500);
-    }
-*/
+        };
+       // recyclerView.setLayoutManager(linearLayoutManager);
 
-   /* @Override
+
+      //  mAdapter.setOnFeedItemClickListener(this);
+        recyclerView.setAdapter(mAdapter);
+        recyclerView.setOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                FeedContextMenuManager.getInstance().onScrolled(recyclerView, dx, dy);
+            }
+        });
+        recyclerView.setItemAnimator(new FeedItemAnimator());
+    }*/
+
+    public void addInfo (ElementDetailsLive item){
+        mAdapter.addInfo(item);
+    }
+    public void setMyImageView(ImageView imageView){
+        this.myImageView=imageView;
+    }
+
+
+    @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         // Inflate the menu; this adds items to the action bar if it is present.
         inflater.inflate(R.menu.details_live_menu, menu);
         super.onCreateOptionsMenu(menu, inflater);
-     /*   if (pendingIntroAnimation) {
-            pendingIntroAnimation = false;
-            startIntroAnimation();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
         }
-    }*/
 
-   /* private void startIntroAnimation() {
-        fabCreate.setTranslationY(2 * getResources().getDimensionPixelOffset(R.dimen.btn_fab_size));
-
-        int actionbarSize = Utils.dpToPx(56);
-        getToolbar().setTranslationY(-actionbarSize);
-      //  getIvLogo().setTranslationY(-actionbarSize);
-       // getInboxMenuItem().getActionView().setTranslationY(-actionbarSize);
-
-        getToolbar().animate()
-                .translationY(0)
-                .setDuration(ANIM_DURATION_TOOLBAR)
-                .setStartDelay(300);
-        /*getIvLogo().animate()
-                .translationY(0)
-                .setDuration(ANIM_DURATION_TOOLBAR)
-                .setStartDelay(400);
-        getInboxMenuItem().getActionView().animate()
-                .translationY(0)
-                .setDuration(ANIM_DURATION_TOOLBAR)
-                .setStartDelay(500)
-                .setListener(new AnimatorListenerAdapter() {
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        startContentAnimation();
-                    }
-                })
-                .start();*/
-  //  }
-
-   /* private void startContentAnimation() {
-        fabCreate.animate()
-                .translationY(0)
-                .setInterpolator(new OvershootInterpolator(1.f))
-                .setStartDelay(300)
-                .setDuration(ANIM_DURATION_FAB)
-                .start();
-        feedAdapter.updateItems(true);
-    }*/
-/*
-    @Override
-    public void onCommentsClick(View v, int position) {
-        final Intent intent = new Intent(this, CommentsActivity.class);
-        int[] startingLocation = new int[2];
-        v.getLocationOnScreen(startingLocation);
-        intent.putExtra(CommentsActivity.ARG_DRAWING_START_LOCATION, startingLocation[1]);
-        startActivity(intent);
-        overridePendingTransition(0, 0);
+        return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void onMoreClick(View v, int itemPosition) {
-        FeedContextMenuManager.getInstance().toggleContextMenuFromView(v, itemPosition, this);
+    //@Override
+    public void itemClicked(View view, int position) {
+        Toast.makeText(getActivity(), "Tu as sélectionné :" + mAdapter.getItemCount(), Toast.LENGTH_SHORT).show();
+
     }
 
-    @Override
-    public void onProfileClick(View v) {
-        int[] startingLocation = new int[2];
-        v.getLocationOnScreen(startingLocation);
-        startingLocation[0] += v.getWidth() / 2;
-        UserProfileActivity.startUserProfileFromLocation(startingLocation, this);
-        overridePendingTransition(0, 0);
-    }
-
-    @Override
-    public void onReportClick(int feedItem) {
-        FeedContextMenuManager.getInstance().hideContextMenu();
-    }
-
-    @Override
-    public void onSharePhotoClick(int feedItem) {
-        FeedContextMenuManager.getInstance().hideContextMenu();
-    }
-
-    @Override
-    public void onCopyShareUrlClick(int feedItem) {
-        FeedContextMenuManager.getInstance().hideContextMenu();
-    }
-
-    @Override
-    public void onCancelClick(int feedItem) {
-        FeedContextMenuManager.getInstance().hideContextMenu();
-    }*/
-
-   /* @OnClick(R.id.btnCreate)
-    public void onTakePhotoClick() {
-        int[] startingLocation = new int[2];
-        fabCreate.getLocationOnScreen(startingLocation);
-        startingLocation[0] += fabCreate.getWidth() / 2;
-        TakePhotoActivity.startCameraFromLocation(startingLocation, this);
-        overridePendingTransition(0, 0);
-    }
-public Toolbar getToolbar() {
-    return toolbarDL;
 }
-
-    public void showLikedSnackbar() {
-        Snackbar.make(clContent, "Liked!", Snackbar.LENGTH_SHORT).show();
-    }
-}*/

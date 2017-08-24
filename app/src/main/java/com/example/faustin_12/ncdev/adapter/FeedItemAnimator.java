@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Map;
 
 
-/*public class FeedItemAnimator extends DefaultItemAnimator {
+public class FeedItemAnimator extends DefaultItemAnimator {
     private static final DecelerateInterpolator DECCELERATE_INTERPOLATOR = new DecelerateInterpolator();
     private static final AccelerateInterpolator ACCELERATE_INTERPOLATOR = new AccelerateInterpolator();
     private static final OvershootInterpolator OVERSHOOT_INTERPOLATOR = new OvershootInterpolator(4);
@@ -53,10 +53,10 @@ import java.util.Map;
 
     @Override
     public boolean animateAdd(RecyclerView.ViewHolder viewHolder) {
-        if (viewHolder.getItemViewType() == FeedAdapter.VIEW_TYPE_DEFAULT) {
+        if (viewHolder.getItemViewType() == RecyclerAdapterDetailsLive2.VIEW_TYPE_DEFAULT) {
             if (viewHolder.getLayoutPosition() > lastAddAnimatedItem) {
                 lastAddAnimatedItem++;
-                runEnterAnimation((FeedAdapter.CellFeedViewHolder) viewHolder);
+                runEnterAnimation((RecyclerAdapterDetailsLive2.mViewHolder) viewHolder);
                 return false;
             }
         }
@@ -65,7 +65,7 @@ import java.util.Map;
         return false;
     }
 
-    private void runEnterAnimation(final FeedAdapter.CellFeedViewHolder holder) {
+    private void runEnterAnimation(final RecyclerAdapterDetailsLive2.mViewHolder holder) {
         final int screenHeight = Utils.getScreenHeight(holder.itemView.getContext());
         holder.itemView.setTranslationY(screenHeight);
         holder.itemView.animate()
@@ -90,11 +90,11 @@ import java.util.Map;
 
         if (preInfo instanceof FeedItemHolderInfo) {
             FeedItemHolderInfo feedItemHolderInfo = (FeedItemHolderInfo) preInfo;
-            FeedAdapter.CellFeedViewHolder holder = (FeedAdapter.CellFeedViewHolder) newHolder;
+            RecyclerAdapterDetailsLive2.mViewHolder holder = (RecyclerAdapterDetailsLive2.mViewHolder) newHolder;
 
             animateHeartButton(holder);
             updateLikesCounter(holder, holder.getFeedItem().likesCount);
-            if (FeedAdapter.ACTION_LIKE_IMAGE_CLICKED.equals(feedItemHolderInfo.updateAction)) {
+            if (RecyclerAdapterDetailsLive2.ACTION_LIKE_IMAGE_CLICKED.equals(feedItemHolderInfo.updateAction)) {
                 animatePhotoLike(holder);
             }
         }
@@ -111,7 +111,7 @@ import java.util.Map;
         }
     }
 
-    private void animateHeartButton(final FeedAdapter.CellFeedViewHolder holder) {
+    private void animateHeartButton(final RecyclerAdapterDetailsLive2.mViewHolder holder) {
         AnimatorSet animatorSet = new AnimatorSet();
 
         ObjectAnimator rotationAnim = ObjectAnimator.ofFloat(holder.btnLike, "rotation", 0f, 360f);
@@ -144,7 +144,7 @@ import java.util.Map;
         heartAnimationsMap.put(holder, animatorSet);
     }
 
-    private void updateLikesCounter(FeedAdapter.CellFeedViewHolder holder, int toValue) {
+    private void updateLikesCounter(RecyclerAdapterDetailsLive2.mViewHolder holder, int toValue) {
         String likesCountTextFrom = holder.tsLikesCounter.getResources().getQuantityString(
                 R.plurals.likes_count, toValue - 1, toValue - 1
         );
@@ -156,7 +156,7 @@ import java.util.Map;
         holder.tsLikesCounter.setText(likesCountTextTo);
     }
 
-    private void animatePhotoLike(final FeedAdapter.CellFeedViewHolder holder) {
+    private void animatePhotoLike(final RecyclerAdapterDetailsLive2.mViewHolder holder) {
         holder.vBgLike.setVisibility(View.VISIBLE);
         holder.ivLike.setVisibility(View.VISIBLE);
 
@@ -209,7 +209,7 @@ import java.util.Map;
         likeAnimationsMap.put(holder, animatorSet);
     }
 
-    private void dispatchChangeFinishedIfAllAnimationsEnded(FeedAdapter.CellFeedViewHolder holder) {
+    private void dispatchChangeFinishedIfAllAnimationsEnded(RecyclerAdapterDetailsLive2.mViewHolder holder) {
         if (likeAnimationsMap.containsKey(holder) || heartAnimationsMap.containsKey(holder)) {
             return;
         }
@@ -217,7 +217,7 @@ import java.util.Map;
         dispatchAnimationFinished(holder);
     }
 
-    private void resetLikeAnimationState(FeedAdapter.CellFeedViewHolder holder) {
+    private void resetLikeAnimationState(RecyclerAdapterDetailsLive2.mViewHolder holder) {
         holder.vBgLike.setVisibility(View.INVISIBLE);
         holder.ivLike.setVisibility(View.INVISIBLE);
     }
@@ -243,4 +243,4 @@ import java.util.Map;
             this.updateAction = updateAction;
         }
     }
-}*/
+}

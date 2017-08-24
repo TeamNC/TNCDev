@@ -1,27 +1,5 @@
 package com.example.faustin_12.ncdev.adapter;
 
-import android.content.Context;
-import android.support.v7.widget.LinearLayoutCompat;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.FrameLayout;
-import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.TextSwitcher;
-import android.widget.TextView;
-
-import com.example.faustin_12.ncdev.R;
-import com.example.faustin_12.ncdev.view.LoadingFeedItemView;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-
-
-
 /*public class FeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public static final String ACTION_LIKE_BUTTON_CLICKED = "action_like_button_button";
     public static final String ACTION_LIKE_IMAGE_CLICKED = "action_like_image_button";
@@ -40,7 +18,7 @@ import java.util.List;
         this.context = context;
     }
 
-    /*@Override
+    @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (viewType == VIEW_TYPE_DEFAULT) {
             View view = LayoutInflater.from(context).inflate(R.layout.particular_row_live_details5, parent, false);
@@ -59,7 +37,7 @@ import java.util.List;
         return null;
     }
 
-    /*private void setupClickableViews(final View view, final CellFeedViewHolder cellFeedViewHolder) {
+    private void setupClickableViews(final View view, final CellFeedViewHolder cellFeedViewHolder) {
         cellFeedViewHolder.btnComments.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,7 +56,7 @@ import java.util.List;
                 int adapterPosition = cellFeedViewHolder.getAdapterPosition();
                 feedItems.get(adapterPosition).likesCount++;
                 notifyItemChanged(adapterPosition, ACTION_LIKE_IMAGE_CLICKED);
-            /*    if (context instanceof MainActivity) {
+                if (context instanceof MainActivity) {
                     ((MainActivity) context).showLikedSnackbar();
                 }
             }
@@ -89,7 +67,7 @@ import java.util.List;
                 int adapterPosition = cellFeedViewHolder.getAdapterPosition();
                 feedItems.get(adapterPosition).likesCount++;
                 notifyItemChanged(adapterPosition, ACTION_LIKE_BUTTON_CLICKED);
-               /* if (get(Activity)) {
+                if (get(Activity)) {
                     ((MainActivity) context).showLikedSnackbar();
                 }
             }
@@ -163,7 +141,7 @@ import java.util.List;
         notifyItemChanged(0);
     }
 
-    /*public static class CellFeedViewHolder extends RecyclerView.ViewHolder {
+    public static class CellFeedViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.picture_live)
         ImageView ivFeedCenter;
         @BindView(R.id.description_live_details)
@@ -195,8 +173,8 @@ import java.util.List;
         public void bindView(FeedItem feedItem) {
             this.feedItem = feedItem;
             int adapterPosition = getAdapterPosition();
-            //ivFeedCenter.setImageResource(adapterPosition % 2 == 0 ? R.drawable.img_feed_center_1 : R.drawable.img_feed_center_2);
-            //ivFeedBottom.setImageResource(adapterPosition % 2 == 0 ? R.drawable.img_feed_bottom_1 : R.drawable.img_feed_bottom_2);
+            ivFeedCenter.setImageResource(adapterPosition % 2 == 0 ? R.drawable.img_feed_center_1 : R.drawable.img_feed_center_2);
+            ivFeedBottom.setImageResource(adapterPosition % 2 == 0 ? R.drawable.img_feed_bottom_1 : R.drawable.img_feed_bottom_2);
             btnLike.setImageResource(feedItem.isLiked ? R.drawable.ic_heart_red : R.drawable.ic_empty_love);
             tsLikesCounter.setCurrentText(vImageRoot.getResources().getQuantityString(
                     R.plurals.likes_count, feedItem.likesCount, feedItem.likesCount

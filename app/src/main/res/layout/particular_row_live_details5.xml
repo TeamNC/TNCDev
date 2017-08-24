@@ -118,27 +118,25 @@
             android:orientation="horizontal">
             <android.support.v7.widget.AppCompatImageButton
                  android:id="@+id/btnLike"
-                 android:layout_width="48dp"
-                 android:layout_height="48dp"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
                  android:contentDescription="@null"
                 android:background="@android:color/transparent"
                 android:src="@drawable/ic_empty_love" />
             <android.support.v7.widget.AppCompatImageButton
                 android:id="@+id/btnComments"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:src="@drawable/ic_black_comment"
                 android:background="@drawable/btn_feed_action"
-                android:contentDescription="@null"
-                />
+                android:contentDescription="@null" />
             <android.support.v7.widget.AppCompatImageButton
                 android:id="@+id/btnMore"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:src="@drawable/ic_black_send"
                 android:contentDescription="@null"
-                android:background="@drawable/btn_feed_action"
-                />
+                android:background="@drawable/btn_feed_action" />
         </LinearLayout>
         <TextSwitcher
             android:id="@+id/tsLikesCounter"
@@ -164,10 +162,12 @@
         <ImageView
             android:id="@+id/nbrelove"
             android:theme="@style/likebuttonindicator"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleY="0.75"
+            android:scaleX="0.75"
             android:src="@drawable/ic_full_black_love"
-            style="?android:attr/ratingBarStyleSmall"
+            android:tint="@color/text_like_counter"
             android:layout_centerVertical="true"
             android:isIndicator="true"
             android:layout_toLeftOf="@+id/tsLikesCounter"

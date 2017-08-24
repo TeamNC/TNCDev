@@ -1,8 +1,9 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.jakewharton.hugo'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion '25.0.0'
+    buildToolsVersion '25.0.2'
 
     defaultConfig {
         applicationId "com.example.faustin_12.ncdev"
@@ -34,15 +35,24 @@ dependencies {
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
     compile 'com.github.bumptech.glide:glide:3.7.0'
-    compile ('com.squareup.retrofit2:converter-simplexml:2.1.0'){
+    compile('com.squareup.retrofit2:converter-simplexml:2.1.0') {
         exclude group: 'xpp3', module: 'xpp3'
         exclude group: 'stax', module: 'stax-api'
         exclude group: 'stax', module: 'stax'
     }
-    compile ('com.github.ozodrukh:CircularReveal:1.1.1@aar'){
+    compile('com.github.ozodrukh:CircularReveal:1.1.1@aar') {
         transitive = true;
     }
     compile 'com.github.rahatarmanahmed:circularprogressview:2.5.0'
     compile 'cyd.awesome.android:awesome-material:1.0'
     compile 'io.github.luizgrp.sectionedrecyclerviewadapter:sectionedrecyclerviewadapter:1.0.5'
+    compile 'com.jakewharton:butterknife:8.4.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
+    compile 'com.jakewharton.timber:timber:4.3.1'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.commonsware.cwac:camera:0.7.0'
+
+    compile 'com.facebook.rebound:rebound:0.3.6'
+
+
 }
