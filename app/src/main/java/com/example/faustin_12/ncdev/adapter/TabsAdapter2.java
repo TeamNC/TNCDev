@@ -24,7 +24,7 @@ public class TabsAdapter2 extends FragmentStatePagerAdapter{
     private static Context context;
     private static String[] tabTitles=new String[]{"Dim", "Lun","Mar","Mer","Jeu","Ven","Sam"};
     private String tabSubTitles[]=new String[]{"1","2","3","4","5","6","7"};
-    public String[] date = {"a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a", "a" };
+    public String[] date = {"1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1" };
 
     public TabsAdapter2(Context context, FragmentManager fm) {
         super(fm);

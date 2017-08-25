@@ -40,7 +40,7 @@ public class RecyclerAdapterCategorie extends RecyclerView.Adapter <RecyclerAdap
     public mViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         switch (viewType) {
             case 0:
-                View view = mInflater.inflate(R.layout.particular_row_categorie, parent, false);
+                View view = mInflater.inflate(R.layout.row_categorie, parent, false);
                 return new mViewHolder(view);
             case 1:
                 View pview = mInflater.inflate(R.layout.particular_row_categorie, parent, false);
