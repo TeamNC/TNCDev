@@ -88,8 +88,6 @@ public class CategoriesFragment extends Fragment {    public static TabLayout ta
             }
         });
 
-        Toast.makeText(getContext(), "Catégorie : " + categorie, Toast.LENGTH_SHORT).show();
-
         return x;
     }
 

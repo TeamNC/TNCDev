@@ -34,7 +34,7 @@ MainActivity extends AppCompatActivity {
     Toolbar toolbar;
     DisplayCustomNotification displayCustomNotification;
     DisplayNotification displayNotification;
-    public String serverT="http://192.168.61.1";
+    public String serverT="http://192.168.8.101";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

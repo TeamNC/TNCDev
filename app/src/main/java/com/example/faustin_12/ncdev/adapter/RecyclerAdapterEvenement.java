@@ -63,12 +63,9 @@ public class RecyclerAdapterEvenement extends RecyclerView.Adapter <RecyclerAdap
         this.clickListener = clickListener;
     }
 
-    public String getTitle (int position){
-        return mData.get(position).getTitle();
+    public ElementActualite getItem(int position) {
+        return mData.get(position);
     }
-
-    public int getDate (int position) {return mData.get(position).getDate();}
-
 
     public int getItemCount() {
         return mData.size();
@@ -88,6 +85,10 @@ public class RecyclerAdapterEvenement extends RecyclerView.Adapter <RecyclerAdap
     public void setData (List<ElementActualite> mData){
         this.mData = mData;
         notifyDataSetChanged();
+    }
+
+    public List<ElementActualite> getData(){
+        return this.mData;
     }
 
     class mViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
@@ -126,7 +127,7 @@ public class RecyclerAdapterEvenement extends RecyclerView.Adapter <RecyclerAdap
             this.categorie.setText(""+current.getCategorie());
             this.nbreLove.setText(""+current.getLike());
             this.nbreCom.setText(""+current.getComment());
-            Glide.with(context).load(current.getImage()).placeholder(R.drawable.placeholder).into(this.imgRow);
+            Glide.with(context).load(current.getImage()).placeholder(R.drawable.placeholder).centerCrop().into(this.imgRow);
             this.current=current;
             this.position=position;
         }

@@ -181,7 +181,7 @@ public class OffreSpecialeFragment extends Fragment implements RecyclerAdapterOf
 
     // @Override
     public void itemClicked(View view, int position) {
-        Toast.makeText(getActivity(), "Tu as sélectionné :" + mAdapter.getTitleOffresSpeciales(position), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), "Tu as sélectionné :" + mAdapter.getItem(position).getName(), Toast.LENGTH_SHORT).show();
         CategoriesFragment temps = new CategoriesFragment();
         //temps.setName("Détail de :" + mAdapter.getName(position));
         FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
