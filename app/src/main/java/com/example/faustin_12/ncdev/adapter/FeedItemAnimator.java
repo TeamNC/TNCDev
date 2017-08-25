@@ -1,4 +1,4 @@
-package com.example.faustin_12.ncdev.adapter;
+/*package com.example.faustin_12.ncdev.adapter;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -243,4 +243,4 @@ public class FeedItemAnimator extends DefaultItemAnimator {
             this.updateAction = updateAction;
         }
     }
-}
+}*/

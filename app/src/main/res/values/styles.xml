@@ -84,8 +84,6 @@
         <item name="android:textOff">@string/OFF</item>
     </style>
 
-    <string name="ON" />
-    <string name="OFF" />
     <style name="ContextMenuButton">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
