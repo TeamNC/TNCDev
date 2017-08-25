@@ -1,4 +1,4 @@
-/*package com.example.faustin_12.ncdev.view;
+package com.example.faustin_12.ncdev.view;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -90,4 +90,4 @@ public class LoadingFeedItemView extends FrameLayout {
     public interface OnLoadingFinishedListener {
         void onLoadingFinished();
     }
-}*/
+}
