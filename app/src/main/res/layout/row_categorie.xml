@@ -15,7 +15,6 @@
             android:id="@+id/first_pict"
            android:layout_width="match_parent"
             android:layout_height="@dimen/events_cover_height"
-            android:background="?attr/selectableItemBackgroundBorderless"
             android:clickable="true"
             android:scaleType="fitXY"
             android:fitsSystemWindows="true"
