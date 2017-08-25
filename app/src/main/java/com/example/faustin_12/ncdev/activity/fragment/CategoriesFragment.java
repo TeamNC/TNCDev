@@ -72,7 +72,7 @@ public class CategoriesFragment extends Fragment {    public static TabLayout ta
         }
 
         adapter.setCategorie(categorie);
-        adapter.setDate(date);
+        //adapter.setDate(date);
         TabLayout.Tab tab = tabLayout2.getTabAt(10);
         tab.select();
 
