@@ -102,7 +102,7 @@ public class ActualiteFragment extends Fragment implements RecyclerAdapterActual
         progressButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), server, Toast.LENGTH_SHORT).show();
+
                 if(mediaPath !=null)
                     uploadFile();
                 if(!is_progress && mediaPath == null)
@@ -178,6 +178,7 @@ public class ActualiteFragment extends Fragment implements RecyclerAdapterActual
     public void uploadFile (){
         server=((MainActivity) getActivity()).getServerT();
         is_progress= true;
+        Toast.makeText(getContext(), server, Toast.LENGTH_SHORT).show();
         FileApi service = new UploadClient(server).getApiService();
 
         File file = new File(mediaPath);
@@ -222,9 +223,9 @@ public class ActualiteFragment extends Fragment implements RecyclerAdapterActual
     }
 
     public void showImagePopup() {
-        final CharSequence[] options = {"Images", "Videos", "Cancel"};
         final Intent galleryIntent = new Intent();
-        final Intent chooserIntent = Intent.createChooser(galleryIntent, "Choose media file");
+        final Intent chooserIntent = Intent.createChooser(galleryIntent, "Choose image");
+        final CharSequence[] options = {"Images", "Videos", "Cancel"};
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setTitle("Select Media File");
         builder.setItems(options, new DialogInterface.OnClickListener() {
