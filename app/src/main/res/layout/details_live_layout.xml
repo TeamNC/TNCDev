@@ -11,14 +11,12 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-       >
+        android:orientation="vertical">
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fitsSystemWindows="true"
-        >
+        android:fitsSystemWindows="true">
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbarDL"
             android:layout_width="match_parent"
@@ -27,7 +25,6 @@
             app:theme="@style/ToolBarTheme"
             app:popupTheme="@style/PopUpTheme">
         <de.hdodenhof.circleimageview.CircleImageView
-
             android:id="@+id/profile_image"
             android:layout_width="?attr/actionBarSize"
             android:layout_height="match_parent"
@@ -35,20 +32,7 @@
             android:scaleType="centerCrop"
             android:layout_centerVertical="true"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            />
-            <TextView
-                android:id="@+id/txvName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-medium"
-                android:gravity="bottom"
-                android:text="Digital Thursday"
-                android:maxLines="2"
-                android:ellipsize="end"
-                android:layout_margin="20dp"
-                android:textColor="#FFFFFF"
-                android:textSize="14sp"/>
+            android:layout_alignParentStart="true" />
             <RatingBar
                 style="@style/foodRatingBar"
                 android:theme="@style/RatingBar"
@@ -56,23 +40,18 @@
                 android:layout_height="wrap_content"
                 android:isIndicator="false"
                 android:numStars="5"
-                android:layout_centerVertical="true"
+                android:layout_gravity="center"
                 android:rating="2"
                 android:stepSize="0.5" />
->>>>>>> TEMP
         </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
         <android.support.v7.widget.RecyclerView
             android:id="@+id/DLList"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
-
+            android:layout_height="wrap_content">
         </android.support.v7.widget.RecyclerView>
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/boutonBoite"

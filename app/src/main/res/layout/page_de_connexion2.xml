@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/fondp1">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Français(France)"
+        android:textSize="13sp"
+        android:paddingTop="5dp"
+        android:textColor="@color/white"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/seperateur"/>
+
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_centerInParent="true"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="NIGHT"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="30sp"/>
+            <EditText
+                android:id="@+id/NomUt"
+                android:textColor="@color/white"
+                android:layout_width="fill_parent"
+                android:layout_height="25dp"
+                android:textSize="12sp"
+                android:hint="  Numéro ou Email"
+                android:background="@drawable/cadre_rect"
+                android:gravity="center_vertical"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp">
+                <EditText
+                    android:id="@+id/MotDePasse"
+                    android:layout_width="fill_parent"
+                    android:layout_height="25dp"
+                    android:hint="  Entrer un mot de passe"
+
+                    android:textSize="12sp"
+                    android:background="@drawable/cadre_rect"
+                    android:gravity="center_vertical" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp">
+                <EditText
+                    android:id="@+id/MotDePasse2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="25dp"
+                    android:hint="  Confirmerle mot de passe"
+
+                    android:textSize="12sp"
+                    android:background="@drawable/cadre_rect"
+                    android:gravity="center_vertical" />
+            </LinearLayout>
+            <Button
+                android:id="@+id/raz"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Connexion"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:paddingTop="10dp"/>
+
+                <Button
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="mot de passe oublié ?"
+                    android:textSize="11sp"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:background="#00494ab8"/>
+            
+
+
+
+    </LinearLayout>
+
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="25dp"
+        android:text="S'inscricre maitenant"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:background="#494ab8"
+        android:layout_alignParentBottom="true"
+       />
+
+</RelativeLayout>
