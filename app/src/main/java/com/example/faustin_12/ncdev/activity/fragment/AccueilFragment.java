@@ -1,5 +1,6 @@
 package com.example.faustin_12.ncdev.activity.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -58,6 +59,13 @@ public class AccueilFragment extends Fragment {
         });
 
         return x;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        for (Fragment fragment : getChildFragmentManager().getFragments()) {
+            fragment.onActivityResult(requestCode, resultCode, data);
+        }
     }
 
     /*public void onPause(){
