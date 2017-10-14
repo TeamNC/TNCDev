@@ -62,7 +62,7 @@ public class OffreSpecialeFragment extends Fragment implements RecyclerAdapterOf
          */
         View v = inflater.inflate(R.layout.recyclerview_layout, container, false);
         FloatingActionButton addButton = (FloatingActionButton) v.findViewById(R.id.button_add);
-        addButton.setOnClickListener(new View.OnClickListener() {
+        /*addButton.setOnClickListener(new View.OnClickListener() {
                                          @Override
                                          public void onClick(View v) {
                                              Calendar c = Calendar.getInstance();
@@ -76,7 +76,7 @@ public class OffreSpecialeFragment extends Fragment implements RecyclerAdapterOf
                                              index++;
                                          }
                                      }
-        );
+        );*/
 
         recyclerView = (RecyclerView) v.findViewById(R.id.recyclerList);
         mAdapter = new RecyclerAdapterOffresSpeciales(getContext(), new ArrayList<ElementOffresSpeciales>());
