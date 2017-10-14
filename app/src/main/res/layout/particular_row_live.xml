@@ -95,13 +95,13 @@
                         android:layout_below="@+id/live_title"
                         android:orientation="horizontal">
 
-                        <!-- <com.example.faustin_12.ncdev.view.LikeButtonView
+                        <com.example.faustin_12.ncdev.view.LikeButtonView
                             android:id="@+id/live_time_icon"
                             android:contentDescription="@null"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingLeft="5dp"
-                      /> -->
+                      />
 
                         <TextView
                             android:text="il y'a 30 min"

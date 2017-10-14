@@ -14,7 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.faustin_12.ncdev.R;
-//import com.example.faustin_12.ncdev.view.LikeButtonView;
+import com.example.faustin_12.ncdev.view.LikeButtonView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -202,7 +202,7 @@ public class LiveFragment2 extends Fragment {
 
             private final View rootView;
             private final ImageView imgItem;
-            //private final LikeButtonView liveclockicon;
+            private final LikeButtonView liveclockicon;
           //  private final TextView tvDate;
             private final View categorycolor;
 
@@ -211,7 +211,7 @@ public class LiveFragment2 extends Fragment {
 
                 rootView = view;
                 imgItem = (ImageView) view.findViewById(R.id.live_item);
-                //liveclockicon = (LikeButtonView) view.findViewById(R.id.live_time_icon);
+                liveclockicon = (LikeButtonView) view.findViewById(R.id.live_time_icon);
                // tvDate = (TextView) view.findViewById(R.id.live_date);
                 categorycolor=view.findViewById(R.id.Couleur_categorie);
             }
