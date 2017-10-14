@@ -96,7 +96,7 @@
                         android:orientation="horizontal">
 
                         <com.example.faustin_12.ncdev.view.LikeButtonView
-                            android:id="@+id/live_time_icon"
+                            android:id="@+id/live_time_icons"
                             android:contentDescription="@null"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"

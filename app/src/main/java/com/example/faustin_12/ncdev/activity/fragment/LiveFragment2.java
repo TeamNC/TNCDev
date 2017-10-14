@@ -211,7 +211,7 @@ public class LiveFragment2 extends Fragment {
 
                 rootView = view;
                 imgItem = (ImageView) view.findViewById(R.id.live_item);
-                liveclockicon = (LikeButtonView) view.findViewById(R.id.live_time_icon);
+                liveclockicon = (LikeButtonView) view.findViewById(R.id.live_time_icons);
                // tvDate = (TextView) view.findViewById(R.id.live_date);
                 categorycolor=view.findViewById(R.id.Couleur_categorie);
             }
