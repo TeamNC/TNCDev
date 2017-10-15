@@ -1,4 +1,4 @@
-/*package com.example.faustin_12.ncdev.adapter;
+package com.example.faustin_12.ncdev.adapter;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -128,7 +128,7 @@ public class FeedItemAnimator extends DefaultItemAnimator {
         bounceAnimY.addListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationStart(Animator animation) {
-                holder.btnLike.setImageResource(R.drawable.ic_heart_red);
+                holder.btnLike.setImageResource(R.drawable.ic_heart_red2);
             }
 
             @Override
@@ -243,4 +243,4 @@ public class FeedItemAnimator extends DefaultItemAnimator {
             this.updateAction = updateAction;
         }
     }
-}*/
+}

@@ -18,7 +18,8 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.faustin_12.ncdev.R;
-import com.example.faustin_12.ncdev.adapter.RecyclerAdapterDetailsLive;
+import com.example.faustin_12.ncdev.adapter.FeedItemAnimator;
+import com.example.faustin_12.ncdev.adapter.RecyclerAdapterDetailsLive2;
 import com.example.faustin_12.ncdev.model.ElementDetailsLive;
 
 import java.text.DateFormat;
@@ -49,7 +50,7 @@ public class DetailLiveFragment2 extends Fragment {
     String[] currency = new String[]{"Indian Rupee ", "Pakistani Rupee", "Sri Lankan Rupee", "Renminbi", "Bangladeshi Taka", "Nepalese Rupee", "Afghani", "North Korean Won", "South Korean Won", "Japanese Yen"
     };
     RecyclerView recyclerView;
-    RecyclerAdapterDetailsLive mAdapter;
+    RecyclerAdapterDetailsLive2 mAdapter;
     public ImageView myImageView;
     FragmentManager mFragmentManager;
 
@@ -86,7 +87,7 @@ public class DetailLiveFragment2 extends Fragment {
         );
 
         recyclerView = (RecyclerView) v.findViewById(R.id.DLList);
-        mAdapter=new RecyclerAdapterDetailsLive(getContext(),new ArrayList<ElementDetailsLive>());
+        mAdapter=new RecyclerAdapterDetailsLive2(getContext(),new ArrayList<ElementDetailsLive>());
        // mAdapter.setClickListener(this);
         recyclerView.setAdapter(mAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -97,7 +98,7 @@ public class DetailLiveFragment2 extends Fragment {
             }
         };
          recyclerView.setLayoutManager(linearLayoutManager);
-        //recyclerView.setItemAnimator(new FeedItemAnimator());
+        recyclerView.setItemAnimator(new FeedItemAnimator());
 
         mFragmentManager=getActivity().getSupportFragmentManager();
 
