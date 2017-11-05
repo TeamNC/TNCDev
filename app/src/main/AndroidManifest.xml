@@ -26,7 +26,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!-- Search results activity -->
+        <!-- Search results activity Thales -->
         <activity android:name=".activity.SearchResultsActivity"
             android:parentActivityName=".activity.MainActivity"
             android:configChanges="keyboardHidden|orientation|screenSize">
