@@ -16,6 +16,21 @@ public class ElementActualite {
     @SerializedName("date")
     @Expose
     private int date; //YYYMMDD
+    @SerializedName("datepost")
+    @Expose
+    private int datepost; //YYYMMDD
+    @SerializedName("duration")
+    @Expose
+    private int duration;
+    @SerializedName("mark")
+    @Expose
+    private int mark;
+    @SerializedName("participant")
+    @Expose
+    private int participant;
+    @SerializedName("sponsor")
+    @Expose
+    private String sponsor;
     @SerializedName("description")
     @Expose
     private String description;
@@ -33,34 +48,27 @@ public class ElementActualite {
     private String localisation; //To be an Object GMap
     @SerializedName("promoter")
     @Expose
-    private String promoter;
+    private String promoter; //Confirm type int?
     @SerializedName("comment")
     @Expose
-    private int comment;
+    private String comment; //Confirm type int?
     @SerializedName("like")
     @Expose
     private int like;
-    @SerializedName("share")
+    //@SerializedName("share")
+    //@Expose
+    //private int share;
+    //@SerializedName("multimedia")
+    //@Expose
+    //private String multimedia;
+    @SerializedName("tickets")
     @Expose
-    private int share;
-    @SerializedName("multimedia")
+    private int tickets;
+    @SerializedName("guest")
     @Expose
-    private String multimedia;
+    private String guest;
 
-    public ElementActualite(int id_event, String title, int date, String description, int categorie, String image, int price, String localisation, String promoter, int comment, int like, int share, String multimedia) {
-        this.id_event = id_event;
-        this.title = title;
-        this.date = date;
-        this.description = description;
-        this.categorie = categorie;
-        this.image = image;
-        this.price = price;
-        this.localisation = localisation;
-        this.promoter = promoter;
-        this.comment = comment;
-        this.like = like;
-        this.share = share;
-        this.multimedia = multimedia;
+    public ElementActualite() {
     }
 
     public int getId_event() {
@@ -85,6 +93,46 @@ public class ElementActualite {
 
     public void setDate(int date) {
         this.date = date;
+    }
+
+    public int getDatepost() {
+        return datepost;
+    }
+
+    public void setDatepost(int datepost) {
+        this.datepost = datepost;
+    }
+
+    public int getDuration() {
+        return duration;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
+
+    public int getMark() {
+        return mark;
+    }
+
+    public void setMark(int mark) {
+        this.mark = mark;
+    }
+
+    public int getParticipant() {
+        return participant;
+    }
+
+    public void setParticipant(int participant) {
+        this.participant = participant;
+    }
+
+    public String getSponsor() {
+        return sponsor;
+    }
+
+    public void setSponsor(String sponsor) {
+        this.sponsor = sponsor;
     }
 
     public String getDescription() {
@@ -135,11 +183,11 @@ public class ElementActualite {
         this.promoter = promoter;
     }
 
-    public int getComment() {
+    public String getComment() {
         return comment;
     }
 
-    public void setComment(int comment) {
+    public void setComment(String comment) {
         this.comment = comment;
     }
 
@@ -151,20 +199,20 @@ public class ElementActualite {
         this.like = like;
     }
 
-    public int getShare() {
-        return share;
+    public int getTickets() {
+        return tickets;
     }
 
-    public void setShare(int share) {
-        this.share = share;
+    public void setTickets(int tickets) {
+        this.tickets = tickets;
     }
 
-    public String getMultimedia() {
-        return multimedia;
+    public String getGuest() {
+        return guest;
     }
 
-    public void setMultimedia(String multimedia) {
-        this.multimedia = multimedia;
+    public void setGuest(String guest) {
+        this.guest = guest;
     }
 }
 
