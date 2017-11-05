@@ -161,7 +161,7 @@ public class ActualiteFragment extends Fragment implements RecyclerAdapterActual
                 if(mAdapter.getItemCount()>0)
                     refresh(mAdapter.getData().get(0).getId_event());
                 else
-                    download(1);
+                    download();
             }
         });
 
@@ -448,7 +448,7 @@ public class ActualiteFragment extends Fragment implements RecyclerAdapterActual
         });
     }
 
-    public void download (int page){
+    public void download (){
         // Trailing slash is needed
         server=((MainActivity) getActivity()).getServerT();
         Retrofit retrofit = new Retrofit.Builder()
@@ -456,7 +456,7 @@ public class ActualiteFragment extends Fragment implements RecyclerAdapterActual
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         InterfaceEvenements apiService = retrofit.create(InterfaceEvenements.class);
-        Call<ResponseEvenement> call = apiService.getJSON("/nca/db_get_document_pp_evts.php?page=1");
+        Call<ResponseEvenement> call = apiService.getJSON("/nca/db_get_all_evts.php");
         call.enqueue(new Callback<ResponseEvenement>() {
             @Override
             public void onResponse(Call<ResponseEvenement> call, Response<ResponseEvenement> response) {

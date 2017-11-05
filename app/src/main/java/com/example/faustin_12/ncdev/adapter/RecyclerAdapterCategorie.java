@@ -112,7 +112,7 @@ public class RecyclerAdapterCategorie extends RecyclerView.Adapter <RecyclerAdap
         }
 
         public void setData(ElementCategorie current, int position) {
-            this.name.setText(current.getName());
+            this.name.setText(current.getTitle());
             Glide.with(context).load(current.getImage()).placeholder(R.drawable.placeholder).centerCrop().into(this.imgRow);
             this.nbreEvents.setText("" + current.getNombreevts());
             this.current = current;

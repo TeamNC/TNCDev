@@ -194,7 +194,7 @@ public class CategoriesFragment extends Fragment {    public static TabLayout ta
          public void itemClicked(View view, int position) {
              Toast.makeText(getActivity(), "Tu as sélectionné :" + mAdapter.getDate(position), Toast.LENGTH_SHORT).show();
              DetailFragment temps = new DetailFragment();
-           //  temps.setTitle(mAdapter.getName(position));
+           //  temps.setTitle(mAdapter.getTitle(position));
              temps.setDate(mAdapter.getDate(position));
              FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
              fragmentTransaction.replace(R.id.containerView, temps).addToBackStack(null).commit();

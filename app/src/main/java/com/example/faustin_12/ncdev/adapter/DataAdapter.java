@@ -74,8 +74,8 @@ import static android.content.ContentValues.TAG;
     public void addInfo (ElementEvenement item){
         evenements.add(item);
         notifyItemInserted(evenements.size());
-        //displayCustomNotification.setnDescription("Nouvelle Boite ! " + item.getName());
-        //displayCustomNotification.setnTickerM("Nouvelle Boite ! " + item.getName());
+        //displayCustomNotification.setnDescription("Nouvelle Boite ! " + item.getTitle());
+        //displayCustomNotification.setnTickerM("Nouvelle Boite ! " + item.getTitle());
         //displayCustomNotification.setnTime(""+(new SimpleDateFormat("HH:MM").format(Calendar.getInstance().getTime())));
         //mHandler.post(displayCustomNotification);
     }
@@ -83,8 +83,8 @@ import static android.content.ContentValues.TAG;
         evenements.add(position, item);
         notifyItemInserted(evenements.size());
         notifyItemInserted(position);
-        //displayCustomNotification.setnDescription("Nouvelle Boite ! " + item.getName());
-        //displayCustomNotification.setnTickerM("Nouvelle Boite ! " + item.getName());
+        //displayCustomNotification.setnDescription("Nouvelle Boite ! " + item.getTitle());
+        //displayCustomNotification.setnTickerM("Nouvelle Boite ! " + item.getTitle());
         //displayCustomNotification.setnTime(""+(new SimpleDateFormat("HH:MM").format(Calendar.getInstance().getTime())));
         //mHandler.post(displayCustomNotification);
     }

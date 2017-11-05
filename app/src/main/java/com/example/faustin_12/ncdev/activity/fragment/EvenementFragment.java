@@ -110,10 +110,10 @@ public class EvenementFragment extends Fragment implements RecyclerAdapterCatego
                     {
                         if ( (visibleItemCount + pastVisiblesItems) >= totalItemCount)
                         {
-                            loading = true;
-                            Log.v("...", "Last Item Wow !");
-                            //Do pagination.. i.e. fetch new data
-                            //loadMore(currentPage+1);
+                            if(mAdapter.getItemCount()>0) {
+                                loading = true;
+                                loadMore(mAdapter.getData().get(mAdapter.getItemCount() - 1).getId_cat());
+                            }
                         }
                     }
                 }
@@ -123,11 +123,10 @@ public class EvenementFragment extends Fragment implements RecyclerAdapterCatego
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                // Your code to refresh the list here.
-                // Make sure you call swipeContainer.setRefreshing(false)
-                // once the network request has completed successfully.
-
-                download();
+                if(mAdapter.getItemCount()>0)
+                    refresh(mAdapter.getData().get(0).getId_cat());
+                else
+                    download();
 
             }
         });
@@ -141,6 +140,107 @@ public class EvenementFragment extends Fragment implements RecyclerAdapterCatego
 
         return v;
     }
+
+    public void refresh (int id_cat){
+        server=((MainActivity) getActivity()).getServerT();
+        // Trailing slash is needed
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(server) //url host/ncdev/db_get_all_document.php
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        InterfaceCategories apiService = retrofit.create(InterfaceCategories.class);
+        Call<ResponseCategorie> call = apiService.getJSON("/nca/db_get_all_cat_bigger_id.php?id_cat="+id_cat);
+        call.enqueue(new Callback<ResponseCategorie>() {
+            @Override
+            public void onResponse(Call<ResponseCategorie> call, Response<ResponseCategorie> response) {
+                ResponseCategorie responseCategorie = response.body();
+                mData = responseCategorie.getCategories();
+
+                try{
+                    if (mData.size()>0){
+                        new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                mHandler.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        for (int i=0; i<mData.size(); i++){
+                                            mAdapter.addInfo(0, mData.get(i));
+                                        }
+                                    }
+                                });
+                            }
+                        }).start();
+                    }
+                }catch (Exception e){
+                    Toast.makeText(getContext(), "Error :"+e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+
+                swipeContainer.setRefreshing(false);
+
+            }
+
+            @Override
+            public void onFailure(Call<ResponseCategorie> call, Throwable t) {
+                // Log error here since request failed
+                Toast.makeText(getContext(),"Error : "+ t.getMessage(),Toast.LENGTH_LONG).show();
+                Log.d("Error",t.getMessage());
+
+                swipeContainer.setRefreshing(false);
+            }
+        });
+    }
+
+    public void loadMore (int id_cat){
+        server=((MainActivity) getActivity()).getServerT();
+        // Trailing slash is needed
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(server) //url host/ncdev/db_get_all_document.php
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        InterfaceCategories apiService = retrofit.create(InterfaceCategories.class);
+        Call<ResponseCategorie> call = apiService.getJSON("/nca/db_get_all_cat_smaller_id.php?id_cat="+id_cat);
+        call.enqueue(new Callback<ResponseCategorie>() {
+            @Override
+            public void onResponse(Call<ResponseCategorie> call, Response<ResponseCategorie> response) {
+                ResponseCategorie responseCategorie = response.body();
+                mData = responseCategorie.getCategories();
+
+                try{
+                    if (mData.size()>0){
+                        new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                mHandler.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        for (int i=0; i<mData.size(); i++){
+                                            mAdapter.addInfo(mAdapter.getItemCount(), mData.get(i));
+                                        }
+                                    }
+                                });
+                            }
+                        }).start();
+                    }
+                }catch (Exception e){
+                    Toast.makeText(getContext(), "Error :"+e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+
+                swipeContainer.setRefreshing(false);
+
+            }
+
+            @Override
+            public void onFailure(Call<ResponseCategorie> call, Throwable t) {
+                // Log error here since request failed
+                Toast.makeText(getContext(),"Error : "+ t.getMessage(),Toast.LENGTH_LONG).show();
+                Log.d("Error",t.getMessage());
+
+                swipeContainer.setRefreshing(false);
+            }
+        });
+    }
+
 
     public void download (){
         server=((MainActivity) getActivity()).getServerT();
@@ -166,7 +266,6 @@ public class EvenementFragment extends Fragment implements RecyclerAdapterCatego
                                 mHandler.post(new Runnable() {
                                     @Override
                                     public void run() {
-                                        currentPage=1;
                                         mAdapter.setData(mData);
                                         recyclerView.setAdapter(mAdapter);
                                     }
@@ -239,11 +338,6 @@ public class EvenementFragment extends Fragment implements RecyclerAdapterCatego
         return Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics()));
     }
 
-
-
-    public void addInfo (ElementCategorie item){
-        mAdapter.addInfo(item);
-    }
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 

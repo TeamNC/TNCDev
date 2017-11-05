@@ -10,9 +10,9 @@ public class ElementCategorie {
     @SerializedName("id_cat")
     @Expose
     private int id_cat;
-    @SerializedName("name")
+    @SerializedName("title")
     @Expose
-    private String name;
+    private String title;
     @SerializedName("nombreevts")
     @Expose
     private int nombreevts;
@@ -23,9 +23,9 @@ public class ElementCategorie {
     @Expose
     private int couleur;
 
-    public ElementCategorie(int id_cat, String name, int nombreevts, String image, int couleur) {
+    public ElementCategorie(int id_cat, String title, int nombreevts, String image, int couleur) {
         this.id_cat = id_cat;
-        this.name = name;
+        this.title = title;
         this.nombreevts = nombreevts;
         this.image = image;
         this.couleur = couleur;
@@ -39,12 +39,12 @@ public class ElementCategorie {
         this.id_cat = id_cat;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public int getNombreevts() {
