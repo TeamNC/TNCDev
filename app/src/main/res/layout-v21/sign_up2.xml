@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/cadre_sign_up3">
+    <TextView
+        android:layout_marginTop="5dp"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Inscription"
+        android:layout_gravity="center_horizontal"
+        android:textSize="40sp"
+        android:textColor="@color/black"
+         />
+        <LinearLayout
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:padding="30dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <EditText
+                    android:id="@+id/NomUt"
+                    android:layout_weight="1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Nom"
+                    android:textSize="24sp"
+                    android:layout_marginRight="1dp"
+                    android:textColorHint="@color/black"/>
+                <EditText
+                    android:textColorHint="@color/black"
+                    android:layout_marginRight="1dp"
+                    android:layout_weight="1"
+                    android:id="@+id/PrenomUt"
+                    android:textColor="@color/black"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Prenom"
+                    android:textSize="24sp"/>
+            </LinearLayout>
+            <EditText
+            android:id="@+id/mailUt"
+            android:drawableTint="@color/black"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="Votre email"
+            android:textSize="24sp"
+            android:layout_marginTop="10dp"
+            android:drawableRight="@drawable/ic_mail"
+            android:textColorHint="@color/black"/>
+            <EditText
+                android:id="@+id/numberUt"
+                android:drawableTint="@color/black"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="Votre numéro de telephone"
+                android:textSize="24sp"
+                android:layout_marginTop="10dp"
+                android:drawableRight="@drawable/ic_mail"
+                android:textColorHint="@color/black"/>
+
+            <EditText
+                android:id="@+id/MotDePasse"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="Mot de passe"
+                android:textSize="24sp"
+                android:layout_marginTop="10dp"
+                android:inputType="textPassword"
+                android:drawableRight="@drawable/ic_visibility"
+                android:textColorHint="@color/black"
+                android:drawableTint="@color/black"/>
+            <EditText
+                android:id="@+id/ConMotDePasse"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:hint="Conf mot de passe"
+                android:textSize="24sp"
+                android:layout_marginTop="10dp"
+                android:inputType="textPassword"
+                android:drawableRight="@drawable/ic_visibility"
+                android:textColorHint="@color/black"
+                android:drawableTint="@color/black"/>
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Category:"
+                android:layout_marginBottom="5dp"
+                android:textSize="24dp"
+                android:textColor="@color/black"
+                />
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:entries="@array/category_arrays"
+                android:prompt="@string/spinner_title"
+                android:drawSelectorOnTop="true"
+                />
+
+            <Button
+                android:id="@+id/Sign_up"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Sign in"
+                android:gravity="center"
+                android:background="@drawable/cadre_signup_white"
+                android:textSize="25sp"
+                android:layout_marginTop="30dp"
+                android:textColor="#f26c76"/>
+        </LinearLayout>
+
+</RelativeLayout>

@@ -194,9 +194,9 @@
                     android:id="@+id/tlUserProfileTabs"
                     android:layout_width="match_parent"
                     android:layout_height="48dp"
-                    android:background="?attr/colorAccent"
+                    android:background="#79F8F8"
                     app:tabGravity="fill"
-                    app:tabIndicatorColor="#5be5ad"
+                    app:tabIndicatorColor="?attr/colorAccent"
                     app:tabIndicatorHeight="4dp"
                     app:tabMode="fixed" />
             </FrameLayout>
