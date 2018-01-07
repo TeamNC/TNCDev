@@ -4,9 +4,11 @@ package com.example.faustin_12.ncdev.activity.fragment;
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -68,8 +70,9 @@ public class EvenementFragment extends Fragment implements RecyclerAdapterCatego
          */
         View v = inflater.inflate(R.layout.recyclerview_layout, container, false);
 
+        mFragmentManager=getActivity().getSupportFragmentManager();
         recyclerView = (RecyclerView) v.findViewById(R.id.recyclerList);
-        mAdapter = new RecyclerAdapterCategorie(getContext(), new ArrayList<ElementCategorie>());
+        mAdapter = new RecyclerAdapterCategorie(getContext(), new ArrayList<ElementCategorie>(), mFragmentManager);
         swipeContainer = (SwipeRefreshLayout) v.findViewById(R.id.swipeContainerC);
 
         mLayoutManager = new GridLayoutManager(getContext(), 2);
@@ -136,8 +139,6 @@ public class EvenementFragment extends Fragment implements RecyclerAdapterCatego
                 android.R.color.holo_orange_light,
                 android.R.color.holo_red_light);
 
-        mFragmentManager=getActivity().getSupportFragmentManager();
-
         return v;
     }
 
@@ -176,6 +177,8 @@ public class EvenementFragment extends Fragment implements RecyclerAdapterCatego
                     Toast.makeText(getContext(), "Error :"+e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
+                mAdapter.addInfo(0, new ElementCategorie(0,"Test", 10, "", 0));
+
                 swipeContainer.setRefreshing(false);
 
             }
@@ -185,6 +188,8 @@ public class EvenementFragment extends Fragment implements RecyclerAdapterCatego
                 // Log error here since request failed
                 Toast.makeText(getContext(),"Error : "+ t.getMessage(),Toast.LENGTH_LONG).show();
                 Log.d("Error",t.getMessage());
+
+                mAdapter.addInfo(0, new ElementCategorie(0,"Test", 10, "", 0));
 
                 swipeContainer.setRefreshing(false);
             }
@@ -243,6 +248,7 @@ public class EvenementFragment extends Fragment implements RecyclerAdapterCatego
 
 
     public void download (){
+        mAdapter.addInfo(0, new ElementCategorie(0,"Test", 10, "", 0));
         server=((MainActivity) getActivity()).getServerT();
         // Trailing slash is needed
         Retrofit retrofit = new Retrofit.Builder()
@@ -368,10 +374,12 @@ public class EvenementFragment extends Fragment implements RecyclerAdapterCatego
     // @Override
     public void itemClicked(View view, int position) {
         Toast.makeText(getContext(), "Ah, don't touch me!", Toast.LENGTH_SHORT).show();
-        CategoriesFragment temps = new CategoriesFragment();
+
+
+        /*CategoriesFragment temps = new CategoriesFragment();
         temps.setCategorie(""+mAdapter.getItem(position).getId_cat());
         FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.containerView0, temps).addToBackStack(null).commit();
+        fragmentTransaction.replace(R.id.containerView0, temps).addToBackStack(null).commit();*/
     }
 
 }

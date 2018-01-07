@@ -60,5 +60,8 @@ Sin autem ad adulescentiam perduxissent, dirimi tamen interdum contentione vel u
         <item quantity="other">%d likes</item>
     </plurals>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 
 </resources>

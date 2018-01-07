@@ -1,18 +1,27 @@
 package com.example.faustin_12.ncdev.adapter;
 
 import android.content.Context;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.faustin_12.ncdev.R;
+import com.example.faustin_12.ncdev.activity.fragment.BlankFragment;
+import com.example.faustin_12.ncdev.activity.fragment.DialogImage;
 import com.example.faustin_12.ncdev.model.ElementCategorie;
 
 import java.util.List;
+
 
 /**
  * Created by LIONEL KOUEMENI on 01/10/2016.
@@ -21,12 +30,14 @@ public class RecyclerAdapterCategorie extends RecyclerView.Adapter <RecyclerAdap
     private List<ElementCategorie> mData;
     private ClickListener clickListener;
     private LayoutInflater mInflater;
+    private FragmentManager fragmentManager;
     private Context context;
 
-    public RecyclerAdapterCategorie(Context context, List<ElementCategorie> data) {
+    public RecyclerAdapterCategorie(Context context, List<ElementCategorie> data, FragmentManager fragmentManager) {
         this.mData = data;
         this.mInflater = LayoutInflater.from(context);
         this.context = context;
+        this.fragmentManager = fragmentManager;
     }
 
     @Override
@@ -50,9 +61,34 @@ public class RecyclerAdapterCategorie extends RecyclerView.Adapter <RecyclerAdap
     }
 
     @Override
-    public void onBindViewHolder(mViewHolder holder, int position) {
+    public void onBindViewHolder(final mViewHolder holder, int position) {
         ElementCategorie currentObj = mData.get(position);
         holder.setData(currentObj, position);
+        String transitionName = "";
+        transitionName = holder.name.getText().toString();
+        ViewCompat.setTransitionName(holder.imgRow, transitionName);
+
+        holder.imgRow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DialogFragment dialogImage = new DialogImage();
+                String transitionName = "";
+                transitionName = holder.name.getText().toString();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                Fragment prev = fragmentManager.findFragmentByTag("dialogimage");
+                if(prev != null){
+                    fragmentTransaction.remove(prev);
+                }
+
+                BlankFragment blankFragment = new BlankFragment();
+                blankFragment.setTransitionName(transitionName);
+                Toast.makeText(context, transitionName, Toast.LENGTH_SHORT).show();
+                fragmentTransaction.addSharedElement(holder.imgRow, transitionName)
+                        .replace(R.id.containerView0, blankFragment).addToBackStack(null).commit();
+                //dialogImage.show(fragmentTransaction, "dialogimage");
+
+            }
+        });
 
     }
 

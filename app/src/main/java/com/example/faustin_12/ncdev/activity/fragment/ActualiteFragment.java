@@ -388,6 +388,9 @@ public class ActualiteFragment extends Fragment implements RecyclerAdapterActual
                     Toast.makeText(getContext(), "Error :"+e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
+                ElementActualite elementActualite = new ElementActualite();
+                elementActualite.setTitle("Test");
+                mAdapter.addInfo(0, elementActualite);
                 swipeContainer.setRefreshing(false);
             }
 
@@ -396,6 +399,9 @@ public class ActualiteFragment extends Fragment implements RecyclerAdapterActual
                 // Log error here since request failed
                 Toast.makeText(getContext(),"Error : "+ t.getMessage(),Toast.LENGTH_LONG).show();
                 Log.d("Error",t.getMessage());
+                ElementActualite elementActualite = new ElementActualite();
+                elementActualite.setTitle("Test");
+                mAdapter.addInfo(0, elementActualite);
                 swipeContainer.setRefreshing(false);
             }
         });
@@ -451,6 +457,9 @@ public class ActualiteFragment extends Fragment implements RecyclerAdapterActual
 
     public void download (){
         // Trailing slash is needed
+        ElementActualite elementActualite = new ElementActualite();
+        elementActualite.setTitle("Test");
+        mAdapter.addInfo(0, elementActualite);
         server=((MainActivity) getActivity()).getServerT();
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(server) //http://192.168.197.1
