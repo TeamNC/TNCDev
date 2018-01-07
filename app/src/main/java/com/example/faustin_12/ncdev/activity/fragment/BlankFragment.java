@@ -16,7 +16,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.faustin_12.ncdev.R;
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.Picasso;
 
 
 public class BlankFragment extends Fragment {
@@ -26,10 +29,11 @@ public class BlankFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
 
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
+        //postponeEnterTransition();
+        /*if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
             setSharedElementEnterTransition(TransitionInflater.from(getContext())
                     .inflateTransition(android.R.transition.move));
-        }
+        }*/
 
     }
     @Override
@@ -39,9 +43,37 @@ public class BlankFragment extends Fragment {
         View x = inflater.inflate(R.layout.fragment_blank, null);
 
         imageView = (ImageView) x.findViewById(R.id.dialogimage);
-        ViewCompat.setTransitionName(imageView, transitionName);
 
-        imageView.setOnClickListener(new View.OnClickListener(){
+        /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            imageView.setTransitionName(transitionName);
+        }
+        //ViewCompat.setTransitionName(imageView, transitionName);
+
+
+        Toast.makeText(getContext(), "End " + transitionName, Toast.LENGTH_SHORT).show();
+
+        Picasso.with(getContext())
+                .load("https://cdn.pixabay.com/photo/2016/03/31/19/51/acceptation-1295324_960_720.png")
+                .noFade()
+                .into(imageView, new Callback() {
+                    @Override
+                    public void onSuccess() {
+                        startPostponedEnterTransition();
+                        Toast.makeText(getContext(), "Success", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onError() {
+                        startPostponedEnterTransition();
+                        Toast.makeText(getContext(), "Faillure", Toast.LENGTH_SHORT).show();
+                    }
+                });*/
+
+        Glide.with(getContext())
+                .load("https://cdn.pixabay.com/photo/2016/03/31/19/51/acceptation-1295324_960_720.png")
+                .placeholder(R.drawable.placeholder).centerCrop().into(imageView);
+
+        /*imageView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
                 DialogImage dialogImage = new DialogImage();
@@ -56,7 +88,7 @@ public class BlankFragment extends Fragment {
                         .addToBackStack(null);
                 dialogImage.show(fragmentTransaction, "dialogimage");
             }
-        });
+        });*/
 
 
         return x;

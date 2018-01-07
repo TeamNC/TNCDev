@@ -126,10 +126,13 @@ public class EvenementFragment extends Fragment implements RecyclerAdapterCatego
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                if(mAdapter.getItemCount()>0)
+                mAdapter.addInfo(0, new ElementCategorie(0,"Test "+ currentPage, 10, "", 0));
+                currentPage++;
+                swipeContainer.setRefreshing(false);
+                /*if(mAdapter.getItemCount()>0)
                     refresh(mAdapter.getData().get(0).getId_cat());
                 else
-                    download();
+                    download();*/
 
             }
         });
@@ -177,8 +180,6 @@ public class EvenementFragment extends Fragment implements RecyclerAdapterCatego
                     Toast.makeText(getContext(), "Error :"+e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
-                mAdapter.addInfo(0, new ElementCategorie(0,"Test", 10, "", 0));
-
                 swipeContainer.setRefreshing(false);
 
             }
@@ -188,8 +189,6 @@ public class EvenementFragment extends Fragment implements RecyclerAdapterCatego
                 // Log error here since request failed
                 Toast.makeText(getContext(),"Error : "+ t.getMessage(),Toast.LENGTH_LONG).show();
                 Log.d("Error",t.getMessage());
-
-                mAdapter.addInfo(0, new ElementCategorie(0,"Test", 10, "", 0));
 
                 swipeContainer.setRefreshing(false);
             }
