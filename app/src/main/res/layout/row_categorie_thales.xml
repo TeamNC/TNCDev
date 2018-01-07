@@ -1,31 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/tools"
-    android:layout_height="match_parent"
     android:layout_margin="5dp"
     card_view:cardCornerRadius="5dp">
-
     <RelativeLayout
         android:id="@+id/particular_event"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
+         android:layout_width="match_parent"
+        android:layout_height="match_parent">
         <ImageView
             android:id="@+id/first_pict"
+            android:transitionName="dialogimage"
             android:layout_width="match_parent"
             android:layout_height="@dimen/events_cover_height"
-            android:adjustViewBounds="true"
-            android:fitsSystemWindows="true"
             android:scaleType="fitXY"
+            android:fitsSystemWindows="true"
+            android:adjustViewBounds="true"
+            android:src="@drawable/serena_williams"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:src="@drawable/serena_williams" />
-
+            android:layout_alignParentStart="true" />
         <android.support.v7.widget.SwitchCompat
             android:id="@+id/switchOnOff"
             android:layout_width="wrap_content"
@@ -37,18 +33,18 @@
             android:checked="false"
             android:text="FOLLOW "
             android:textColor="@color/white"
-            android:textOff="OFF"
-            android:textOn="ON"
+            android:textOff="@string/OFF"
+            android:textOn="@string/ON"
             app:showText="true"
             android:theme="@style/MySwitch" />
-
-        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        <RelativeLayout
             android:id="@+id/daily2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:background="#803F51B5"
             android:padding="5dp"
+            xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_alignBottom="@+id/first_pict">
 
 
@@ -60,17 +56,16 @@
                 android:textAppearance="@style/event_recycler2"
                 android:fontFamily="sans-serif"
                 android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true" />
-
+                android:layout_alignParentLeft="true"
+                />
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_below="@+id/title_pop"
                 android:layout_marginTop="-3dp"
-
-                android:layout_marginBottom="-3dp">
-
+                android:layout_marginBottom="-3dp"
+                >
                 <TextView
                     android:id="@+id/count"
                     android:layout_width="wrap_content"
@@ -83,6 +78,5 @@
 
             </RelativeLayout>
         </RelativeLayout>
-
     </RelativeLayout>
 </android.support.v7.widget.CardView>

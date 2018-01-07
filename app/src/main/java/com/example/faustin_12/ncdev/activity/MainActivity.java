@@ -24,8 +24,7 @@ import com.example.faustin_12.ncdev.activity.fragment.ReglageFragment;
 import com.example.faustin_12.ncdev.notification.DisplayCustomNotification;
 import com.example.faustin_12.ncdev.notification.DisplayNotification;
 
-public class
-MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
     public DrawerLayout mDrawerLayout;
     NavigationView mNavigationView;
     FragmentManager mFragmentManager;

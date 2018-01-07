@@ -158,10 +158,15 @@ public class ActualiteFragment extends Fragment implements RecyclerAdapterActual
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                if(mAdapter.getItemCount()>0)
+                ElementActualite elementActualite = new ElementActualite();
+                elementActualite.setTitle("Test");
+                mAdapter.addInfo(0, elementActualite);
+                swipeContainer.setRefreshing(false);
+
+                /*if(mAdapter.getItemCount()>0)
                     refresh(mAdapter.getData().get(0).getId_event());
                 else
-                    download();
+                    download();*/
             }
         });
 
@@ -387,9 +392,7 @@ public class ActualiteFragment extends Fragment implements RecyclerAdapterActual
                     Toast.makeText(getContext(), "Error :"+e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
-                ElementActualite elementActualite = new ElementActualite();
-                elementActualite.setTitle("Test");
-                mAdapter.addInfo(0, elementActualite);
+
                 swipeContainer.setRefreshing(false);
             }
 
@@ -398,9 +401,7 @@ public class ActualiteFragment extends Fragment implements RecyclerAdapterActual
                 // Log error here since request failed
                 Toast.makeText(getContext(),"Error : "+ t.getMessage(),Toast.LENGTH_LONG).show();
                 Log.d("Error",t.getMessage());
-                ElementActualite elementActualite = new ElementActualite();
-                elementActualite.setTitle("Test");
-                mAdapter.addInfo(0, elementActualite);
+
                 swipeContainer.setRefreshing(false);
             }
         });

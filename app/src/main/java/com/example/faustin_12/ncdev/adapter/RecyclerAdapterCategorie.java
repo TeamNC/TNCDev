@@ -1,6 +1,8 @@
 package com.example.faustin_12.ncdev.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -16,6 +18,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.faustin_12.ncdev.R;
+import com.example.faustin_12.ncdev.activity.BlankActivity;
 import com.example.faustin_12.ncdev.activity.fragment.BlankFragment;
 import com.example.faustin_12.ncdev.activity.fragment.DialogImage;
 import com.example.faustin_12.ncdev.model.ElementCategorie;
@@ -51,41 +54,53 @@ public class RecyclerAdapterCategorie extends RecyclerView.Adapter <RecyclerAdap
     public mViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         switch (viewType) {
             case 0:
-                View view = mInflater.inflate(R.layout.row_categorie, parent, false);
+                View view = mInflater.inflate(R.layout.row_categorie_thales, parent, false);
                 return new mViewHolder(view);
             case 1:
-                View pview = mInflater.inflate(R.layout.particular_row_categorie, parent, false);
+                View pview = mInflater.inflate(R.layout.row_categorie_thales, parent, false);
                 return new mViewHolder(pview);
         }
         return null;
     }
 
     @Override
-    public void onBindViewHolder(final mViewHolder holder, int position) {
+    public void onBindViewHolder(final mViewHolder holder, final int position) {
         ElementCategorie currentObj = mData.get(position);
         holder.setData(currentObj, position);
-        String transitionName = "";
-        transitionName = holder.name.getText().toString();
-        ViewCompat.setTransitionName(holder.imgRow, transitionName);
+        //String transitionName = "";
+        //transitionName = holder.name.getText().toString();
+        //ViewCompat.setTransitionName(holder.imgRow, currentObj.getTitle());
 
         holder.imgRow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DialogFragment dialogImage = new DialogImage();
+                ActivityOptionsCompat anim = ActivityOptionsCompat
+                        .makeSceneTransitionAnimation((android.app.Activity) context, holder.imgRow,
+                                ViewCompat.getTransitionName(holder.imgRow));
+
+                Intent intent = new Intent(context, BlankActivity.class);
+                intent.putExtra("position", position);
+                context.startActivity(intent, anim.toBundle());
+
+                /*DialogFragment dialogImage = new DialogImage();
                 String transitionName = "";
-                transitionName = holder.name.getText().toString();
+                //transitionName = holder.name.getText().toString();
+                transitionName = ViewCompat.getTransitionName(holder.imgRow);
+                BlankFragment blankFragment = new BlankFragment();
+                blankFragment.setTransitionName(transitionName);
+
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                Fragment prev = fragmentManager.findFragmentByTag("dialogimage");
+                /*Fragment prev = fragmentManager.findFragmentByTag("dialogimage");
                 if(prev != null){
                     fragmentTransaction.remove(prev);
                 }
 
-                BlankFragment blankFragment = new BlankFragment();
-                blankFragment.setTransitionName(transitionName);
-                Toast.makeText(context, transitionName, Toast.LENGTH_SHORT).show();
-                fragmentTransaction.addSharedElement(holder.imgRow, transitionName)
+                Toast.makeText(context, "Start " + transitionName, Toast.LENGTH_SHORT).show();
+
+                fragmentTransaction
+                        .addSharedElement(holder.imgRow, transitionName)
                         .replace(R.id.containerView0, blankFragment).addToBackStack(null).commit();
-                //dialogImage.show(fragmentTransaction, "dialogimage");
+                //dialogImage.show(fragmentTransaction, "dialogimage");*/
 
             }
         });
