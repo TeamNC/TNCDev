@@ -7,19 +7,23 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.MediaStore;
+import android.support.transition.Fade;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.CursorLoader;
+import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.transition.TransitionInflater;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -37,6 +41,7 @@ import com.example.faustin_12.ncdev.R;
 import com.example.faustin_12.ncdev.UploadClient;
 import com.example.faustin_12.ncdev.activity.MainActivity;
 import com.example.faustin_12.ncdev.adapter.RecyclerAdapterActualite;
+import com.example.faustin_12.ncdev.animation.DetailsTransition;
 import com.example.faustin_12.ncdev.model.ElementActualite;
 import com.example.faustin_12.ncdev.model.ResponseEvenement;
 import com.example.faustin_12.ncdev.model.UploadResponse;
@@ -543,8 +548,15 @@ public class ActualiteFragment extends Fragment implements RecyclerAdapterActual
         temps.setPrice("" + mAdapter.getItem(position).getDescription());
         ImageView icon = (ImageView) view.findViewById(R.id.imgRow);
         temps.setMyImageView(icon);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            temps.setSharedElementEnterTransition(new DetailsTransition());
+            temps.setEnterTransition(TransitionInflater.from(getContext()).inflateTransition(android.R.transition.fade));
+            setExitTransition(TransitionInflater.from(getContext()).inflateTransition(android.R.transition.fade));
+            temps.setSharedElementReturnTransition(new DetailsTransition());
+        }
         Toast.makeText(getContext(),"Clicked : "+ mAdapter.getItem(position).getTitle(),Toast.LENGTH_LONG).show();
         FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.containerView0, temps).addToBackStack(null).commit();
+        fragmentTransaction.addSharedElement(icon, ViewCompat.getTransitionName(icon))
+                .replace(R.id.containerView0, temps).addToBackStack(null).commit();
     }
 }

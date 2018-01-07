@@ -42,10 +42,10 @@ public class RecyclerAdapterActualite extends RecyclerView.Adapter <RecyclerAdap
         switch (viewType)
         {
             case 0:
-                View view = mInflater.inflate(R.layout.particular_row_actualite, parent, false);
+                View view = mInflater.inflate(R.layout.particular_row_actualite_thales, parent, false);
                 return new mViewHolder(view);
             case 1:
-                View pview = mInflater.inflate(R.layout.particular_row_actualite, parent, false);
+                View pview = mInflater.inflate(R.layout.particular_row_actualite_thales, parent, false);
                 return new mViewHolder(pview);
         }
         return null;
