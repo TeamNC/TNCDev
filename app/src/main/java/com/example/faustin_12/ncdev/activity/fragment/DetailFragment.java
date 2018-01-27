@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -14,6 +15,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.Toolbar;
+import android.transition.TransitionInflater;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -52,11 +54,14 @@ public  class DetailFragment extends Fragment implements View.OnClickListener {
     private CollapsingToolbarLayout collapsingToolbar = null;
 
     @Override
-    public void onCreate (Bundle savedInstanceState){
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mFragmentManager = getFragmentManager();
-
+        /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            setSharedElementEnterTransition(TransitionInflater.from(getContext()).inflateTransition(android.R.transition.move));
+        }*/
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -66,7 +71,7 @@ public  class DetailFragment extends Fragment implements View.OnClickListener {
          */
 
 
-        View x = inflater.inflate(R.layout.fragment_detail, null);
+        View x = inflater.inflate(R.layout.fragment_detail_thales, null);
         TextView tv= (TextView)x.findViewById(R.id.title_actualite);
         TextView prix= (TextView)x.findViewById(R.id.prix_details3);
         ImageView imageView = (ImageView) x.findViewById(R.id.imgRow);

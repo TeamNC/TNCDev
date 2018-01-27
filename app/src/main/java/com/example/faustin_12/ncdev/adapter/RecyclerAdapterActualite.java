@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.faustin_12.ncdev.R;
@@ -41,10 +42,10 @@ public class RecyclerAdapterActualite extends RecyclerView.Adapter <RecyclerAdap
         switch (viewType)
         {
             case 0:
-                View view = mInflater.inflate(R.layout.particular_row_actualite2, parent, false);
+                View view = mInflater.inflate(R.layout.particular_row_actualite_thales, parent, false);
                 return new mViewHolder(view);
             case 1:
-                View pview = mInflater.inflate(R.layout.particular_row_actualite2, parent, false);
+                View pview = mInflater.inflate(R.layout.particular_row_actualite_thales, parent, false);
                 return new mViewHolder(pview);
         }
         return null;

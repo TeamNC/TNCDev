@@ -11,7 +11,7 @@ import java.util.List;
 
 public class ResponseCategorie {
 
-    @SerializedName("categories")
+    @SerializedName("category")
     @Expose
     private List<ElementCategorie> categories = null;
 
