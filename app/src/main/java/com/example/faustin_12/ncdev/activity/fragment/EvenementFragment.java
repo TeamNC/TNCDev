@@ -126,14 +126,14 @@ public class EvenementFragment extends Fragment implements RecyclerAdapterCatego
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                mAdapter.addInfo(0, new ElementCategorie(0,"Test "+ currentPage, 10, "", 0));
-                currentPage++;
+               // mAdapter.addInfo(0, new ElementCategorie(0,"Test "+ currentPage, 10, "", 0));
+                //currentPage++;
                 swipeContainer.setRefreshing(false);
                 /*if(mAdapter.getItemCount()>0)
                     refresh(mAdapter.getData().get(0).getId_cat());
                 else
                     download();*/
-
+                download();
             }
         });
 
@@ -153,7 +153,7 @@ public class EvenementFragment extends Fragment implements RecyclerAdapterCatego
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         InterfaceCategories apiService = retrofit.create(InterfaceCategories.class);
-        Call<ResponseCategorie> call = apiService.getJSON("/nca/db_get_all_cat_bigger_id.php?id_cat="+id_cat);
+        Call<ResponseCategorie> call = apiService.getJSON("/page_up/"+id_cat);
         call.enqueue(new Callback<ResponseCategorie>() {
             @Override
             public void onResponse(Call<ResponseCategorie> call, Response<ResponseCategorie> response) {
@@ -203,7 +203,7 @@ public class EvenementFragment extends Fragment implements RecyclerAdapterCatego
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         InterfaceCategories apiService = retrofit.create(InterfaceCategories.class);
-        Call<ResponseCategorie> call = apiService.getJSON("/nca/db_get_all_cat_smaller_id.php?id_cat="+id_cat);
+        Call<ResponseCategorie> call = apiService.getJSON("/page_dwn/"+id_cat);
         call.enqueue(new Callback<ResponseCategorie>() {
             @Override
             public void onResponse(Call<ResponseCategorie> call, Response<ResponseCategorie> response) {
@@ -255,7 +255,7 @@ public class EvenementFragment extends Fragment implements RecyclerAdapterCatego
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         InterfaceCategories apiService = retrofit.create(InterfaceCategories.class);
-        Call<ResponseCategorie> call = apiService.getJSON("/nca/db_get_all_cat.php");
+        Call<ResponseCategorie> call = apiService.getJSON("/categories");
         call.enqueue(new Callback<ResponseCategorie>() {
             @Override
             public void onResponse(Call<ResponseCategorie> call, Response<ResponseCategorie> response) {
